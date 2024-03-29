@@ -14,7 +14,8 @@ Given images depicting complex scenes with multiple elements, your objective is 
 {admissible_commands}
 
 **Response:**
-- Let's think step-by-step and choose the appropriate action to accomplish the task description, as the form [Begin][Selected Action][End] (e.g. [Begin]2. go to kitech 1[End]).
+- Choose the appropriate action to accomplish the task description, as the form [Begin][Selected Action][End] (e.g. [Begin]2. go to kitech 1[End]).
+- [Rationale]: The reason for selecting the action (e.g. [Rationale]: The agent needs to go to the kitchen to find the object).
 """
 
 def to_json():
