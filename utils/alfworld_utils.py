@@ -212,24 +212,24 @@ def format_obs_task_desc(obs):
 
 
 # Delete "(i): [Selected Action]" to just "[Selected Action]"
-def refine_action(response):
-    # Split the response by "**Response:**" to separate the header from the actions
-    parts = response.split('**Response:**')
-    actions = parts[1] if len(parts) > 1 else response
-    # Regular expression to find all matches of the pattern "optional leading characters (number): some action"
-    # matches = re.findall(r"[-\s]*\(\d+\): ([^\n]+)", actions)
-    matches = re.findall(r"\[BEGIN\]\((\d+)\): ([^\[]+)\[END\]", actions)
-    if not matches:
-        return "No action"
-    # Extract and return the first action if any matches are found
-    first_action = matches[0][1].strip() if matches else "No action"
-    return first_action
-
 # def refine_action(response):
-#     # Regular expression to match the pattern "(i): some action"
-#     match = re.search(r"\(\d+\): ([^\.]+)", response)
-#     # Extract and return the action if the match is found
-#     return match.group(1).strip() if match else "No action"
+#     # Split the response by "**Response:**" to separate the header from the actions
+#     parts = response.split('**Response:**')
+#     actions = parts[1] if len(parts) > 1 else response
+#     # Regular expression to find all matches of the pattern "optional leading characters (number): some action"
+#     # matches = re.findall(r"[-\s]*\(\d+\): ([^\n]+)", actions)
+#     matches = re.findall(r"\[BEGIN\]\((\d+)\): ([^\[]+)\[END\]", actions)
+#     if not matches:
+#         return "No action"
+#     # Extract and return the first action if any matches are found
+#     first_action = matches[0][1].strip() if matches else "No action"
+#     return first_action
+
+def refine_action(response):
+    # Regular expression to match the pattern "(i): some action"
+    match = re.search(r"\(\d+\): ([^\.]+)", response)
+    # Extract and return the action if the match is found
+    return match.group(1).strip() if match else "No action"
 
 
 # Get current image form envrionment
