@@ -109,7 +109,7 @@ def test_tasks(args):
             eval(requests.post(env_url + "/reset", json={"json_file": json_file}).text)
         )
         obs, infos = loads(text)
-        admissible_commands, go_to_object_dic = format_admissible_commands(
+        admissible_commands = format_admissible_commands(
             infos["admissible_commands"][0]
         )
         # first one is initial observation
