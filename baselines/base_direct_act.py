@@ -34,6 +34,16 @@ def generate_action_prompt(task_desc, admissible_commands, task_hint, num_images
 
 
 def get_prompts(args):
+    
+    def get_task_hints(task_hints_prompt_path):
+        task_hints = {}
+        for filepath, _, filenames in os.walk(task_hints_prompt_path):
+            for filename in filenames:
+                take_name = filename.split(".")[0]
+                with open(os.path.join(filepath, filename), "r") as f:
+                    task_hints[take_name] = f.read().replace("\n", " ")
+        return task_hints
+    
     baseline_action_selector_prompt_path = os.path.join(
         PROMPT_PATH, "baselines", args.prompt_path
     )

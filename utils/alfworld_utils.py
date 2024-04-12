@@ -33,15 +33,6 @@ def save_video(frames: Sequence[np.ndarray], filename: str, fps: int = 3):
     clip = ImageSequenceClip(frames, fps=fps)
     clip.write_videofile(filename, codec='libx264', audio=False)
 
-def get_task_hints(task_hints_prompt_path):
-    task_hints = {}
-    for filepath, _, filenames in os.walk(task_hints_prompt_path):
-        for filename in filenames:
-            take_name = filename.split(".")[0]
-            with open(os.path.join(filepath, filename), "r") as f:
-                task_hints[take_name] = f.read().replace("\n", " ")
-    return task_hints
-
 
 # Get the tasks and return the task list
 def get_path_tasks(task_list_path):
