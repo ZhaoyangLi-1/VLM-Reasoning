@@ -168,7 +168,7 @@ def test_tasks(args):
                 obs,
             )
             admissible_commands = delete_inefficient_action(admissible_commands, no_try_actions)
-            admissible_commands, _ = format_admissible_commands(
+            admissible_commands = format_admissible_commands(
                 admissible_commands
             )
             succeed = done
