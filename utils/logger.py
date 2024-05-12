@@ -14,14 +14,14 @@ VLM Prompt:
 
 ----------------------------------------
 
-Original Response:
+VLM Response:
 {response}
 
 ----------------------------------------
 
 ----------------------------------------
 
->>> Refine Original VLM Response and Get Pure Action: {action}
+>>> Refine VLM Response and Get Pure Action: {action}
 
 ----------------------------------------
 
@@ -30,6 +30,20 @@ Original Response:
 Running time: {time} seconds
 
 Total Money: {total_money}
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+{summarization_prompt}
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+{summarization_response}
 
 -----------------------------------------------------------------
 
@@ -64,6 +78,20 @@ html_task_log_template = """
 <strong>&gt;&gt;&gt; Refine Original VLM Response and Get Pure Action:</strong> <span style="color: red;">{action}</span>
 
 ----------------------------------------
+
+-----------------------------------------------------------------
+
+<strong>Summarization Prompt:</strong>
+{summarization_prompt}
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+<strong>Summarization Response:</strong>
+{summarization_response}
+
+-----------------------------------------------------------------
 
 -----------------------------------------------------------------
 
@@ -146,7 +174,7 @@ class Task_Logger(Logger):
         self.task_id = task_id
 
     def wirte_and_get_task_log(
-        self, task_idx, step, prompt, response, action, start_time, end_time, total_money, obs
+        self, task_idx, step, prompt, response, action, start_time, end_time, total_money, summarization_prompt, summarization_response, obs
     ):
         time = end_time - start_time
         task_log = task_log_template.format(
@@ -157,6 +185,8 @@ class Task_Logger(Logger):
             action=action,
             time = time,
             total_money=total_money,
+            summarization_prompt=summarization_prompt,
+            summarization_response=summarization_response,
             obs=obs,
         )
         task_log = task_log[1:-1]
@@ -168,6 +198,8 @@ class Task_Logger(Logger):
             action=action,
             time = time,
             total_money=total_money,
+            summarization_prompt=summarization_prompt,
+            summarization_response=summarization_response,
             obs=obs,
         )
         html_task_log = html_task_log[1:-1]

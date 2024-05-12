@@ -10,6 +10,7 @@ import pickle
 from moviepy.editor import ImageSequenceClip
 from typing import Sequence
 from collections import deque, defaultdict
+import random
 
 CURRENT_FOLDER = os.path.dirname(os.path.abspath(__file__))
 ALFWORLD_DATA = os.getenv("ALFWORLD_DATA")
@@ -47,9 +48,117 @@ def get_path_tasks(task_list_path):
 
 
 # Generate sgement image with instance object name
-def draw_instance_img(original_image, env_url):
+# def draw_instance_img(original_image, env_url):
+#     def is_dark_color(color):
+#         r, g, b, _ = color
+#         return (0.299 * r + 0.587 * g + 0.114 * b) < 128
+
+#     def is_inside(inner_bbox, outer_bbox):
+#         return (
+#             outer_bbox[0] <= inner_bbox[0] <= outer_bbox[2]
+#             and outer_bbox[0] <= inner_bbox[2] <= outer_bbox[2]
+#             and outer_bbox[1] <= inner_bbox[1] <= outer_bbox[3]
+#             and outer_bbox[1] <= inner_bbox[3] <= outer_bbox[3]
+#         )
+
+#     def count_inner_boxes(obj_dic):
+#         result = {}
+#         for obj_id, bbox in obj_dic.items():
+#             num_inside = 0
+#             for other_id, other_bbox in obj_dic.items():
+#                 if obj_id != other_id and is_inside(other_bbox, bbox):
+#                     num_inside += 1
+#             result[obj_id] = (bbox, num_inside)
+#         return result
+
+#     def get_average_color(image, bbox):
+#         x1, y1, x2, y2 = bbox
+#         area = image.crop((x1, y1, x2, y2))
+#         avg_color = np.array(area).mean(axis=(0, 1))
+#         return avg_color
+
+#     def is_overlapping(new_pos, existing_positions):
+#         x1_new, y1_new, x2_new, y2_new = new_pos
+#         for pos in existing_positions:
+#             x1, y1, x2, y2 = pos
+#             if not (x2_new < x1 or x2 < x1_new or y2_new < y1 or y2 < y1_new):
+#                 return True
+#         return False
+
+#     original_image = original_image.convert("RGBA")
+#     objects_receps = loads(
+#         b64decode(eval(requests.post(env_url + "/get_objects_receps", json={}).text))
+#     )[0]
+#     instance_segs_list, instance_detections2D_list = loads(
+#         b64decode(
+#             eval(requests.post(env_url + "/get_instance_seg_and_id", json={}).text)
+#         )
+#     )
+
+#     transparency = 0.2
+#     segment, instance_detections2D = (
+#         instance_segs_list[0],
+#         instance_detections2D_list[0],
+#     )
+#     if not isinstance(segment, Image.Image):
+#         segment = Image.fromarray(np.array(segment))
+#         segment = segment.convert("RGBA")
+#         segment.putalpha(int(255 * transparency))
+
+#     combined = Image.new("RGBA", original_image.size)
+#     combined.paste(original_image, (0, 0))
+#     combined.paste(segment, (0, 0), segment)
+#     draw = ImageDraw.Draw(combined)
+#     font = ImageFont.load_default() #ImageFont.truetype("/home/zhaoyang/.fonts/Helvetica.ttf", size=50) 
+
+#     drawn_text_positions = []
+#     obj_dic = {}
+#     for obj_id, obj in objects_receps.items():
+#         if obj_id in instance_detections2D:
+#             bbox = instance_detections2D[obj_id].tolist()
+#         else:
+#             continue
+#         text = str(obj["num_id"])
+#         obj_dic[text] = bbox
+
+#     obj_dic = count_inner_boxes(obj_dic)
+
+#     # Second pass to draw text and overlay
+#     for obj_text_id, (bbox, num_inside) in obj_dic.items():
+#         x1, y1, x2, y2 = bbox
+
+#         text_bbox = draw.textbbox((0, 0), text, font=font)
+#         text_width, text_height = (
+#             text_bbox[2] - text_bbox[0],
+#             text_bbox[3] - text_bbox[1],
+#         )
+
+#         # Center the text in the bounding box
+#         center_x, center_y = (x1 + x2) / 2, (y1 + y2) / 2
+#         text_x = center_x - text_width / 2 + 40
+#         text_y = center_y - text_height / 2
+
+#         if num_inside != 0:
+#             text_x = x1 + 1 / num_inside * 50
+#             text_y = y1 + 1 / num_inside * 20
+
+#         new_pos = (text_x, text_y, text_x + text_width, text_y + text_height)
+#         while is_overlapping(new_pos, drawn_text_positions):
+#             text_x += 10
+#             text_y += 10
+#             new_pos = (text_x, text_y, text_x + text_width, text_y + text_height)
+
+#         avg_bg_color = get_average_color(combined, new_pos)
+#         text_color = "white" if is_dark_color(avg_bg_color) else "black"
+#         draw.text((text_x, text_y), obj_text_id, fill=text_color)
+#         drawn_text_positions.append(new_pos)
+
+#     combined = combined.convert("RGB")
+#     return combined
+
+def draw_instance_img(original_image, env_url, bbox_threshold=0, image_size_margin_ratio=0.005):
     def is_dark_color(color):
-        r, g, b, _ = color
+        r, g, b = color
         return (0.299 * r + 0.587 * g + 0.114 * b) < 128
 
     def is_inside(inner_bbox, outer_bbox):
@@ -83,8 +192,10 @@ def draw_instance_img(original_image, env_url):
             if not (x2_new < x1 or x2 < x1_new or y2_new < y1 or y2 < y1_new):
                 return True
         return False
+    
+    def random_color():
+        return (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
-    original_image = original_image.convert("RGBA")
     objects_receps = loads(
         b64decode(eval(requests.post(env_url + "/get_objects_receps", json={}).text))
     )[0]
@@ -94,21 +205,13 @@ def draw_instance_img(original_image, env_url):
         )
     )
 
-    transparency = 0.2
-    segment, instance_detections2D = (
+    _, instance_detections2D = (
         instance_segs_list[0],
         instance_detections2D_list[0],
     )
-    if not isinstance(segment, Image.Image):
-        segment = Image.fromarray(np.array(segment))
-        segment = segment.convert("RGBA")
-        segment.putalpha(int(255 * transparency))
 
-    combined = Image.new("RGBA", original_image.size)
-    combined.paste(original_image, (0, 0))
-    combined.paste(segment, (0, 0), segment)
-    draw = ImageDraw.Draw(combined)
-    font = ImageFont.load_default() #ImageFont.truetype("/home/zhaoyang/.fonts/Helvetica.ttf", size=50) 
+    draw = ImageDraw.Draw(original_image)
+    font = ImageFont.truetype("/home/zhaoyang/.fonts/Helvetica.ttf", size=50)  # ImageFont.load_default() #ImageFont.truetype("/home/zhaoyang/.fonts/Helvetica.ttf", size=50) 
 
     drawn_text_positions = []
     obj_dic = {}
@@ -117,29 +220,57 @@ def draw_instance_img(original_image, env_url):
             bbox = instance_detections2D[obj_id].tolist()
         else:
             continue
-        text = str(obj["num_id"])
+        object_type = obj["object_type"]
+        id = obj["num_id"].split(" ")[1]
+        text = object_type + " " + id
         obj_dic[text] = bbox
 
     obj_dic = count_inner_boxes(obj_dic)
-
+    merged_obj_dic = {}
     # Second pass to draw text and overlay
+    img_width, img_height = original_image.size
     for obj_text_id, (bbox, num_inside) in obj_dic.items():
         x1, y1, x2, y2 = bbox
-
+        
+        margin_width = image_size_margin_ratio * img_width
+        margin_height = image_size_margin_ratio * img_height
+        
+        in_x1 = max(x1, 0)
+        in_y1 = max(y1, 0)
+        in_x2 = min(x2, img_width)
+        in_y2 = min(y2, img_height)
+        effective_width = max(0, in_x2 - in_x1)
+        effective_height = max(0, in_y2 - in_y1)
+        effective_area = effective_width * effective_height
+        
+        # Calculate the total area of the bounding box
+        bbox_width = x2 - x1
+        bbox_height = y2 - y1
+        bbox_area = bbox_width * bbox_height
+        
+        image_area = img_width * img_height
+        bbox_percentage_of_image = bbox_area / image_area
+        
+        if (x1 <= margin_width or y1 <= margin_height or x2 >= img_width - margin_width or y2 >= img_height - margin_height) and bbox_percentage_of_image < 0.2:
+            continue
+        
+        color = random_color()
+        draw.rectangle(bbox, outline=color, width=2)
         text_bbox = draw.textbbox((0, 0), text, font=font)
         text_width, text_height = (
             text_bbox[2] - text_bbox[0],
             text_bbox[3] - text_bbox[1],
         )
+        # create object and bbox dictionary
+        object_type = obj_text_id.split()[0]
+        if object_type not in merged_obj_dic:
+            merged_obj_dic[object_type] = []
+        merged_obj_dic[object_type].append(bbox)
 
         # Center the text in the bounding box
         center_x, center_y = (x1 + x2) / 2, (y1 + y2) / 2
         text_x = center_x - text_width / 2 + 40
         text_y = center_y - text_height / 2
-
-        if num_inside != 0:
-            text_x = x1 + 1 / num_inside * 50
-            text_y = y1 + 1 / num_inside * 20
 
         new_pos = (text_x, text_y, text_x + text_width, text_y + text_height)
         while is_overlapping(new_pos, drawn_text_positions):
@@ -147,13 +278,12 @@ def draw_instance_img(original_image, env_url):
             text_y += 10
             new_pos = (text_x, text_y, text_x + text_width, text_y + text_height)
 
-        avg_bg_color = get_average_color(combined, new_pos)
+        avg_bg_color = get_average_color(original_image, new_pos)
         text_color = "white" if is_dark_color(avg_bg_color) else "black"
         draw.text((text_x, text_y), obj_text_id, fill=text_color)
         drawn_text_positions.append(new_pos)
-
-    combined = combined.convert("RGB")
-    return combined
+        
+    return original_image, merged_obj_dic
 
 
 # Get all json files
@@ -271,6 +401,7 @@ def format_obs_task_desc(obs):
         return obs_desc, task_desc
 
 
+
 # def refine_action(response):
 #     # Split the response to separate the header from the actions
 #     parts = response.split('**Response:**')
@@ -290,23 +421,88 @@ def format_obs_task_desc(obs):
 #     return match.group(1).strip() if match else "No action"
 
 def refine_action(response):
-    response = response.split("The answer is:")
+    # response = response.split("The answer is:")
+    response = response.split("The Most Appropriate Action: ")
     if len(response) == 1:
         return "No action"
-    response = response[1]
+    response = response[1].strip()
     match = re.search(r"\(\d+\): ([^\.]+)", response)
-    return match.group(1).strip() if match else "No action"
+    if match is None:
+        action = response
+    else:
+        return match.group(1).strip()
+    if not bool(re.search(r'\d$', action)):
+        action = "No action"
+    return action
     
+def delete_examine_action_for_receps(admissible_commands, recep_names):
+    return [command for command in admissible_commands if "examine" not in command or not any(name in command for name in recep_names)]
+
+
+def format_initial_obs_to_get_rceps(obs):
+    obs = obs[0].replace("\n\n", "\n").split("\n")
+    obs_desc = obs[1]
+    task_start_start_pos = obs[2].find(":") + 1
+    task_desc = obs[2][task_start_start_pos:].strip()
+    big_objects = obs_desc.split("you see a ")[1].split(", ")
+    big_objects[-1] = big_objects[-1].replace("and a ", "")
+    big_objects[-1] = big_objects[-1].replace(".", "")
+    big_objects = [s.replace("a ", "") for s in big_objects]
+    return big_objects, task_desc, obs_desc
 
 
 # Get current image form envrionment
-def get_image(env_url, is_ins_seg):
+# def get_image(env_url, is_ins_seg):
+#     text = b64decode(eval(requests.post(env_url + "/get_frames", json={}).text))
+#     image = loads(text).squeeze()[:, :, ::-1].astype("uint8")
+#     image = Image.fromarray(image)
+#     if is_ins_seg:
+#         image = draw_instance_img(image, env_url)
+#     return image
+
+def get_image(env_url, is_seg, bbox_threshold):
     text = b64decode(eval(requests.post(env_url + "/get_frames", json={}).text))
     image = loads(text).squeeze()[:, :, ::-1].astype("uint8")
     image = Image.fromarray(image)
-    if is_ins_seg:
-        image = draw_instance_img(image, env_url)
+    if is_seg:
+        image, merged_obj_dic = draw_instance_img(image, env_url, bbox_threshold)
+        return image, merged_obj_dic
     return image
+
+
+def to_pascal_case(text):
+    if not text:
+        return text
+    return text[0].upper() + ''.join(text[i].upper() if text[i-1].islower() else text[i] for i in range(1, len(text)))
+
+def get_obj_infor(env_url, bbox_threshold):
+    instance_image, merged_obj_dic = get_image(env_url, True, bbox_threshold)
+    original_image = get_image(env_url, False, bbox_threshold)
+    objects_receps = loads(
+        b64decode(eval(requests.post(env_url + "/get_objects_receps", json={}).text))
+    )[0]
+    instance_segs_list, instance_detections2D_list = loads(
+        b64decode(
+            eval(requests.post(env_url + "/get_instance_seg_and_id", json={}).text)
+        )
+    )
+    _, instance_detections2D = (
+        instance_segs_list[0],
+        instance_detections2D_list[0],
+    )
+    count_dict = {}
+    for obj_id, obj in objects_receps.items():
+        if obj_id in instance_detections2D:
+            object_type = obj["object_type"]
+            if object_type in count_dict:
+                count_dict[object_type] += 1
+            else:
+                count_dict[object_type] = 1
+        else:
+            continue
+    # merged_obj_dic = {to_pascal_case(key): value for key, value in merged_obj_dic.items()}
+    count_dict = {key: value for key, value in count_dict.items() if key in merged_obj_dic.keys()}
+    return count_dict, instance_image, original_image, merged_obj_dic
 
 
 def get_roate_ins_images(env_url, is_ins_seg, image_root):
@@ -395,3 +591,5 @@ def generate_html_with_task_log(context, image_paths, output_file):
 
 
         
+a = "Analysis: The history information indicates that we are at step 1 of the plan, which is to find an alarm clock. The current observation shows us in a room with a sidetable and a desklamp. The sidetable has a drawer that could potentially contain an alarm clock. The objects relevant to our task in the current observation are the sidetable and the desklamp. Since we need to find an alarm clock, examining the sidetable where alarm clocks are commonly placed would be a logical next step.\n\nThe Most Appropriate Action: examine sidetable 1"
+b = refine_action(a)

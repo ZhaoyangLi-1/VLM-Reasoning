@@ -1,26 +1,34 @@
-import re
-from collections import defaultdict
+# import os
+# import sys
+# sys.path.append("/home/zhaoyang/projects/LLaVA//llava")
+# from llava.chatbot_utils import ChatBot, DecodingArguments
 
-def refine_ini_obs(ini_obs):
-    head, obs = ini_obs.split('. ')
-    items_with_numbers = re.findall(r'(\w+)\s(\d+)', obs)
-
-    item_ranges = defaultdict(list)
-    for item, number in items_with_numbers:
-        item_ranges[item].append(int(number))
-        
-    formatted_items = []
-    for item, numbers in item_ranges.items():
-        numbers.sort()
-        if len(numbers) == 1:
-            formatted_items.append(f"{item} ({numbers[0]})")
-        else:
-            formatted_items.append(f"{item} ({numbers[0]}-{numbers[-1]})")
-
-    formatted_text = ', '.join(formatted_items)
-    return head + ". Looking quickly around you, you can see " + formatted_text
+# def main():
+#     action_vlm_decoding_args = DecodingArguments(
+#             max_tokens=8192,
+#             n=1,
+#             temperature=0.7,
+#             image_detail="auto",
+#             use_4bit=True
+#         )
+#     actor_vlm_model = ChatBot("llava-v1.6-34b", None, action_vlm_decoding_args)
+#     a = 1
 
 
-ini_obs = "You are in the middle of a room. Looking quickly around you, you see a bed 1, a sidetable 1, a drawer 1, a dresser 1, a drawer 2, a drawer 3, a drawer 4, a drawer 5, a drawer 6, a drawer 7, a drawer 8, a drawer 9, a drawer 10, a drawer 11, a safe 1, a laundryhamper 1, and a garbagecan 1."
+# if __name__ == "__main__":
+#     main()
 
-print(refine_ini_obs(ini_obs))
+
+import os
+import sys
+os.environ["AGI_ROOT"] = "/home/zhaoyang/projects/neural-reasoning"
+sys.path.append(os.path.join(os.environ["AGI_ROOT"]))
+from agi.utils.chatbot_utils import DecodingArguments, ChatBot
+action_vlm_decoding_args = DecodingArguments(
+    max_tokens=8192,
+    n=1,
+    temperature=0.7,
+    image_detail="auto",
+    )
+actor_vlm_model = ChatBot("llava-v1.5-13b", action_vlm_decoding_args)
+a=1

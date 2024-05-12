@@ -12,7 +12,7 @@ from utils.logger import Global_Logger, Task_Logger
 
 os.environ["AGI_ROOT"] = "/home/zhaoyang/projects/neural-reasoning"
 sys.path.append(os.path.join(os.environ["AGI_ROOT"]))
-from agi.utils.openai_utils import get_total_money
+# from agi.utils.openai_utils import get_total_money
 from agi.utils.chatbot_utils import DecodingArguments, ChatBot
 
 
@@ -20,7 +20,7 @@ ALFWORLD_DATA = os.getenv("ALFWORLD_DATA")
 ALFWORLD_SAVE = os.getenv("ALFWORLD_SAVE")
 CURRENT_FOLDER = os.path.dirname(os.path.abspath(__file__))
 PARENT_FOLDER = os.path.dirname(CURRENT_FOLDER)
-PROMPT_PATH = os.path.join(PARENT_FOLDER, "prompts/alfworld-prompts")
+PROMPT_PATH = os.path.join(PARENT_FOLDER, "prompts/alfworld")
 
 
 def generate_action_prompt(task_desc, admissible_commands, task_hint, num_images, ini_obs):
