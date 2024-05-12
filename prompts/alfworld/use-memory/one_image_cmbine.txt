@@ -1,0 +1,38 @@
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to {task_description}. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Initial Observation**
+{ini_obs}
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+{plan}
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed is the previous state observations.
+{history}
+
+**Admissible Actions**
+{admissible_commands}
+
+**Analysis Guideline**
+1. Analyze the history and determine the effect and our current step in the plan and our current place. 
+2. List the objects with distinct integer related to the task in the current observation.
+3. Analyze the objects in the current observation based on the requirements for the curret step and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take from **Admissible Actions**.
+5. Summarize the analysis using the following format: "Analysis: [The Summarization of the analysis]\n The Most Appropriate Action: [Selected Action]".
+
+**Notes**
+1. We must complete each step of the plan sequentially.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. For "Open" actions listed as "open xxx [n]", interpret this as there are n distinct actions available: "open xxx 1", "open xxx 2", ..., "open xxx n".  Select one specific action from these options instead of using "open xxx [n]".
+4. Pay attention to synonyms and ensure clarity in terms used.
+5. If there is no history available, we are at the first step and the current place is "Unkown".
+6. If there is no desired object in images, search every place based on **Initial Observation** to find the object. And if no one is exactly correct, choose a similar answer.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
