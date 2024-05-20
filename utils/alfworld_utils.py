@@ -32,7 +32,7 @@ ALFWORLD_DATA = os.getenv("ALFWORLD_DATA")
 def save_video(frames: Sequence[np.ndarray], filename: str, fps: int = 3):
     frames =  [np.array(image) for image in frames]
     clip = ImageSequenceClip(frames, fps=fps)
-    clip.write_videofile(filename, codec='libx264', audio=False)
+    clip.write_videofile(filename, codec='libx264', audio=False, fps=fps)
 
 
 # Get the tasks and return the task list
@@ -156,7 +156,7 @@ def get_path_tasks(task_list_path):
 #     combined = combined.convert("RGB")
 #     return combined
 
-def draw_instance_img(original_image, env_url, bbox_threshold=0, image_size_margin_ratio=0.005):
+def draw_instance_img(original_image, env_url, image_size_margin_ratio=0.005):
     def is_dark_color(color):
         r, g, b = color
         return (0.299 * r + 0.587 * g + 0.114 * b) < 128
@@ -460,12 +460,12 @@ def format_initial_obs_to_get_rceps(obs):
 #         image = draw_instance_img(image, env_url)
 #     return image
 
-def get_image(env_url, is_seg, bbox_threshold):
+def get_image(env_url, is_seg):
     text = b64decode(eval(requests.post(env_url + "/get_frames", json={}).text))
     image = loads(text).squeeze()[:, :, ::-1].astype("uint8")
     image = Image.fromarray(image)
     if is_seg:
-        image, merged_obj_dic = draw_instance_img(image, env_url, bbox_threshold)
+        image, merged_obj_dic = draw_instance_img(image, env_url)
         return image, merged_obj_dic
     return image
 
@@ -475,33 +475,13 @@ def to_pascal_case(text):
         return text
     return text[0].upper() + ''.join(text[i].upper() if text[i-1].islower() else text[i] for i in range(1, len(text)))
 
-def get_obj_infor(env_url, bbox_threshold):
-    instance_image, merged_obj_dic = get_image(env_url, True, bbox_threshold)
-    original_image = get_image(env_url, False, bbox_threshold)
-    objects_receps = loads(
-        b64decode(eval(requests.post(env_url + "/get_objects_receps", json={}).text))
-    )[0]
-    instance_segs_list, instance_detections2D_list = loads(
-        b64decode(
-            eval(requests.post(env_url + "/get_instance_seg_and_id", json={}).text)
-        )
-    )
-    _, instance_detections2D = (
-        instance_segs_list[0],
-        instance_detections2D_list[0],
-    )
+def get_obj_infor(env_url):
+    instance_image, merged_obj_dic = get_image(env_url, True)
+    original_image = get_image(env_url, False)
     count_dict = {}
-    for obj_id, obj in objects_receps.items():
-        if obj_id in instance_detections2D:
-            object_type = obj["object_type"]
-            if object_type in count_dict:
-                count_dict[object_type] += 1
-            else:
-                count_dict[object_type] = 1
-        else:
-            continue
-    # merged_obj_dic = {to_pascal_case(key): value for key, value in merged_obj_dic.items()}
-    count_dict = {key: value for key, value in count_dict.items() if key in merged_obj_dic.keys()}
+    for obj_type, bboxs in merged_obj_dic.items():
+        count_dict[obj_type] = len(bboxs)
+
     return count_dict, instance_image, original_image, merged_obj_dic
 
 

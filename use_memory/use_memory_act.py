@@ -62,29 +62,17 @@ def test_tasks(args):
     generate_plan_prompt, vlm_prompt_for_one_img, summary_promp, task_hints, extract_related_objects_prompt = get_prompts()
     env_url = "http://127.0.0.1:" + str(args.env_url)
     # initial VLM and LLM model
-    if "gpt" in args.vlm_model:
-        os.environ["AGI_ROOT"] = "/home/zhaoyang/projects/neural-reasoning"
-        sys.path.append(os.path.join(os.environ["AGI_ROOT"]))
-        # from agi.utils.openai_utils import get_total_money
-        from agi.utils.chatbot_utils import DecodingArguments, ChatBot
-        action_vlm_decoding_args = DecodingArguments(
-            max_tokens=8192,
-            n=1,
-            temperature=0.7,
-            image_detail="auto",
-            )
-        actor_vlm_model = ChatBot(args.vlm_model)
-    elif "llava" in args.vlm_model:
-        sys.path.append("/home/zhaoyang/projects/LLaVA//llava")
-        from llava.chatbot_utils import ChatBot, DecodingArguments
-        action_vlm_decoding_args = DecodingArguments(
-            max_tokens=8192,
-            n=1,
-            temperature=0.7,
-            image_detail="auto",
-            use_4bit=True
+    os.environ["AGI_ROOT"] = "/home/zhaoyang/projects/neural-reasoning"
+    sys.path.append(os.path.join(os.environ["AGI_ROOT"]))
+    # from agi.utils.openai_utils import get_total_money
+    from agi.utils.chatbot_utils import DecodingArguments, ChatBot
+    action_vlm_decoding_args = DecodingArguments(
+        max_tokens=8192,
+        n=1,
+        temperature=0.7,
+        image_detail="auto",
         )
-        actor_vlm_model = ChatBot(args.vlm_model, args.model_base)
+    actor_vlm_model = ChatBot(args.vlm_model)
     print(f"VLM Model: {args.vlm_model}")
     # Setup VLM(gpt4-v) model as action selector and current attempts relfector
    
@@ -162,67 +150,28 @@ def test_tasks(args):
             image_path = os.path.join(image_root, f"task-{task_idx}-{step}.jpg")
             instance_image_path = os.path.join(image_root, f"task-{task_idx}-{step}-ins-seg.jpg")
             # image = get_image(env_url, args.is_ins_seg)
-            count_dic, instance_image, image, merged_obj_dic = get_obj_infor(env_url, 0)
+            count_dic, instance_image, image, merged_obj_dic = get_obj_infor(env_url)
             image.save(image_path, "JPEG")
             instance_image.save(instance_image_path, "JPEG")
             images_queue.append(image)
             images_log.append(image)
             image_paths_queue.append(image_path)
             
-            # if all_history is None:
-            #     all_history = ""
-            #     one_image_prompt = vlm_prompt_for_one_img.format(task_description=task_desc, ini_obs=ini_obs, plan=plan, history="No history.", admissible_commands=admissible_commands)
-            # else:
-            #     one_image_prompt = vlm_prompt_for_one_img.format(task_description=task_desc, ini_obs=ini_obs, plan=plan, history=all_history, admissible_commands=admissible_commands)
-                
+            
             if all_history is None:
                 all_history = f"State {0}:\nNo history.\n"
                 one_image_prompt = vlm_prompt_for_one_img.format(task_description=task_desc, plan=plan, history="No history.", admissible_commands=admissible_commands)
             else:
                 one_image_prompt = vlm_prompt_for_one_img.format(task_description=task_desc, plan=plan, history=all_history, admissible_commands=admissible_commands)
             
-            # object_names = list(merged_obj_dic.keys())
-            # all_objects = object_names + task_related_objects
-            # true_task_related_objects_exist_dic = {obj: obj in object_names for obj in task_related_objects}
-            # predicted_result_for_task_related_dic = {key: None for key in true_task_related_objects_exist_dic.keys()}
-            # for obj_name in all_objects:
-            #     print(f"Current Object for Detection: {obj_name}")
-            #     true_count = 1
-            #     if obj_name in true_task_related_objects_exist_dic and true_task_related_objects_exist_dic[obj_name] is False:
-            #         true_count = 0
-            #     if all_history is None:
-            #         obj_existence_prompt = existence_prompt.format(history="No history.", obj_name=obj_name)
-            #     else:
-            #         obj_existence_prompt = existence_prompt.format(history=all_history, obj_name=obj_name)
-            #     messages = {"text": obj_existence_prompt, "images": list(images_queue)}
-            #     existence_res = actor_vlm_model.call_model(messages, decoding_args=action_vlm_decoding_args, return_list=False).strip()
-            #     print(f"VLM Existence Response:{existence_res}")
-            #     if obj_name in task_related_objects:                    
-            #         if (true_task_related_objects_exist_dic[obj_name] is True and "Yes" in response) or (true_task_related_objects_exist_dic[obj_name] is False and "No" in existence_res):
-            #             counts_hat = 1
-            #             correctness = "correct"
-            #         elif (true_task_related_objects_exist_dic[obj_name] is True and "No" in response) or (true_task_related_objects_exist_dic[obj_name] is False and "Yes" in existence_res):
-            #             counts_hat = 0
-            #             correctness = "incorrect"
-            #         obj_name = f"desired_{obj_name}"
-            #     else:
-            #         if "Yes" in existence_res:
-            #             counts_hat = 1
-            #             correctness = "correct"
-            #         else:
-            #             counts_hat = 0
-            #             correctness = "incorrect"
-            #     print(f"object_category: {obj_name}, true_counts: {true_count}, predicted_counts: {counts_hat}, correctness: {correctness}, history_num: {step}")
-            #     answer.append([obj_name, true_count, counts_hat, correctness, image_path, step])
-            
             
             messages = {"text": one_image_prompt,"images": list(images_queue)}
             start_time = time.time()
             response = actor_vlm_model.call_model(messages, decoding_args=action_vlm_decoding_args, return_list=False).strip()
             end_time = time.time()
-            print(f"Response:\n{response}")
+            # print(f"Response:\n{response}")
             action = refine_action(response)
-            print(f"Chosen Action: {action}")
+            # print(f"Chosen Action: {action}")
             if "No action" in action:
                 # breakpoint()
                 continue
@@ -230,14 +179,15 @@ def test_tasks(args):
             summary_prompt_for_one_img = summary_promp.format(context=response)
             messages = {"text": summary_prompt_for_one_img}
             
+            # data.append(["task_id", "task_desc", "step", "action", "original_image_path", "ins_image_path", "task_related_objects", "object_count_infor", "object_bboxes", "history_num", "history"])
+            print(f"task_idx: {task_idx}, task_desc: {task_desc}, step: {step+1}, action: {action}, count_dic: {count_dic},  current_num_history: {current_num_history}")
             data.append([task_idx, task_desc, step+1, action, image_path, instance_image_path, task_related_objects, count_dic, merged_obj_dic, current_num_history, all_history])
-            
             history = llm_model.call_model(messages, decoding_args=action_vlm_decoding_args, return_list=False).strip()
             current_num_history = len(history_steps)
             history_steps.append(f"State {current_num_history}:\n{history}\n")
             all_history = ''.join(history_steps)
             
-            # data.append(["task_desc", "action", "original_image_path", "ins_image_path", "object_count_infor", "object_bboxes", "history_num", "history"])
+    
             
             text = b64decode(
                 eval(requests.post(env_url + "/step", json={"action": action}).text)
@@ -278,7 +228,7 @@ def test_tasks(args):
                 image_path = os.path.join(
                     image_root, f"task-{task_idx}-step-{step+1}.jpg"
                 )
-                image = get_image(env_url, False, args.is_ins_seg)
+                image = get_image(env_url, args.is_ins_seg)
                 image.save(image_path, "JPEG")
                 images_queue.append(image)
                 images_log.append(image)
@@ -313,10 +263,11 @@ def test_tasks(args):
                 f"{task_idx} Path:{json_file}: UNSUCCEED, Goal condition success rate: {goal_condition_success_rate}\n"
             )
             
-    csv_save_folder = os.path.join(CURRENT_FOLDER, args.result_csv_folder, args.refine_type)
+    csv_save_folder = os.path.join(PARENT_FOLDER, "test-detect")
     if not os.path.exists(csv_save_folder):
         os.makedirs(csv_save_folder)
-    csv_save_path = os.path.join(csv_save_folder, f"llava-aflworld-history-infor.csv")
+    csv_save_path = os.path.join(csv_save_folder, f"gpt-aflworld-history-infor.csv")
+    print(f"Save path: {csv_save_path}")
     write_data_to_csv(csv_save_path, data)
     # total_money = get_total_money()
     total_tasks_log.write(f"\nTotal number: {len(json_file_list)}\n")

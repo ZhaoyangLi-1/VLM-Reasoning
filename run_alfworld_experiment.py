@@ -10,7 +10,7 @@ def run_aflworld(args):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--vlm_model", default="llava-v1.6-34b", type=str)
+    parser.add_argument("--vlm_model", default="gpt-4-vision-preview", type=str)
     parser.add_argument("--use-4bit", default=True, type=bool)
     parser.add_argument("--use-8bit", default=False, type=bool)
     parser.add_argument("--llm_model", default="gpt-4-1106-preview", type=str)
@@ -64,7 +64,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--max_step",
         type=int,
-        default=10,
+        default=11,
     )
     parser.add_argument("--QA_Mode", default="existence", type=str)
     parser.add_argument("--refine_type", default="no-refine", type=str)
