@@ -67,8 +67,6 @@ def test_tasks(args):
     generate_plan_prompt, vlm_prompt_for_one_img, summary_promp, task_hints, extract_related_objects_prompt, generate_object_list_prompt = get_prompts()
     env_url = "http://127.0.0.1:" + str(args.env_url)
     # initial VLM and LLM model
-    os.environ["AGI_ROOT"] = "/home/zhaoyang/projects/neural-reasoning"
-    sys.path.append(os.path.join(os.environ["AGI_ROOT"]))
     action_vlm_decoding_args = DecodingArguments(
         max_tokens=8192,
         n=1,
@@ -77,7 +75,6 @@ def test_tasks(args):
         )
     actor_vlm_model = ChatBot(args.vlm_model)
 
-    # breakpoint()
     print(f"VLM Model: {args.vlm_model}")
     # Setup VLM(gpt4-v) model as action selector and current attempts relfector
     llm_decoding_args = DecodingArguments(
@@ -172,13 +169,9 @@ def test_tasks(args):
             messages = {"text": one_image_prompt,"images": list(images_queue)}
             start_time = time.time()
             response = actor_vlm_model.call_model(messages, decoding_args=action_vlm_decoding_args, return_list=False).strip()
-            # breakpoint()
             end_time = time.time()
-            # print(f"Response:\n{response}")
             action = refine_action(response)
-            # print(f"Chosen Action: {action}")
             if "No action" in action:
-                # breakpoint()
                 continue
             no_try_actions.append(action)
             summary_prompt_for_one_img = summary_promp.format(context=response)

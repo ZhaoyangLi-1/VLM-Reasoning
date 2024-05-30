@@ -1,12 +1,10 @@
 import argparse
-# from baselines.base_direct_act import test_tasks as test_tasks_base
 from use_memory.use_memory_act import test_tasks as test_tasks_use_memory
 
+
 def run_aflworld(args):
-    # if "baseline" in args.mode:
-    #     test_tasks_base(args)
-    # elif "use_memory" in args.mode:
     test_tasks_use_memory(args)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -56,17 +54,13 @@ if __name__ == "__main__":
         "--max_images",
         type=int,
         default=1,
-    )    
-    parser.add_argument(
-        "--mode",
-        type=str,
-        default="use_memory", # baseline
     )
     parser.add_argument(
         "--max_step",
         type=int,
         default=20,
     )
+    parser.add_argument("--is_generate_object_list", default="existence", type=str)
     parser.add_argument("--QA_Mode", default="existence", type=str)
     parser.add_argument("--refine_type", default="no-refine", type=str)
     parser.add_argument("--result_csv_folder", default="GPT4-V-result", type=str)
