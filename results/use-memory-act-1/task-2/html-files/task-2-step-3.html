@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Log</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .images-container {
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .images-container img {
+            margin: 10px;
+            max-width: 15%; 
+            height: auto;
+        }
+        .content-container {
+            text-align: left;
+            margin: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="images-container"><img src="../images/task-2-step-4.jpg" alt="Image" style="max-width: 100%; height: auto;"></div>
+    <div class="content-container">---------------------------------------------------------task: 2---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------3-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to examine the pen with the desklamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pen.
+2. Pick up the pen.
+3. Locate a desklamp.
+4. Turn on the desklamp.
+5. Examine the pen under the light of the desklamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Unknown
+2. Step Index in Plan: 1
+3. Objects: Sidetable, Bed
+4. Action: Go to desk 1
+Current State 2:
+1. Place: Near desk 1
+2. Step Index in Plan: 1
+3. Objects: Pen, Pencil
+4. Action: Go to sidetable 2
+Current State 3:
+1. Place: Near sidetable 2
+2. Step Index in Plan: 1
+3. Objects: Pen on sidetable 2
+4. Action: Take pencil 2 from sidetable 2
+
+
+**Admissible Actions**
+(1): go to bed 1
+(2): go to dresser 1
+(3): go to bed 2
+(4): go to drawer 1
+(5): go to sidetable 1
+(6): go to drawer 2
+(7): go to drawer 3
+(8): go to drawer 4
+(9): go to garbagecan 1
+(10): go to drawer 5
+(11): go to drawer 6
+(12): go to drawer 7
+(13): go to drawer 8
+(14): go to drawer 9
+(15): go to drawer 10
+(16): go to drawer 11
+(17): go to safe 1
+(18): put pencil 2 in/on sidetable 2
+(19): use desklamp 1
+(20): examine pencil 2
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the History Information, we are currently at step 1 of the plan, which is to find a pen. However, from the Current Observation, we can see a pen on the surface near the bed, and a desklamp on the sidetable. Since the pen has already been located, we can consider step 1 to be completed. The next step is to pick up the pen, but there is no admissible action to pick up the pen. The following step would be to locate a desklamp, which has been found in the current observation. Then, we need to turn on the desklamp and examine the pen under its light. The action to "use desklamp 1" seems to align with turning on the desklamp, which is step 4 in our plan. Since we cannot directly pick up the pen, proceeding to turn on the desklamp is the best next step we can take based on the admissible actions provided.
+
+The Most Appropriate Action: (19): use desklamp 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: use desklamp 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 10.88940167427063 seconds
+
+Total Money: 0.80206
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: According to the History Information, we are currently at step 1 of the plan, which is to find a pen. However, from the Current Observation, we can see a pen on the surface near the bed, and a desklamp on the sidetable. Since the pen has already been located, we can consider step 1 to be completed. The next step is to pick up the pen, but there is no admissible action to pick up the pen. The following step would be to locate a desklamp, which has been found in the current observation. Then, we need to turn on the desklamp and examine the pen under its light. The action to "use desklamp 1" seems to align with turning on the desklamp, which is step 4 in our plan. Since we cannot directly pick up the pen, proceeding to turn on the desklamp is the best next step we can take based on the admissible actions provided.
+
+The Most Appropriate Action: (19): use desklamp 1
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: Near the bed
+2. Step Index in Plan: 4
+3. Objects: Pen, Desklamp
+4. Action: Use desklamp 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You turn on the desklamp 1.
+
+-----------------------------------------------------------------
+SUCCEED
+</div>
+</body>
+</html>

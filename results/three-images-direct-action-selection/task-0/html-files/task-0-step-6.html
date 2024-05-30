@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Log</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .images-container {
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .images-container img {
+            margin: 10px;
+            max-width: 15%; 
+            height: auto;
+        }
+        .content-container {
+            text-align: left;
+            margin: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="images-container"><img src="../images/task-0-4.jpg" alt="Image" style="max-width: 100%; height: auto;"><img src="../images/task-0-5.jpg" alt="Image" style="max-width: 100%; height: auto;"><img src="../images/task-0-6.jpg" alt="Image" style="max-width: 100%; height: auto;"></div>
+    <div class="content-container">---------------------------------------------------------task: 0---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------6-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+Image1:
+<image>
+Image2:
+<image>
+Image3:
+<image>
+**Instruction**
+1. Analyze the provided images to identify all visible household objects and compare the difference between images (e.h. whether the object is opened or not and taken on hand or not), focusing on those relevant to the task description "look at alarmclock under the desklamp."
+2. Use the analysis of images and the task hint "The agent must find an object of the desired type, locate and turn on a light source with the desired object in-hand." to answer the question: what is the most reasonable action in the choices for the task description "look at alarmclock under the desklamp"?
+3. Decide and write the answer using the template: The answer is: (i): <selected_action>, where i is the real number. If there is no desired object in images, search every place based on **Initial Observation** to find the object. And if no one is exactly correct, choose a similar answer.
+
+**Initial Observation**
+You are in the middle of a room. Looking quickly around you, you can see bed (1), sidetable (1), drawer (1-11), dresser (1), safe (1), laundryhamper (1), garbagecan (1)
+
+**Answer Choices**
+(1): go to bed 1
+(2): go to sidetable 1
+(3): go to dresser 1
+(4): go to drawer 2
+(5): go to drawer 3
+(6): go to drawer 4
+(7): go to drawer 5
+(8): go to drawer 6
+(9): go to drawer 7
+(10): go to drawer 8
+(11): go to drawer 9
+(12): go to drawer 10
+(13): go to drawer 11
+(14): go to safe 1
+(15): go to laundryhamper 1
+(16): go to garbagecan 1
+(17): close drawer 1
+(18): take pillow 1 from drawer 1
+(19): take cellphone 1 from drawer 1
+(20): take pencil 1 from drawer 1
+(21): use desklamp 1
+
+
+**Answer**
+Let's think step by step by following the instructions.
+----------------------------------------
+
+----------------------------------------
+
+Original Response:
+First, we analyze the provided images. We can see a bed, a sidetable with a desklamp, a cellphone, and a drawer. The drawer is shown in different states across the images: closed in Image1, open in Image2, and closed again in Image3. There is no alarm clock visible on the sidetable or inside the drawer based on the images provided.
+
+Next, we consider the task description, "look at alarmclock under the desklamp." Since the alarm clock is not visible in the images, we must search for it. We also consider the task hint, which suggests that the agent needs to find the desired object (the alarm clock) and use a light source (the desklamp) with the desired object in hand.
+
+Based on the initial observation indicating the available objects in the room and the fact that the drawer has been interacted with, it's reasonable to assume that the alarm clock might be inside one of the drawers that have not been checked yet.
+
+Therefore, the most reasonable action to take for the task description "look at alarmclock under the desklamp" would be to search the drawers that we haven't seen opened yet in the images.
+
+The answer is: (4): go to drawer 2.
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine Original VLM Response and Get Pure Action: go to drawer 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 13.600867509841919 seconds
+
+Total Money: 0.22346
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 4. The drawer 2 is closed. 
+
+-----------------------------------------------------------------
+UNSUCCEED
+</div>
+</body>
+</html>

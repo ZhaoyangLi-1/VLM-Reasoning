@@ -1,0 +1,1588 @@
+---------------------------------------------------------task: 5---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------0-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to put some book on armchair. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a book.
+2. Pick up the book.
+3. Find an armchair.
+4. Place the picked-up book on the armchair.
+5. Find another book.
+6. Pick up the book.
+7. Return to the previous armchair.
+8. Place the picked-up book on the armchair with the first book.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+No history.
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to sofa 1
+(3): go to coffeetable 1
+(4): go to drawer 1
+(5): go to sidetable 1
+(6): go to dresser 1
+(7): go to drawer 2
+(8): go to drawer 3
+(9): go to drawer 4
+(10): go to sidetable 2
+(11): go to sidetable 3
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current observation shows an armchair with an open cardboard box on it and a cell phone to the right side on the cushion. We are at the first step of our plan, which is to find a book. Since there are no books visible in the current observation, we cannot complete this step with the current observation. Therefore, we must move to a location where we might find a book. The admissible actions do not specify a location that explicitly suggests the presence of books, such as a bookshelf or library. However, books can commonly be found on or in furniture pieces like side tables, coffee tables, and drawers. Since we are at the beginning of our task with no history information, and the current place is unknown, we should choose a new location to search for a book. Among the admissible actions, going to a coffee table or a side table would be the most likely places to find a book.
+
+The Most Appropriate Action: (3): go to coffeetable 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to coffeetable 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 11.226085901260376 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current observation shows an armchair with an open cardboard box on it and a cell phone to the right side on the cushion. We are at the first step of our plan, which is to find a book. Since there are no books visible in the current observation, we cannot complete this step with the current observation. Therefore, we must move to a location where we might find a book. The admissible actions do not specify a location that explicitly suggests the presence of books, such as a bookshelf or library. However, books can commonly be found on or in furniture pieces like side tables, coffee tables, and drawers. Since we are at the beginning of our task with no history information, and the current place is unknown, we should choose a new location to search for a book. Among the admissible actions, going to a coffee table or a side table would be the most likely places to find a book.
+
+The Most Appropriate Action: (3): go to coffeetable 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Armchair, Cardboard Box, Cell Phone
+3. Action: go to coffeetable 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 2. On the coffeetable 1, you see a book 1, a pillow 1, a statue 1, a tissuebox 1, a box 1, a book 2, a tissuebox 2, a cellphone 1, a pen 1, a keychain 1, a pen 2, a cellphone 2, and a pencil 1.
+
+--------------------------------------------------------------------------------------------------------------------------task: 5---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------1-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to put some book on armchair. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a book.
+2. Pick up the book.
+3. Find an armchair.
+4. Place the picked-up book on the armchair.
+5. Find another book.
+6. Pick up the book.
+7. Return to the previous armchair.
+8. Place the picked-up book on the armchair with the first book.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Armchair, Cardboard Box, Cell Phone
+3. Action: go to coffeetable 1
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to sofa 1
+(3): go to drawer 1
+(4): go to sidetable 1
+(5): go to dresser 1
+(6): go to drawer 2
+(7): go to drawer 3
+(8): go to drawer 4
+(9): go to sidetable 2
+(10): go to sidetable 3
+(11): take book 1 from coffeetable 1
+(12): take pillow 1 from coffeetable 1
+(13): take statue 1 from coffeetable 1
+(14): take tissuebox 1 from coffeetable 1
+(15): take box 1 from coffeetable 1
+(16): take book 2 from coffeetable 1
+(17): take tissuebox 2 from coffeetable 1
+(18): take cellphone 1 from coffeetable 1
+(19): take pen 1 from coffeetable 1
+(20): take keychain 1 from coffeetable 1
+(21): take pen 2 from coffeetable 1
+(22): take cellphone 2 from coffeetable 1
+(23): take pencil 1 from coffeetable 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to pick up a book, which is step 2. We are located at the coffee table, as indicated by the previous action taken in the history information. In the current observation, we can see two books on the coffee table, which are relevant to the task. Since the plan requires us to pick up a book and there are books visible on the coffee table, we can complete this step with the current observation. Therefore, the most appropriate action to take is to pick up one of the books from the coffee table.
+
+The Most Appropriate Action: (11): take book 1 from coffeetable 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: take book 1 from coffeetable 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 56.67730093002319 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to pick up a book, which is step 2. We are located at the coffee table, as indicated by the previous action taken in the history information. In the current observation, we can see two books on the coffee table, which are relevant to the task. Since the plan requires us to pick up a book and there are books visible on the coffee table, we can complete this step with the current observation. Therefore, the most appropriate action to take is to pick up one of the books from the coffee table.
+
+The Most Appropriate Action: (11): take book 1 from coffeetable 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+2. Step Index in the Plan: 2
+3. Objects: Coffee Table, Books
+3. Action: take book 1 from coffeetable 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You pick up the book 1 from the coffeetable 1.
+
+--------------------------------------------------------------------------------------------------------------------------task: 5---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------2-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to put some book on armchair. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a book.
+2. Pick up the book.
+3. Find an armchair.
+4. Place the picked-up book on the armchair.
+5. Find another book.
+6. Pick up the book.
+7. Return to the previous armchair.
+8. Place the picked-up book on the armchair with the first book.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Armchair, Cardboard Box, Cell Phone
+3. Action: go to coffeetable 1
+State 2:
+2. Step Index in the Plan: 2
+3. Objects: Coffee Table, Books
+3. Action: take book 1 from coffeetable 1
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to sofa 1
+(3): go to drawer 1
+(4): go to sidetable 1
+(5): go to dresser 1
+(6): go to drawer 2
+(7): go to drawer 3
+(8): go to drawer 4
+(9): go to sidetable 2
+(10): go to sidetable 3
+(11): put book 1 in/on coffeetable 1
+(12): examine book 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the plan, we have already completed steps 1 and 2, where a book was found and picked up. Now, we must find an armchair to place the book on. In the current observation, we see a sofa and a coffee table with items on it, but no armchair is visible. From the history information, we know that there is at least one armchair in the environment, as it was mentioned in State 1. The Most Appropriate Action: (1): go to armchair 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to armchair 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 49.70803761482239 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: According to the plan, we have already completed steps 1 and 2, where a book was found and picked up. Now, we must find an armchair to place the book on. In the current observation, we see a sofa and a coffee table with items on it, but no armchair is visible. From the history information, we know that there is at least one armchair in the environment, as it was mentioned in State 1. The Most Appropriate Action: (1): go to armchair 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+Step Index in the Plan: 3
+Objects: Sofa, Coffee Table, Items on Coffee Table
+Action: go to armchair 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 0. On the armchair 1, you see a lightswitch 1, and a floorlamp 1.
+
+--------------------------------------------------------------------------------------------------------------------------task: 5---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------3-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to put some book on armchair. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a book.
+2. Pick up the book.
+3. Find an armchair.
+4. Place the picked-up book on the armchair.
+5. Find another book.
+6. Pick up the book.
+7. Return to the previous armchair.
+8. Place the picked-up book on the armchair with the first book.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Armchair, Cardboard Box, Cell Phone
+3. Action: go to coffeetable 1
+State 2:
+2. Step Index in the Plan: 2
+3. Objects: Coffee Table, Books
+3. Action: take book 1 from coffeetable 1
+State 3:
+Step Index in the Plan: 3
+Objects: Sofa, Coffee Table, Items on Coffee Table
+Action: go to armchair 1
+
+
+**Admissible Actions**
+(1): go to sofa 1
+(2): go to drawer 1
+(3): go to sidetable 1
+(4): go to dresser 1
+(5): go to drawer 2
+(6): go to drawer 3
+(7): go to drawer 4
+(8): go to sidetable 2
+(9): go to sidetable 3
+(10): put book 1 in/on armchair 1
+(11): use floorlamp 1
+(12): examine book 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: We are currently at step 4 of the plan, which is to place the picked-up book on the armchair. The current observation shows an armchair and a book titled "The Pilot" in the agent's possession. Since the task is to put a book on an armchair and both the book and the armchair are present in the current observation, we can complete this step with the current observation. The Most Appropriate Action: (10): put book 1 in/on armchair 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: put book 1 in/on armchair 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 31.30550789833069 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: We are currently at step 4 of the plan, which is to place the picked-up book on the armchair. The current observation shows an armchair and a book titled "The Pilot" in the agent's possession. Since the task is to put a book on an armchair and both the book and the armchair are present in the current observation, we can complete this step with the current observation. The Most Appropriate Action: (10): put book 1 in/on armchair 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+Step Index in the Plan: 4
+Objects: Armchair, Book ("The Pilot")
+Action: put book 1 in/on armchair 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:Nothing happens.
+
+--------------------------------------------------------------------------------------------------------------------------task: 5---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------4-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to put some book on armchair. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a book.
+2. Pick up the book.
+3. Find an armchair.
+4. Place the picked-up book on the armchair.
+5. Find another book.
+6. Pick up the book.
+7. Return to the previous armchair.
+8. Place the picked-up book on the armchair with the first book.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Armchair, Cardboard Box, Cell Phone
+3. Action: go to coffeetable 1
+State 2:
+2. Step Index in the Plan: 2
+3. Objects: Coffee Table, Books
+3. Action: take book 1 from coffeetable 1
+State 3:
+Step Index in the Plan: 3
+Objects: Sofa, Coffee Table, Items on Coffee Table
+Action: go to armchair 1
+State 4:
+Step Index in the Plan: 4
+Objects: Armchair, Book ("The Pilot")
+Action: put book 1 in/on armchair 1
+
+
+**Admissible Actions**
+(1): go to sofa 1
+(2): go to coffeetable 1
+(3): go to drawer 1
+(4): go to sidetable 1
+(5): go to dresser 1
+(6): go to drawer 2
+(7): go to drawer 3
+(8): go to drawer 4
+(9): go to sidetable 2
+(10): go to sidetable 3
+(11): use floorlamp 1
+(12): examine book 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is step 5, which is to find another book. In the current observation, the agent is positioned with a view of an armchair and a book titled "The Pilot" that has been placed on it, which means the previous step (step 4) has been completed successfully. There are no other books visible in the current observation that can be picked up for the next step. Since the goal is to find another book, and none is visible in the immediate vicinity, the agent will need to move to a location where books are likely to be found.
+
+The Most Appropriate Action: (2): go to coffeetable 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to coffeetable 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 9.20863127708435 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is step 5, which is to find another book. In the current observation, the agent is positioned with a view of an armchair and a book titled "The Pilot" that has been placed on it, which means the previous step (step 4) has been completed successfully. There are no other books visible in the current observation that can be picked up for the next step. Since the goal is to find another book, and none is visible in the immediate vicinity, the agent will need to move to a location where books are likely to be found.
+
+The Most Appropriate Action: (2): go to coffeetable 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 5
+2. Objects: Armchair, Book ("The Pilot")
+3. Action: go to coffeetable 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 2. On the coffeetable 1, you see a pillow 1, a statue 1, a tissuebox 1, a box 1, a tissuebox 2, a cellphone 1, a pen 2, a keychain 1, a cellphone 2, a pencil 1, and a pen 1.
+
+--------------------------------------------------------------------------------------------------------------------------task: 5---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------5-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to put some book on armchair. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a book.
+2. Pick up the book.
+3. Find an armchair.
+4. Place the picked-up book on the armchair.
+5. Find another book.
+6. Pick up the book.
+7. Return to the previous armchair.
+8. Place the picked-up book on the armchair with the first book.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Armchair, Cardboard Box, Cell Phone
+3. Action: go to coffeetable 1
+State 2:
+2. Step Index in the Plan: 2
+3. Objects: Coffee Table, Books
+3. Action: take book 1 from coffeetable 1
+State 3:
+Step Index in the Plan: 3
+Objects: Sofa, Coffee Table, Items on Coffee Table
+Action: go to armchair 1
+State 4:
+Step Index in the Plan: 4
+Objects: Armchair, Book ("The Pilot")
+Action: put book 1 in/on armchair 1
+State 5:
+1. Step Index in the Plan: 5
+2. Objects: Armchair, Book ("The Pilot")
+3. Action: go to coffeetable 1
+
+
+**Admissible Actions**
+(1): go to sofa 1
+(2): go to drawer 1
+(3): go to sidetable 1
+(4): go to dresser 1
+(5): go to drawer 2
+(6): go to drawer 3
+(7): go to drawer 4
+(8): go to sidetable 2
+(9): go to sidetable 3
+(10): put book 1 in/on coffeetable 1
+(11): examine book 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: We are currently at step 5 of the plan, which is to find another book. In the current observation, we can see a coffee table with items on it, including a book. This book is different from the one mentioned in the history (since "The Pilot" book has already been placed on the armchair), which implies that it could be the next book we need to pick up. Since we are already at the coffee table, as indicated in the last action taken in State 5, we do not need to move to another location to proceed with the next step. Therefore, the next logical action following the plan is to pick up the new book.
+
+The Most Appropriate Action: (11): examine book 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: examine book 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 11.849127769470215 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: We are currently at step 5 of the plan, which is to find another book. In the current observation, we can see a coffee table with items on it, including a book. This book is different from the one mentioned in the history (since "The Pilot" book has already been placed on the armchair), which implies that it could be the next book we need to pick up. Since we are already at the coffee table, as indicated in the last action taken in State 5, we do not need to move to another location to proceed with the next step. Therefore, the next logical action following the plan is to pick up the new book.
+
+The Most Appropriate Action: (11): examine book 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 5
+2. Objects: Coffee Table, Items, Book (different from "The Pilot")
+3. Action: examine book 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:This is a normal book 1
+
+--------------------------------------------------------------------------------------------------------------------------task: 5---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------6-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to put some book on armchair. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a book.
+2. Pick up the book.
+3. Find an armchair.
+4. Place the picked-up book on the armchair.
+5. Find another book.
+6. Pick up the book.
+7. Return to the previous armchair.
+8. Place the picked-up book on the armchair with the first book.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Armchair, Cardboard Box, Cell Phone
+3. Action: go to coffeetable 1
+State 2:
+2. Step Index in the Plan: 2
+3. Objects: Coffee Table, Books
+3. Action: take book 1 from coffeetable 1
+State 3:
+Step Index in the Plan: 3
+Objects: Sofa, Coffee Table, Items on Coffee Table
+Action: go to armchair 1
+State 4:
+Step Index in the Plan: 4
+Objects: Armchair, Book ("The Pilot")
+Action: put book 1 in/on armchair 1
+State 5:
+1. Step Index in the Plan: 5
+2. Objects: Armchair, Book ("The Pilot")
+3. Action: go to coffeetable 1
+State 6:
+1. Step Index in the Plan: 5
+2. Objects: Coffee Table, Items, Book (different from "The Pilot")
+3. Action: examine book 1
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to sofa 1
+(3): go to drawer 1
+(4): go to sidetable 1
+(5): go to dresser 1
+(6): go to drawer 2
+(7): go to drawer 3
+(8): go to drawer 4
+(9): go to sidetable 2
+(10): go to sidetable 3
+(11): put book 1 in/on coffeetable 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: We are currently at step 6 in the plan, which is to pick up the book. The history indicates that we have already gone to the coffee table and examined the book there. The current observation shows us in front of a coffee table with a book, "The Pilot," that we have already placed on the armchair, and other items on the table, but no additional book to pick up. Since we are tasked with picking up another book, we must find one. None of the admissible actions directly mention picking up a book, so we need to find a location where we might find another book. There is no specific guidance on where to find another book in the current admissible actions or the current observation.
+
+The Most Appropriate Action: (3): go to drawer 1
+
+This action is chosen with the assumption that a book may be found inside a drawer, as none are visible in the current observation, and no other admissible actions suggest a more likely location for finding a book.
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to drawer 1
+
+This action is chosen with the assumption that a book may be found inside a drawer, as none are visible in the current observation, and no other admissible actions suggest a more likely location for finding a book
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 10.734737873077393 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: We are currently at step 6 in the plan, which is to pick up the book. The history indicates that we have already gone to the coffee table and examined the book there. The current observation shows us in front of a coffee table with a book, "The Pilot," that we have already placed on the armchair, and other items on the table, but no additional book to pick up. Since we are tasked with picking up another book, we must find one. None of the admissible actions directly mention picking up a book, so we need to find a location where we might find another book. There is no specific guidance on where to find another book in the current admissible actions or the current observation.
+
+The Most Appropriate Action: (3): go to drawer 1
+
+This action is chosen with the assumption that a book may be found inside a drawer, as none are visible in the current observation, and no other admissible actions suggest a more likely location for finding a book.
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 6
+2. Objects: Coffee Table, Book ("The Pilot"), Armchair, Other Items
+3. Action: go to drawer 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:Nothing happens.
+
+--------------------------------------------------------------------------------------------------------------------------task: 5---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------7-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to put some book on armchair. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a book.
+2. Pick up the book.
+3. Find an armchair.
+4. Place the picked-up book on the armchair.
+5. Find another book.
+6. Pick up the book.
+7. Return to the previous armchair.
+8. Place the picked-up book on the armchair with the first book.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Armchair, Cardboard Box, Cell Phone
+3. Action: go to coffeetable 1
+State 2:
+2. Step Index in the Plan: 2
+3. Objects: Coffee Table, Books
+3. Action: take book 1 from coffeetable 1
+State 3:
+Step Index in the Plan: 3
+Objects: Sofa, Coffee Table, Items on Coffee Table
+Action: go to armchair 1
+State 4:
+Step Index in the Plan: 4
+Objects: Armchair, Book ("The Pilot")
+Action: put book 1 in/on armchair 1
+State 5:
+1. Step Index in the Plan: 5
+2. Objects: Armchair, Book ("The Pilot")
+3. Action: go to coffeetable 1
+State 6:
+1. Step Index in the Plan: 5
+2. Objects: Coffee Table, Items, Book (different from "The Pilot")
+3. Action: examine book 1
+State 7:
+1. Step Index in the Plan: 6
+2. Objects: Coffee Table, Book ("The Pilot"), Armchair, Other Items
+3. Action: go to drawer 1
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to sofa 1
+(3): go to drawer 1
+(4): go to sidetable 1
+(5): go to dresser 1
+(6): go to drawer 2
+(7): go to drawer 3
+(8): go to drawer 4
+(9): go to sidetable 2
+(10): go to sidetable 3
+(11): put book 1 in/on coffeetable 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: We are currently at Step 6 in the plan, which is "Pick up the book." The last action taken was "go to drawer 1," so the embodied AI agent is likely at or near a drawer. The current observation shows a coffee table with various items on it, including a book titled "The Pilot," which has already been placed on the armchair as per the previous steps in the plan, and some other objects that are not books. No drawers are visible in the current observation, so we cannot confirm if the agent is currently at a drawer. Since the goal is to pick up a book and the only book visible has already been placed on the armchair, it is necessary to find another book. Based on the admissible actions, the agent should move to a location where it might find another book. The action "go to drawer 1" from the previous step suggests that a drawer could contain a book. As the current observation does not show a drawer, the agent should proceed to the drawer to search for a book.
+
+The Most Appropriate Action: (3): go to drawer 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to drawer 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 12.22705364227295 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: We are currently at Step 6 in the plan, which is "Pick up the book." The last action taken was "go to drawer 1," so the embodied AI agent is likely at or near a drawer. The current observation shows a coffee table with various items on it, including a book titled "The Pilot," which has already been placed on the armchair as per the previous steps in the plan, and some other objects that are not books. No drawers are visible in the current observation, so we cannot confirm if the agent is currently at a drawer. Since the goal is to pick up a book and the only book visible has already been placed on the armchair, it is necessary to find another book. Based on the admissible actions, the agent should move to a location where it might find another book. The action "go to drawer 1" from the previous step suggests that a drawer could contain a book. As the current observation does not show a drawer, the agent should proceed to the drawer to search for a book.
+
+The Most Appropriate Action: (3): go to drawer 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+6. Step Index in the Plan: 6
+7. Objects: Coffee Table, Various Items, Book ("The Pilot"), Armchair, Other Non-book Objects
+8. Action: go to drawer 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 3. The drawer 1 is closed. 
+
+--------------------------------------------------------------------------------------------------------------------------task: 5---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------8-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to put some book on armchair. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a book.
+2. Pick up the book.
+3. Find an armchair.
+4. Place the picked-up book on the armchair.
+5. Find another book.
+6. Pick up the book.
+7. Return to the previous armchair.
+8. Place the picked-up book on the armchair with the first book.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Armchair, Cardboard Box, Cell Phone
+3. Action: go to coffeetable 1
+State 2:
+2. Step Index in the Plan: 2
+3. Objects: Coffee Table, Books
+3. Action: take book 1 from coffeetable 1
+State 3:
+Step Index in the Plan: 3
+Objects: Sofa, Coffee Table, Items on Coffee Table
+Action: go to armchair 1
+State 4:
+Step Index in the Plan: 4
+Objects: Armchair, Book ("The Pilot")
+Action: put book 1 in/on armchair 1
+State 5:
+1. Step Index in the Plan: 5
+2. Objects: Armchair, Book ("The Pilot")
+3. Action: go to coffeetable 1
+State 6:
+1. Step Index in the Plan: 5
+2. Objects: Coffee Table, Items, Book (different from "The Pilot")
+3. Action: examine book 1
+State 7:
+1. Step Index in the Plan: 6
+2. Objects: Coffee Table, Book ("The Pilot"), Armchair, Other Items
+3. Action: go to drawer 1
+State 8:
+6. Step Index in the Plan: 6
+7. Objects: Coffee Table, Various Items, Book ("The Pilot"), Armchair, Other Non-book Objects
+8. Action: go to drawer 1
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to sofa 1
+(3): go to coffeetable 1
+(4): go to sidetable 1
+(5): go to dresser 1
+(6): go to drawer 2
+(7): go to drawer 3
+(8): go to drawer 4
+(9): go to sidetable 2
+(10): go to sidetable 3
+(11): open drawer 1
+(12): close drawer 1
+(13): put book 1 in/on drawer 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The agent is currently at step 6 of the plan which is to pick up a book. The current observation shows that the agent is in a room with an armchair, a white round side table with a plant on it, and a poster on the floor. The book "The Pilot" is already on the armchair, which was placed there during step 4 of the plan. Since we are looking to pick up another book, and there is no book visible in the current observation, we cannot complete this step with the current observation. The agent has previously attempted to find a book by going to the coffee table and examining it, but it seems there was no suitable book there, as the subsequent action was to go to drawer 1. Since the agent is now directed to interact with drawer 1, the next logical step according to the admissible actions would be to open drawer 1 to look for a book inside. 
+
+The Most Appropriate Action: (11): open drawer 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: open drawer 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 8.707392930984497 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The agent is currently at step 6 of the plan which is to pick up a book. The current observation shows that the agent is in a room with an armchair, a white round side table with a plant on it, and a poster on the floor. The book "The Pilot" is already on the armchair, which was placed there during step 4 of the plan. Since we are looking to pick up another book, and there is no book visible in the current observation, we cannot complete this step with the current observation. The agent has previously attempted to find a book by going to the coffee table and examining it, but it seems there was no suitable book there, as the subsequent action was to go to drawer 1. Since the agent is now directed to interact with drawer 1, the next logical step according to the admissible actions would be to open drawer 1 to look for a book inside. 
+
+The Most Appropriate Action: (11): open drawer 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 6
+2. Objects: Armchair, White Round Side Table, Plant, Poster, Book ("The Pilot")
+3. Action: open drawer 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You open the drawer 1. The drawer 1 is open. In it, you see a houseplant 1, a television 1, a box 1, a book 3, a wateringcan 1, a keychain 2, a pencil 2, and a pencil 3.
+
+--------------------------------------------------------------------------------------------------------------------------task: 5---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------9-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to put some book on armchair. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a book.
+2. Pick up the book.
+3. Find an armchair.
+4. Place the picked-up book on the armchair.
+5. Find another book.
+6. Pick up the book.
+7. Return to the previous armchair.
+8. Place the picked-up book on the armchair with the first book.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Armchair, Cardboard Box, Cell Phone
+3. Action: go to coffeetable 1
+State 2:
+2. Step Index in the Plan: 2
+3. Objects: Coffee Table, Books
+3. Action: take book 1 from coffeetable 1
+State 3:
+Step Index in the Plan: 3
+Objects: Sofa, Coffee Table, Items on Coffee Table
+Action: go to armchair 1
+State 4:
+Step Index in the Plan: 4
+Objects: Armchair, Book ("The Pilot")
+Action: put book 1 in/on armchair 1
+State 5:
+1. Step Index in the Plan: 5
+2. Objects: Armchair, Book ("The Pilot")
+3. Action: go to coffeetable 1
+State 6:
+1. Step Index in the Plan: 5
+2. Objects: Coffee Table, Items, Book (different from "The Pilot")
+3. Action: examine book 1
+State 7:
+1. Step Index in the Plan: 6
+2. Objects: Coffee Table, Book ("The Pilot"), Armchair, Other Items
+3. Action: go to drawer 1
+State 8:
+6. Step Index in the Plan: 6
+7. Objects: Coffee Table, Various Items, Book ("The Pilot"), Armchair, Other Non-book Objects
+8. Action: go to drawer 1
+State 9:
+1. Step Index in the Plan: 6
+2. Objects: Armchair, White Round Side Table, Plant, Poster, Book ("The Pilot")
+3. Action: open drawer 1
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to sofa 1
+(3): go to coffeetable 1
+(4): go to sidetable 1
+(5): go to dresser 1
+(6): go to drawer 2
+(7): go to drawer 3
+(8): go to drawer 4
+(9): go to sidetable 2
+(10): go to sidetable 3
+(11): close drawer 1
+(12): put book 1 in/on drawer 1
+(13): examine book 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is Step 7, which is to return to the previous armchair. The previous actions involved taking a book from the coffee table and opening a drawer, but it seems that the book has not been picked up from the drawer yet. In the current observation, we can see the armchair, a white round side table, a plant, a poster, and a book on the floor titled "The Pilot." This book on the floor is the same book that was placed on the armchair in Step 4, as indicated in the history. Since the task at hand is to pick up another book and we have not completed Step 6 (picking up the second book), we cannot proceed to Step 7. Therefore, we should look for the next book to pick up. The current observation does not show a book that is ready to be picked up; hence, we should explore other areas to find another book. Given the admissible actions, the most appropriate action would be to continue searching for another book, which may involve going to another drawer or furniture piece where a book might be located.
+
+The Most Appropriate Action: (6): go to drawer 2
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to drawer 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 13.528392791748047 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is Step 7, which is to return to the previous armchair. The previous actions involved taking a book from the coffee table and opening a drawer, but it seems that the book has not been picked up from the drawer yet. In the current observation, we can see the armchair, a white round side table, a plant, a poster, and a book on the floor titled "The Pilot." This book on the floor is the same book that was placed on the armchair in Step 4, as indicated in the history. Since the task at hand is to pick up another book and we have not completed Step 6 (picking up the second book), we cannot proceed to Step 7. Therefore, we should look for the next book to pick up. The current observation does not show a book that is ready to be picked up; hence, we should explore other areas to find another book. Given the admissible actions, the most appropriate action would be to continue searching for another book, which may involve going to another drawer or furniture piece where a book might be located.
+
+The Most Appropriate Action: (6): go to drawer 2
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 7
+2. Objects: Armchair, White Round Side Table, Plant, Poster, Book ("The Pilot")
+3. Action: go to drawer 2
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 6. The drawer 2 is closed. 
+
+--------------------------------------------------------------------------------------------------------------------------task: 5---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------10-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to put some book on armchair. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a book.
+2. Pick up the book.
+3. Find an armchair.
+4. Place the picked-up book on the armchair.
+5. Find another book.
+6. Pick up the book.
+7. Return to the previous armchair.
+8. Place the picked-up book on the armchair with the first book.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Armchair, Cardboard Box, Cell Phone
+3. Action: go to coffeetable 1
+State 2:
+2. Step Index in the Plan: 2
+3. Objects: Coffee Table, Books
+3. Action: take book 1 from coffeetable 1
+State 3:
+Step Index in the Plan: 3
+Objects: Sofa, Coffee Table, Items on Coffee Table
+Action: go to armchair 1
+State 4:
+Step Index in the Plan: 4
+Objects: Armchair, Book ("The Pilot")
+Action: put book 1 in/on armchair 1
+State 5:
+1. Step Index in the Plan: 5
+2. Objects: Armchair, Book ("The Pilot")
+3. Action: go to coffeetable 1
+State 6:
+1. Step Index in the Plan: 5
+2. Objects: Coffee Table, Items, Book (different from "The Pilot")
+3. Action: examine book 1
+State 7:
+1. Step Index in the Plan: 6
+2. Objects: Coffee Table, Book ("The Pilot"), Armchair, Other Items
+3. Action: go to drawer 1
+State 8:
+6. Step Index in the Plan: 6
+7. Objects: Coffee Table, Various Items, Book ("The Pilot"), Armchair, Other Non-book Objects
+8. Action: go to drawer 1
+State 9:
+1. Step Index in the Plan: 6
+2. Objects: Armchair, White Round Side Table, Plant, Poster, Book ("The Pilot")
+3. Action: open drawer 1
+State 10:
+1. Step Index in the Plan: 7
+2. Objects: Armchair, White Round Side Table, Plant, Poster, Book ("The Pilot")
+3. Action: go to drawer 2
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to sofa 1
+(3): go to coffeetable 1
+(4): go to sidetable 1
+(5): go to dresser 1
+(6): go to drawer 3
+(7): go to drawer 4
+(8): go to sidetable 2
+(9): go to sidetable 3
+(10): open drawer 2
+(11): close drawer 2
+(12): put book 1 in/on drawer 2
+(13): examine book 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the history, the last completed action was "go to drawer 2", which corresponds to Step Index 7 in the plan where the agent is supposed to return to the previous armchair. The current observation shows the agent in a room with an armchair, a white round side table, a plant, and a poster on the wall. The book titled "The Pilot" is visible on the armchair, indicating that Step 4 has been completed. The agent is now tasked with placing another book on the armchair with the first book, which corresponds to Step 8 in the plan. However, there is no new book in the current observation. As such, the agent needs to find another book before it can proceed with placing it on the armchair.
+
+Given that the current observation does not provide a new book to pick up, and the history indicates that the agent has already been to the coffee table and opened drawer 1 without finding a suitable book, the next logical action would be to continue searching for a book in a new location.
+
+Among the admissible actions, "open drawer 2" is a relevant action that aligns with the objective of finding a new book since drawers can contain books, and this drawer has not been opened yet according to the provided history.
+
+The Most Appropriate Action: (10): open drawer 2
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: open drawer 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 17.57422971725464 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: According to the history, the last completed action was "go to drawer 2", which corresponds to Step Index 7 in the plan where the agent is supposed to return to the previous armchair. The current observation shows the agent in a room with an armchair, a white round side table, a plant, and a poster on the wall. The book titled "The Pilot" is visible on the armchair, indicating that Step 4 has been completed. The agent is now tasked with placing another book on the armchair with the first book, which corresponds to Step 8 in the plan. However, there is no new book in the current observation. As such, the agent needs to find another book before it can proceed with placing it on the armchair.
+
+Given that the current observation does not provide a new book to pick up, and the history indicates that the agent has already been to the coffee table and opened drawer 1 without finding a suitable book, the next logical action would be to continue searching for a book in a new location.
+
+Among the admissible actions, "open drawer 2" is a relevant action that aligns with the objective of finding a new book since drawers can contain books, and this drawer has not been opened yet according to the provided history.
+
+The Most Appropriate Action: (10): open drawer 2
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 8
+2. Objects: Armchair, White Round Side Table, Plant, Poster, Book ("The Pilot")
+3. Action: open drawer 2
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:Nothing happens.
+
+-----------------------------------------------------------------

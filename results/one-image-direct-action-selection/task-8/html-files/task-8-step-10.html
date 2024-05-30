@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Log</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .images-container {
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .images-container img {
+            margin: 10px;
+            max-width: 15%; 
+            height: auto;
+        }
+        .content-container {
+            text-align: left;
+            margin: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="images-container"><img src="../images/task-8-10.jpg" alt="Image" style="max-width: 100%; height: auto;"></div>
+    <div class="content-container">---------------------------------------------------------task: 8---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------10-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+Image1:
+<image>
+**Instruction**
+1. Analyze the provided image to identify all visible household objects, focusing on those relevant to the task description "put a laptop in desk."
+2. Use the analysis of the image and the task hint "The agent must find an object of the desired type, pick it up, find the correct location to place it, and put it down there." to answer the question: what is the most reasonable action in the choices for the task description "put a laptop in desk"?
+4. Decide and write the answer using the template: The answer is: (i): <selected_action>, where i is the real number. If there is no desired object in the image, search every place based on **Initial Observation** to find the object. And if no one is exactly correct, choose a similar answer.
+
+**Initial Observation**
+You are in the middle of a room. Looking quickly around you, you can see bed (1), garbagecan (1), desk (1), sidetable (1), drawer (1-5), laundryhamper (1)
+
+**Answer Choices**
+(1): go to bed 1
+(2): go to garbagecan 1
+(3): go to desk 1
+(4): go to sidetable 1
+(5): go to drawer 1
+(6): go to laundryhamper 1
+(7): go to drawer 4
+(8): go to drawer 5
+(9): open drawer 3
+(10): close drawer 3
+(11): take alarmclock 1 from drawer 3
+(12): take laundryhamperlid 1 from drawer 3
+(13): take alarmclock 2 from drawer 3
+(14): take cellphone 1 from drawer 3
+(15): take creditcard 1 from drawer 3
+(16): take pen 1 from drawer 3
+(17): take pencil 1 from drawer 3
+(18): take pencil 2 from drawer 3
+(19): take keychain 1 from drawer 3
+(20): use desklamp 1
+
+**Answer**
+Let's think step by step by following the instructions.
+----------------------------------------
+
+----------------------------------------
+
+Original Response:
+The task is to "put a laptop in desk." The image shows a desk with several items on it, including a lamp, a clock, a cellphone, and some pens, but no laptop is visible on the desk or in the surrounding area. Based on the initial observation, there are several drawers that can be checked for the presence of a laptop.
+
+The most reasonable action to complete the task would be to search the drawers in the desk, as this is a common place to store a laptop when not in use. Therefore, we should first go to the desk and then open a drawer to search for the laptop.
+
+Looking at the answer choices, the action that fits this logic the most is (9): open drawer 3, as it involves interacting with the desk where one would expect to find a laptop.
+
+The answer is: (9): open drawer 3.
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine Original VLM Response and Get Pure Action: open drawer 3
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 11.825840950012207 seconds
+
+Total Money: 2.12083
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You open the drawer 3. The drawer 3 is open. In it, you see a desklamp 1, a alarmclock 1, a laundryhamperlid 1, a alarmclock 2, a cellphone 1, a keychain 2, a creditcard 1, a pen 3, a pen 1, a pencil 1, a pencil 2, and a keychain 1.
+
+-----------------------------------------------------------------
+UNSUCCEED
+</div>
+</body>
+</html>

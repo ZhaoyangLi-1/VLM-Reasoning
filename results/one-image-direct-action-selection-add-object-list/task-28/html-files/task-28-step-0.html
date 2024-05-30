@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Log</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .images-container {
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .images-container img {
+            margin: 10px;
+            max-width: 15%; 
+            height: auto;
+        }
+        .content-container {
+            text-align: left;
+            margin: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="images-container"><img src="../images/task-28-0.jpg" alt="Image" style="max-width: 100%; height: auto;"></div>
+    <div class="content-container">---------------------------------------------------------task: 28---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------0-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to find two spraybottle and put them in toilet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a spray bottle.
+2. Pick up the spray bottle.
+3. Locate the toilet.
+4. Place the picked-up spray bottle in the toilet.
+5. Find another spray bottle.
+6. Pick up the second spray bottle.
+7. Return to the toilet.
+8. Place the second picked-up spray bottle in the toilet with the first one.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['toilet', 'toilet tank', 'soap dispenser', 'window', 'blinds']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+No history.
+
+**Admissible Actions**
+(1): go to bathtub 1
+(2): go to bathtubbasin 1
+(3): go to cart 1
+(4): go to sink 1
+(5): go to garbagecan 1
+(6): go to sinkbasin 1
+(7): go to countertop 1
+(8): go to drawer 1
+(9): go to drawer 2
+(10): go to drawer 3
+(11): go to drawer 4
+(12): go to toilet 1
+(13): go to toiletpaperhanger 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current observation shows a spray bottle on top of the toilet tank, which aligns with the first step of our plan: Find a spray bottle. Since there is no history information, we are at the beginning of our task, and based on the current observation, we are in the bathroom at the toilet. The visible objects related to the task in the current observation are the 'toilet' and the 'soap dispenser,' which is actually the spray bottle we need for the task. Given that we have found the first spray bottle, the next step according to our plan is to pick up the spray bottle. However, none of the admissible actions directly indicate an ability to pick up the spray bottle. In such cases where the expected action is not explicitly available, the most appropriate next step would be to navigate to the object in question to enable interaction with it. Since we are already at the toilet, we can assume the action to 'go to toilet 1' would put us in the correct position to pick up the spray bottle in the subsequent action. 
+
+The Most Appropriate Action: (12): go to toilet 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to toilet 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 14.046954870223999 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current observation shows a spray bottle on top of the toilet tank, which aligns with the first step of our plan: Find a spray bottle. Since there is no history information, we are at the beginning of our task, and based on the current observation, we are in the bathroom at the toilet. The visible objects related to the task in the current observation are the 'toilet' and the 'soap dispenser,' which is actually the spray bottle we need for the task. Given that we have found the first spray bottle, the next step according to our plan is to pick up the spray bottle. However, none of the admissible actions directly indicate an ability to pick up the spray bottle. In such cases where the expected action is not explicitly available, the most appropriate next step would be to navigate to the object in question to enable interaction with it. Since we are already at the toilet, we can assume the action to 'go to toilet 1' would put us in the correct position to pick up the spray bottle in the subsequent action. 
+
+The Most Appropriate Action: (12): go to toilet 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Toilet, Spray Bottle (on top of the toilet tank)
+3. Action: go to toilet 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 11. On the toilet 1, you see a showerdoor 1, a soapbottle 1, and a scrubbrush 1.
+
+-----------------------------------------------------------------
+UNSUCCEED
+</div>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Log</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .images-container {
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .images-container img {
+            margin: 10px;
+            max-width: 15%; 
+            height: auto;
+        }
+        .content-container {
+            text-align: left;
+            margin: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="images-container"><img src="../images/task-1-2.jpg" alt="Image" style="max-width: 100%; height: auto;"></div>
+    <div class="content-container">---------------------------------------------------------task: 1---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------2-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+Image1:
+<image>
+**Instruction**
+1. Analyze the provided image to identify all visible household objects, focusing on those relevant to the task description "look at alarmclock under the desklamp."
+2. Use the analysis of the image and the task hint "The agent must find an object of the desired type, locate and turn on a light source with the desired object in-hand." to answer the question: what is the most reasonable action in the choices for the task description "look at alarmclock under the desklamp"?
+4. Decide and write the answer using the template: The answer is: (i): <selected_action>, where i is the real number. If there is no desired object in the image, search every place based on **Initial Observation** to find the object. And if no one is exactly correct, choose a similar answer.
+
+**Initial Observation**
+You are in the middle of a room. Looking quickly around you, you can see bed (1), dresser (1), drawer (1-10), garbagecan (1), shelf (1-7)
+
+**Answer Choices**
+(1): go to bed 1
+(2): go to dresser 1
+(3): go to drawer 2
+(4): go to drawer 3
+(5): go to drawer 4
+(6): go to drawer 5
+(7): go to garbagecan 1
+(8): go to drawer 6
+(9): go to drawer 7
+(10): go to drawer 8
+(11): go to drawer 9
+(12): go to drawer 10
+(13): go to shelf 1
+(14): go to shelf 2
+(15): go to shelf 3
+(16): go to shelf 4
+(17): go to shelf 5
+(18): go to shelf 6
+(19): go to shelf 7
+(20): close drawer 1
+(21): take laptop 1 from drawer 1
+(22): take alarmclock 1 from drawer 1
+(23): take cd 1 from drawer 1
+(24): take creditcard 1 from drawer 1
+(25): take pen 1 from drawer 1
+(26): take keychain 1 from drawer 1
+(27): use desklamp 1
+(28): examine drawer 1
+
+**Answer**
+Let's think step by step by following the instructions.
+----------------------------------------
+
+----------------------------------------
+
+Original Response:
+The task description is "look at alarmclock under the desklamp." From the image, we can see a desklamp on the desk, but the alarm clock is not visible on the desk's surface. According to the task hint, the agent must find an object of the desired type, which is the alarm clock, and then locate and turn on a light source with the desired object in hand. The most reasonable action is to find the alarm clock first.
+
+Looking at the initial observation, the possible locations to search for the alarm clock are the dresser, drawers, and shelves. Since the alarm clock is not typically found on a bed or in a garbage can, we can rule out those options.
+
+The image shows an open drawer (drawer 1), but there is no alarm clock inside it. We can also rule out examining drawer 1 (28) or taking any items from drawer 1 (21-26), as well as closing drawer 1 (20), as these actions do not help in finding the alarm clock. Turning on the desklamp (27) is also not the immediate action needed since the alarm clock has not been found yet.
+
+Therefore, the most reasonable action would be to search the other drawers since the alarm clock is commonly stored in drawers when not in use.
+
+The answer is: (3): go to drawer 2.
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine Original VLM Response and Get Pure Action: go to drawer 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 11.417726039886475 seconds
+
+Total Money: 0.30682
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 3. The drawer 2 is closed. 
+
+-----------------------------------------------------------------
+UNSUCCEED
+</div>
+</body>
+</html>

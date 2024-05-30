@@ -1,23 +1,24 @@
 import argparse
-from baselines.base_direct_act import test_tasks as test_tasks_base
+# from baselines.base_direct_act import test_tasks as test_tasks_base
 from use_memory.use_memory_act import test_tasks as test_tasks_use_memory
 
 def run_aflworld(args):
-    if "baseline" in args.mode:
-        test_tasks_base(args)
-    elif "use_memory" in args.mode:
-        test_tasks_use_memory(args)
+    # if "baseline" in args.mode:
+    #     test_tasks_base(args)
+    # elif "use_memory" in args.mode:
+    test_tasks_use_memory(args)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--vlm_model", default="gpt-4-vision-preview", type=str)
+    parser.add_argument("--vlm_model", default="gpt-4-1106-vision-preview", type=str)
+    # parser.add_argument("--vlm_model", default="llava-1.6-vicuna-13b", type=str)
     parser.add_argument("--use-4bit", default=True, type=bool)
     parser.add_argument("--use-8bit", default=False, type=bool)
     parser.add_argument("--llm_model", default="gpt-4-1106-preview", type=str)
     parser.add_argument(
         "--save_path",
-        # default="one-image-direct-action-selection",
-        default="test-existence-use-memory-act-2",
+        default="one-image-direct-action-selection-add-object-list",
+        # default="llava-v1.6-7b-existence-use-memory-act-2",
         type=str,
     )
     parser.add_argument(
@@ -64,7 +65,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--max_step",
         type=int,
-        default=11,
+        default=20,
     )
     parser.add_argument("--QA_Mode", default="existence", type=str)
     parser.add_argument("--refine_type", default="no-refine", type=str)

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Log</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .images-container {
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .images-container img {
+            margin: 10px;
+            max-width: 15%; 
+            height: auto;
+        }
+        .content-container {
+            text-align: left;
+            margin: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="images-container"><img src="../images/task-1-4.jpg" alt="Image" style="max-width: 100%; height: auto;"></div>
+    <div class="content-container">---------------------------------------------------------task: 1---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------4-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+Image1:
+<image>
+**Instruction**
+1. Analyze the provided image to identify all visible household objects, focusing on those relevant to the task description "look at alarmclock under the desklamp."
+2. Use the analysis of the image and the task hint "The agent must find an object of the desired type, locate and turn on a light source with the desired object in-hand." to answer the question: what is the most reasonable action in the choices for the task description "look at alarmclock under the desklamp"?
+4. Decide and write the answer using the template: The answer is: (i): <selected_action>, where i is the real number. If there is no desired object in the image, search every place based on **Initial Observation** to find the object. And if no one is exactly correct, choose a similar answer.
+
+**Initial Observation**
+You are in the middle of a room. Looking quickly around you, you can see bed (1), dresser (1), drawer (1-10), garbagecan (1), shelf (1-7)
+
+**Answer Choices**
+(1): go to bed 1
+(2): go to dresser 1
+(3): go to drawer 1
+(4): go to drawer 3
+(5): go to drawer 4
+(6): go to drawer 5
+(7): go to garbagecan 1
+(8): go to drawer 6
+(9): go to drawer 7
+(10): go to drawer 8
+(11): go to drawer 9
+(12): go to drawer 10
+(13): go to shelf 1
+(14): go to shelf 2
+(15): go to shelf 3
+(16): go to shelf 4
+(17): go to shelf 5
+(18): go to shelf 6
+(19): go to shelf 7
+(20): open drawer 2
+(21): close drawer 2
+(22): examine drawer 2
+
+**Answer**
+Let's think step by step by following the instructions.
+----------------------------------------
+
+----------------------------------------
+
+Original Response:
+Analyzing the provided image, we can see a desk with an open drawer (drawer 2), a desk lamp, and an alarm clock sitting right under the desk lamp. This matches the task description "look at alarmclock under the desklamp." 
+
+Based on the task hint, the agent must find the alarm clock, which is already visible in the image, and then locate and turn on a light source with the alarm clock in-hand. However, since the alarm clock is already under the desk lamp, which is a light source, the most reasonable action would be to turn on the desk lamp to illuminate the alarm clock.
+
+Since there is no direct action provided in the answer choices for turning on the desk lamp, we will choose the action that is most similar to examining the area where the alarm clock is located, which is "examine drawer 2."
+
+The answer is: (22): examine drawer 2.
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine Original VLM Response and Get Pure Action: examine drawer 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 6.899874925613403 seconds
+
+Total Money: 0.34392999999999996
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:On the drawer 2, you see a laptop 1, a desklamp 1, a alarmclock 1, a cd 1, a creditcard 1, a pen 1, and a keychain 1.
+
+-----------------------------------------------------------------
+UNSUCCEED
+</div>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Log</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .images-container {
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .images-container img {
+            margin: 10px;
+            max-width: 15%; 
+            height: auto;
+        }
+        .content-container {
+            text-align: left;
+            margin: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="images-container"><img src="../images/task-24-5.jpg" alt="Image" style="max-width: 100%; height: auto;"></div>
+    <div class="content-container">---------------------------------------------------------task: 24---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------5-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to heat some tomato and put it in fridge. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a microwave.
+4. Heat the tomato with the microwave.
+5. Find a fridge.
+6. Open the fridge.
+7. Place the heated tomato in the fridge.
+8. Close the fridge.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Sink, Funnel
+3. Action: go to cabinet 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Wooden Floor
+3. Action: go to cabinet 2
+State 3:
+1. Step Index in the Plan: 1
+2. Objects: Wooden Floor, Wall/Cabinet Edge
+3. Action: go to countertop 1
+State 4:
+1. Step Index in the Plan: 2
+2. Objects: Coffee Machine, Lettuce, Countertop
+3. Action: go to cabinet 3
+State 5:
+1. Step Index in the Plan: 2
+2. Objects: Wooden Floor (no visible objects related to the task)
+3. Action: go to cabinet 4
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 5
+(4): go to microwave 1
+(5): go to cabinet 6
+(6): go to drawer 1
+(7): go to drawer 2
+(8): go to drawer 3
+(9): go to cabinet 7
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to sinkbasin 1
+(13): go to coffeemachine 1
+(14): go to cabinet 9
+(15): go to cabinet 10
+(16): go to drawer 4
+(17): go to cabinet 11
+(18): go to stoveburner 1
+(19): go to stoveburner 2
+(20): go to stoveburner 3
+(21): go to stoveburner 4
+(22): go to cabinet 12
+(23): go to toaster 1
+(24): go to drawer 5
+(25): go to countertop 2
+(26): go to fridge 1
+(27): go to cabinet 13
+(28): go to cabinet 14
+(29): go to diningtable 1
+(30): go to garbagecan 1
+(31): go to safe 1
+(32): open cabinet 4
+(33): close cabinet 4
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to pick up the tomato, which is step 2. The current observation shows a countertop with a microwave, a kettle, and a tomato. The visible objects related to the task are the microwave and the tomato. Based on the current observation and the requirements for the current step, we can complete the step as the tomato is visible and within reach. Therefore, the most appropriate action is to pick up the tomato.
+
+The Most Appropriate Action: (4): go to microwave 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to microwave 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 5.816940546035767 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to pick up the tomato, which is step 2. The current observation shows a countertop with a microwave, a kettle, and a tomato. The visible objects related to the task are the microwave and the tomato. Based on the current observation and the requirements for the current step, we can complete the step as the tomato is visible and within reach. Therefore, the most appropriate action is to pick up the tomato.
+
+The Most Appropriate Action: (4): go to microwave 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 2
+2. Objects: Countertop, Microwave, Kettle, Tomato
+3. Action: pick up tomato 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 6. The microwave 1 is closed. 
+
+-----------------------------------------------------------------
+UNSUCCEED
+</div>
+</body>
+</html>

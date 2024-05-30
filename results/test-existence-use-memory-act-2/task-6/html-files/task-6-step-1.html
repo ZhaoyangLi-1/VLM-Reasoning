@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Log</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .images-container {
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .images-container img {
+            margin: 10px;
+            max-width: 15%; 
+            height: auto;
+        }
+        .content-container {
+            text-align: left;
+            margin: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="images-container"><img src="../images/task-6-1.jpg" alt="Image" style="max-width: 100%; height: auto;"></div>
+    <div class="content-container">---------------------------------------------------------task: 6---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------1-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to put some cd on safe. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a CD.
+2. Pick up the CD.
+3. Find a safe.
+4. Place the picked-up CD on or in the safe.
+5. Find another CD.
+6. Pick up the CD.
+7. Return to the previously located safe.
+8. Place the picked-up CD on or in the safe with the other CD.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Side Table, CD Case (potential CD)
+3. Action: go to side table 1
+
+
+**Admissible Actions**
+(1): go to bed 1
+(2): go to dresser 1
+(3): go to bed 2
+(4): go to drawer 1
+(5): go to drawer 2
+(6): go to sidetable 2
+(7): go to drawer 3
+(8): go to drawer 4
+(9): go to desk 1
+(10): go to garbagecan 1
+(11): go to drawer 5
+(12): go to drawer 6
+(13): go to drawer 7
+(14): go to drawer 8
+(15): go to drawer 9
+(16): go to drawer 10
+(17): go to drawer 11
+(18): go to safe 1
+(19): take cellphone 1 from sidetable 1
+(20): take creditcard 1 from sidetable 1
+(21): take cellphone 2 from sidetable 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is step 2, which is to pick up the CD. The current place is at sidetable 1, as indicated by the previous action taken in the history information. In the current observation, we can see a sidetable with a cellphone and a credit card, but there is no CD visible. Therefore, we cannot complete the current step with the current observation since the object required (the CD) is not present. The most appropriate action to continue with the plan would be to locate and go to another place where the CD might be found, as none of the objects related to the task (CD) are visible on the sidetable.
+
+The Most Appropriate Action: (18): go to safe 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to safe 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 8.793423652648926 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is step 2, which is to pick up the CD. The current place is at sidetable 1, as indicated by the previous action taken in the history information. In the current observation, we can see a sidetable with a cellphone and a credit card, but there is no CD visible. Therefore, we cannot complete the current step with the current observation since the object required (the CD) is not present. The most appropriate action to continue with the plan would be to locate and go to another place where the CD might be found, as none of the objects related to the task (CD) are visible on the sidetable.
+
+The Most Appropriate Action: (18): go to safe 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 2
+2. Objects: Sidetable, Cellphone, Credit Card
+3. Action: go to safe 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 18. The safe 1 is closed. 
+
+-----------------------------------------------------------------
+UNSUCCEED
+</div>
+</body>
+</html>

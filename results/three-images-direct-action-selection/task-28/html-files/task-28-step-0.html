@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Log</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .images-container {
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .images-container img {
+            margin: 10px;
+            max-width: 15%; 
+            height: auto;
+        }
+        .content-container {
+            text-align: left;
+            margin: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="images-container"><img src="../images/task-28-0.jpg" alt="Image" style="max-width: 100%; height: auto;"></div>
+    <div class="content-container">---------------------------------------------------------task: 28---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------0-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+Image1:
+<image>
+**Instruction**
+1. Analyze the provided images to identify all visible household objects and compare the difference between images (e.h. whether the object is opened or not and taken on hand or not), focusing on those relevant to the task description "put two spraybottle in toilet."
+2. Use the analysis of images and the task hint "The agent must find an object of the desired type, pick it up, find the correct location to place it, put it down there, then look for another object of the desired type, pick it up, return to previous location, and put it down there with the other object." to answer the question: what is the most reasonable action in the choices for the task description "put two spraybottle in toilet"?
+3. Decide and write the answer using the template: The answer is: (i): <selected_action>, where i is the real number. If there is no desired object in images, search every place based on **Initial Observation** to find the object. And if no one is exactly correct, choose a similar answer.
+
+**Initial Observation**
+You are in the middle of a room. Looking quickly around you, you can see bathtub (1), bathtubbasin (1), cart (1), sink (1), garbagecan (1), sinkbasin (1), countertop (1), drawer (1-4), toilet (1), toiletpaperhanger (1)
+
+**Answer Choices**
+(1): go to bathtub 1
+(2): go to bathtubbasin 1
+(3): go to cart 1
+(4): go to sink 1
+(5): go to garbagecan 1
+(6): go to sinkbasin 1
+(7): go to countertop 1
+(8): go to drawer 1
+(9): go to drawer 2
+(10): go to drawer 3
+(11): go to drawer 4
+(12): go to toilet 1
+(13): go to toiletpaperhanger 1
+
+
+**Answer**
+Let's think step by step by following the instructions.
+----------------------------------------
+
+----------------------------------------
+
+Original Response:
+Image1:
+There is a spray bottle on top of the toilet tank. This object is relevant to the task as it is the type of object we need to put in the toilet. 
+
+Analysis:
+Since the task description is "put two spray bottles in the toilet," and we can see one spray bottle in the provided image, the next step is to find another spray bottle. The initial observation does not mention any visible spray bottles, so we must search in places where it could likely be found. 
+
+The most logical places to find a spray bottle would be on the countertop, in a drawer, or on a cart where cleaning supplies are usually kept.
+
+The Answer is:
+(7): go to countertop 1
+If the spray bottle is not found there, continue to:
+(8): go to drawer 1
+(9): go to drawer 2
+(10): go to drawer 3
+(11): go to drawer 4
+(3): go to cart 1
+
+After finding the second spray bottle, the next action would be:
+(12): go to toilet 1 to complete the task of putting two spray bottles in the toilet.
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine Original VLM Response and Get Pure Action: No action
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 12.428655862808228 seconds
+
+Total Money: 17.46057999999999
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:Nothing happens.
+
+-----------------------------------------------------------------
+UNSUCCEED
+</div>
+</body>
+</html>

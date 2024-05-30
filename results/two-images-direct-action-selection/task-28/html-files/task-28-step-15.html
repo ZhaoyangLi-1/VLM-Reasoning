@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Log</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .images-container {
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .images-container img {
+            margin: 10px;
+            max-width: 15%; 
+            height: auto;
+        }
+        .content-container {
+            text-align: left;
+            margin: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="images-container"><img src="../images/task-28-14.jpg" alt="Image" style="max-width: 100%; height: auto;"><img src="../images/task-28-15.jpg" alt="Image" style="max-width: 100%; height: auto;"></div>
+    <div class="content-container">---------------------------------------------------------task: 28---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------15-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+Image1:
+<image>
+Image2:
+<image>
+**Instruction**
+1. Analyze the provided images to identify all visible household objects and compare the difference between images (e.h. whether the object is opened or not and taken on hand or not), focusing on those relevant to the task description "put two spraybottle in toilet."
+2. Use the analysis of images and the task hint "The agent must find an object of the desired type, pick it up, find the correct location to place it, put it down there, then look for another object of the desired type, pick it up, return to previous location, and put it down there with the other object." to answer the question: what is the most reasonable action in the choices for the task description "put two spraybottle in toilet"?
+3. Decide and write the answer using the template: The answer is: (i): <selected_action>, where i is the real number. If there is no desired object in images, search every place based on **Initial Observation** to find the object. And if no one is exactly correct, choose a similar answer.
+
+**Initial Observation**
+You are in the middle of a room. Looking quickly around you, you can see bathtub (1), bathtubbasin (1), cart (1), sink (1), garbagecan (1), sinkbasin (1), countertop (1), drawer (1-4), toilet (1), toiletpaperhanger (1)
+
+**Answer Choices**
+(1): go to bathtub 1
+(2): go to bathtubbasin 1
+(3): go to cart 1
+(4): go to sink 1
+(5): go to garbagecan 1
+(6): go to sinkbasin 1
+(7): go to drawer 2
+(8): go to drawer 3
+(9): go to drawer 4
+(10): go to toilet 1
+(11): go to toiletpaperhanger 1
+(12): open drawer 1
+(13): close drawer 1
+(14): take tissuebox 1 from drawer 1
+(15): take toiletpaper 1 from drawer 1
+(16): take handtowel 1 from drawer 1
+(17): take candle 1 from drawer 1
+
+
+**Answer**
+Let's think step by step by following the instructions.
+----------------------------------------
+
+----------------------------------------
+
+Original Response:
+Firstly, we analyze the provided images. There are no visible spray bottles in either of the images. The objects that can be seen are a tissue roll and a candle with a holder on the countertop, and the reflection of the bathroom in the mirror, which includes a toilet, sink, garbage can, and other minor objects.
+
+According to the task description "put two spraybottle in toilet," we need to find spray bottles and place them in the toilet. Since there are no spray bottles visible in the images, we must search every place based on the Initial Observation to find the object.
+
+Given the answer choices, the most logical step is to search the storage areas where a spray bottle might be kept, such as drawers or carts. Since the drawers are numbered, it makes sense to start with drawer 1 and proceed in numerical order. 
+
+The answer is: (12): open drawer 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine Original VLM Response and Get Pure Action: open drawer 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 8.736591100692749 seconds
+
+Total Money: 14.794650000000003
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You open the drawer 1. The drawer 1 is open. In it, you see a tissuebox 1, a toiletpaper 1, a handtowel 1, and a candle 1.
+
+-----------------------------------------------------------------
+UNSUCCEED
+</div>
+</body>
+</html>

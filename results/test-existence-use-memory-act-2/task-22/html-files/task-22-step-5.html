@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Log</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .images-container {
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .images-container img {
+            margin: 10px;
+            max-width: 15%; 
+            height: auto;
+        }
+        .content-container {
+            text-align: left;
+            margin: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="images-container"><img src="../images/task-22-5.jpg" alt="Image" style="max-width: 100%; height: auto;"></div>
+    <div class="content-container">---------------------------------------------------------task: 22---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------5-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to heat some egg and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find an egg.
+2. Pick up the egg.
+3. Find a microwave.
+4. Heat the egg with the microwave.
+5. Find a countertop.
+6. Place the heated egg on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Tap, Sponge, Pill Bottle
+3. Action: go to fridge 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Metallic Surface, Reflected Lights
+3. Action: open fridge 1
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Bread, Lettuce, Bowl, Potatoes
+3. Action: close fridge 1
+State 4:
+1. Step Index in the Plan: Unspecified (after locating the egg)
+2. Objects: Metallic surface (fridge), Reflected lights
+3. Action: open fridge
+State 5:
+1. Step Index in the Plan: Unknown, assumed to be finding an egg
+2. Objects: Soap Bottle, Bowl
+3. Action: go to cabinet 1
+
+
+**Admissible Actions**
+(1): go to cabinet 2
+(2): go to cabinet 3
+(3): go to cabinet 4
+(4): go to cabinet 5
+(5): go to sink 1
+(6): go to cabinet 6
+(7): go to drawer 1
+(8): go to drawer 2
+(9): go to sinkbasin 1
+(10): go to cabinet 7
+(11): go to cabinet 8
+(12): go to coffeemachine 1
+(13): go to microwave 1
+(14): go to cabinet 9
+(15): go to countertop 2
+(16): go to cabinet 10
+(17): go to drawer 3
+(18): go to drawer 4
+(19): go to garbagecan 1
+(20): go to drawer 5
+(21): go to cabinet 11
+(22): go to cabinet 12
+(23): go to cabinet 13
+(24): go to cabinet 14
+(25): go to stoveburner 1
+(26): go to countertop 3
+(27): go to stoveburner 2
+(28): go to stoveburner 3
+(29): go to stoveburner 4
+(30): go to drawer 6
+(31): go to cabinet 15
+(32): go to cabinet 16
+(33): go to cabinet 17
+(34): go to cabinet 18
+(35): go to toaster 1
+(36): go to drawer 7
+(37): go to countertop 4
+(38): go to fridge 1
+(39): open cabinet 1
+(40): close cabinet 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current observation shows a closed cabinet, and no other objects are visible. Based on the history information, the agent has already located an egg, which was the objective of the first step, and attempted to pick up the egg, which is the second step. However, the history does not confirm that the egg has been successfully picked up. Since the current step in the plan is not specified, and the last known action was to go to a cabinet, it is likely that the agent is attempting to find a tool or container to help with picking up or heating the egg. The most appropriate next step would be to open the cabinet in front of the agent to search for such an item.
+
+The Most Appropriate Action: (39): open cabinet 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: open cabinet 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 8.284980058670044 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current observation shows a closed cabinet, and no other objects are visible. Based on the history information, the agent has already located an egg, which was the objective of the first step, and attempted to pick up the egg, which is the second step. However, the history does not confirm that the egg has been successfully picked up. Since the current step in the plan is not specified, and the last known action was to go to a cabinet, it is likely that the agent is attempting to find a tool or container to help with picking up or heating the egg. The most appropriate next step would be to open the cabinet in front of the agent to search for such an item.
+
+The Most Appropriate Action: (39): open cabinet 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: Unknown (possibly 2 or 3)
+2. Objects: Closed Cabinet
+3. Action: open cabinet 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:Nothing happens.
+
+-----------------------------------------------------------------
+UNSUCCEED
+</div>
+</body>
+</html>

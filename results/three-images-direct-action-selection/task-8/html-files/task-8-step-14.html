@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Log</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .images-container {
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .images-container img {
+            margin: 10px;
+            max-width: 15%; 
+            height: auto;
+        }
+        .content-container {
+            text-align: left;
+            margin: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="images-container"><img src="../images/task-8-12.jpg" alt="Image" style="max-width: 100%; height: auto;"><img src="../images/task-8-13.jpg" alt="Image" style="max-width: 100%; height: auto;"><img src="../images/task-8-14.jpg" alt="Image" style="max-width: 100%; height: auto;"></div>
+    <div class="content-container">---------------------------------------------------------task: 8---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------14-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+Image1:
+<image>
+Image2:
+<image>
+Image3:
+<image>
+**Instruction**
+1. Analyze the provided images to identify all visible household objects and compare the difference between images (e.h. whether the object is opened or not and taken on hand or not), focusing on those relevant to the task description "put some laptop on desk."
+2. Use the analysis of images and the task hint "The agent must find an object of the desired type, pick it up, find the correct location to place it, and put it down there." to answer the question: what is the most reasonable action in the choices for the task description "put some laptop on desk"?
+3. Decide and write the answer using the template: The answer is: (i): <selected_action>, where i is the real number. If there is no desired object in images, search every place based on **Initial Observation** to find the object. And if no one is exactly correct, choose a similar answer.
+
+**Initial Observation**
+You are in the middle of a room. Looking quickly around you, you can see bed (1), garbagecan (1), desk (1), sidetable (1), drawer (1-5), laundryhamper (1)
+
+**Answer Choices**
+(1): go to bed 1
+(2): go to garbagecan 1
+(3): go to desk 1
+(4): go to sidetable 1
+(5): go to drawer 1
+(6): go to laundryhamper 1
+(7): go to drawer 3
+(8): go to drawer 4
+(9): go to drawer 5
+(10): open drawer 2
+(11): close drawer 2
+(12): take book 1 from drawer 2
+(13): take cd 1 from drawer 2
+(14): take pen 2 from drawer 2
+(15): examine drawer 2
+
+
+**Answer**
+Let's think step by step by following the instructions.
+----------------------------------------
+
+----------------------------------------
+
+Original Response:
+Upon examining the images, it is clear that the object of interest is not visible in the images provided. The images show a sidetable with a drawer slightly open, and inside the drawer, there are a few items including a book and a CD. There is no laptop visible on the sidetable or within the drawer.
+
+Considering the task description "put some laptop on desk" and the task hint provided, the most reasonable action would be to search for the laptop in different locations as it is not visible in the current images.
+
+Based on the initial observation that mentions the presence of a bed, garbage can, desk, sidetable, drawers, and laundry hamper in the room, the agent should search these locations to find the laptop. Since the desk is the location where the laptop ultimately needs to be placed, it would be logical to go there first to check if the laptop is already there or not.
+
+The answer is: (3): go to desk 1.
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine Original VLM Response and Get Pure Action: go to desk 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 16.064169883728027 seconds
+
+Total Money: 3.905120000000001
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 2. On the desk 1, you see a alarmclock 1, a pencil 1, and a pen 1.
+
+-----------------------------------------------------------------
+UNSUCCEED
+</div>
+</body>
+</html>

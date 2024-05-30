@@ -1,0 +1,2665 @@
+---------------------------------------------------------task: 12---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------0-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to clean some tomato and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a sink or basin.
+4. Clean the tomato with the sink or basin.
+5. Find a countertop.
+6. Place the cleaned tomato on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['kitchen sink', 'faucet', 'window', 'trash can', 'tile wall']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+No history.
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to microwave 1
+(5): go to cabinet 4
+(6): go to cabinet 5
+(7): go to cabinet 6
+(8): go to countertop 1
+(9): go to coffeemachine 1
+(10): go to toaster 1
+(11): go to countertop 2
+(12): go to sink 1
+(13): go to sinkbasin 1
+(14): go to fridge 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: Since there is no history available, we are at the first step of the plan, which is to find a tomato. The current observation shows the agent is positioned at a kitchen sink, with objects including the kitchen sink itself, a faucet, a window, and a trash can against a tile wall. None of these objects are related to the first step of finding a tomato. To find a tomato, we typically need to look where food is stored, such as in cabinets or a refrigerator. The admissible actions list several cabinets and a fridge as possible destinations. The best course of action is to check the fridge first, as tomatoes are often stored there to maintain freshness.
+
+The Most Appropriate Action: (14): go to fridge 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to fridge 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 10.23549199104309 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: Since there is no history available, we are at the first step of the plan, which is to find a tomato. The current observation shows the agent is positioned at a kitchen sink, with objects including the kitchen sink itself, a faucet, a window, and a trash can against a tile wall. None of these objects are related to the first step of finding a tomato. To find a tomato, we typically need to look where food is stored, such as in cabinets or a refrigerator. The admissible actions list several cabinets and a fridge as possible destinations. The best course of action is to check the fridge first, as tomatoes are often stored there to maintain freshness.
+
+The Most Appropriate Action: (14): go to fridge 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Faucet, Window, Trash Can, Tile Wall
+3. Action: go to fridge 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 13. The fridge 1 is closed. 
+
+--------------------------------------------------------------------------------------------------------------------------task: 12---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------1-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to clean some tomato and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a sink or basin.
+4. Clean the tomato with the sink or basin.
+5. Find a countertop.
+6. Place the cleaned tomato on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['refrigerator', 'magnetic letters A, B, C, P', 'refrigerator handles', 'temperature display', 'crushed ice option', 'cubed ice option', 'water dispenser option', 'OK button', 'menu button', 'red indicator light', 'rainbow sticker', 'watermelon sticker', 'photograph with watermelon sticker']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Faucet, Window, Trash Can, Tile Wall
+3. Action: go to fridge 1
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to microwave 1
+(5): go to cabinet 4
+(6): go to cabinet 5
+(7): go to cabinet 6
+(8): go to countertop 1
+(9): go to coffeemachine 1
+(10): go to toaster 1
+(11): go to countertop 2
+(12): go to sink 1
+(13): go to sinkbasin 1
+(14): open fridge 1
+(15): close fridge 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to find a tomato, which is step 1. Since we are at State 1 and the action taken was "go to fridge 1", we are currently observing the refrigerator, which is indicated by objects such as the magnetic letters, refrigerator handles, and temperature display. The objects visible in the current observation that are related to the task include the refrigerator and potentially its content, which is not visible but may contain a tomato. No tomatoes are visible in the current observation. Since the objective of the current step is to find a tomato and the refrigerator is a common place where tomatoes might be stored, the most appropriate action to take next would be to open the refrigerator to check for a tomato inside.
+
+The Most Appropriate Action: (14): open fridge 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: open fridge 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 12.373769760131836 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to find a tomato, which is step 1. Since we are at State 1 and the action taken was "go to fridge 1", we are currently observing the refrigerator, which is indicated by objects such as the magnetic letters, refrigerator handles, and temperature display. The objects visible in the current observation that are related to the task include the refrigerator and potentially its content, which is not visible but may contain a tomato. No tomatoes are visible in the current observation. Since the objective of the current step is to find a tomato and the refrigerator is a common place where tomatoes might be stored, the most appropriate action to take next would be to open the refrigerator to check for a tomato inside.
+
+The Most Appropriate Action: (14): open fridge 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Magnetic Letters, Refrigerator Handles, Temperature Display, Refrigerator
+3. Action: open fridge 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You open the fridge 1. The fridge 1 is open. In it, you see a apple 1, and a potato 1.
+
+--------------------------------------------------------------------------------------------------------------------------task: 12---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------2-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to clean some tomato and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a sink or basin.
+4. Clean the tomato with the sink or basin.
+5. Find a countertop.
+6. Place the cleaned tomato on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['shelves', 'apple', 'kiwi']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Faucet, Window, Trash Can, Tile Wall
+3. Action: go to fridge 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Magnetic Letters, Refrigerator Handles, Temperature Display, Refrigerator
+3. Action: open fridge 1
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to microwave 1
+(5): go to cabinet 4
+(6): go to cabinet 5
+(7): go to cabinet 6
+(8): go to countertop 1
+(9): go to coffeemachine 1
+(10): go to toaster 1
+(11): go to countertop 2
+(12): go to sink 1
+(13): go to sinkbasin 1
+(14): close fridge 1
+(15): take apple 1 from fridge 1
+(16): take potato 1 from fridge 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to find a tomato, which corresponds to step 1. The current place appears to be in front of a refrigerator with open shelves displaying an apple and a kiwi. The visible objects related to the task in the current observation are shelves, an apple, and a kiwi. Based on the history information, the agent has already attempted to find a tomato by going to the fridge and opening it, but has not yet found one. The current observation does not display a tomato; therefore, we cannot complete the current step with this observation. The most appropriate action to continue searching for a tomato would be to explore another storage area, such as a cabinet, where tomatoes might be stored.
+
+The Most Appropriate Action: (1): go to cabinet 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to cabinet 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 5.945932149887085 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to find a tomato, which corresponds to step 1. The current place appears to be in front of a refrigerator with open shelves displaying an apple and a kiwi. The visible objects related to the task in the current observation are shelves, an apple, and a kiwi. Based on the history information, the agent has already attempted to find a tomato by going to the fridge and opening it, but has not yet found one. The current observation does not display a tomato; therefore, we cannot complete the current step with this observation. The most appropriate action to continue searching for a tomato would be to explore another storage area, such as a cabinet, where tomatoes might be stored.
+
+The Most Appropriate Action: (1): go to cabinet 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Shelves, Apple, Kiwi
+3. Action: go to cabinet 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 0. The cabinet 1 is closed. 
+
+--------------------------------------------------------------------------------------------------------------------------task: 12---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------3-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to clean some tomato and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a sink or basin.
+4. Clean the tomato with the sink or basin.
+5. Find a countertop.
+6. Place the cleaned tomato on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['cabinet', 'cabinet handle', 'light reflection']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Faucet, Window, Trash Can, Tile Wall
+3. Action: go to fridge 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Magnetic Letters, Refrigerator Handles, Temperature Display, Refrigerator
+3. Action: open fridge 1
+State 3:
+1. Step Index in the Plan: 1
+2. Objects: Shelves, Apple, Kiwi
+3. Action: go to cabinet 1
+
+
+**Admissible Actions**
+(1): go to cabinet 2
+(2): go to cabinet 3
+(3): go to microwave 1
+(4): go to cabinet 4
+(5): go to cabinet 5
+(6): go to cabinet 6
+(7): go to countertop 1
+(8): go to coffeemachine 1
+(9): go to toaster 1
+(10): go to countertop 2
+(11): go to sink 1
+(12): go to sinkbasin 1
+(13): open cabinet 1
+(14): close cabinet 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: Based on the current observation and the history information, the agent's current step in the plan is to find a tomato, which is step 1. The objects visible in the current observation are a cabinet, cabinet handle, and light reflection. These objects do not include a tomato, and since the history indicates that the agent has already attempted to find a tomato in the fridge and is now directed to a cabinet, it suggests that the agent should continue searching for a tomato in the cabinets. The current step cannot be completed with the objects in the current observation because a tomato is not visible. Therefore, the agent should try to open the cabinet it is currently facing to search for a tomato inside.
+
+The Most Appropriate Action: (13): open cabinet 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: open cabinet 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 12.869603157043457 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: Based on the current observation and the history information, the agent's current step in the plan is to find a tomato, which is step 1. The objects visible in the current observation are a cabinet, cabinet handle, and light reflection. These objects do not include a tomato, and since the history indicates that the agent has already attempted to find a tomato in the fridge and is now directed to a cabinet, it suggests that the agent should continue searching for a tomato in the cabinets. The current step cannot be completed with the objects in the current observation because a tomato is not visible. Therefore, the agent should try to open the cabinet it is currently facing to search for a tomato inside.
+
+The Most Appropriate Action: (13): open cabinet 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handle, Light Reflection
+3. Action: open cabinet 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You open the cabinet 1. The cabinet 1 is open. In it, you see nothing.
+
+--------------------------------------------------------------------------------------------------------------------------task: 12---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------4-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to clean some tomato and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a sink or basin.
+4. Clean the tomato with the sink or basin.
+5. Find a countertop.
+6. Place the cleaned tomato on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['cabinet', 'handle', 'shelf', 'ceiling']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Faucet, Window, Trash Can, Tile Wall
+3. Action: go to fridge 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Magnetic Letters, Refrigerator Handles, Temperature Display, Refrigerator
+3. Action: open fridge 1
+State 3:
+1. Step Index in the Plan: 1
+2. Objects: Shelves, Apple, Kiwi
+3. Action: go to cabinet 1
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handle, Light Reflection
+3. Action: open cabinet 1
+
+
+**Admissible Actions**
+(1): go to cabinet 2
+(2): go to cabinet 3
+(3): go to microwave 1
+(4): go to cabinet 4
+(5): go to cabinet 5
+(6): go to cabinet 6
+(7): go to countertop 1
+(8): go to coffeemachine 1
+(9): go to toaster 1
+(10): go to countertop 2
+(11): go to sink 1
+(12): go to sinkbasin 1
+(13): go to fridge 1
+(14): close cabinet 1
+(15): take nothing from cabinet 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to find a tomato, which is step 1. Based on the current observation and the history information, the agent has already looked in the fridge and a cabinet but has not yet found a tomato. The current observation shows the inside of a cabinet with objects including a cabinet, handle, shelf, and ceiling. There are no tomatoes or other relevant objects for completing the current step visible in the observation. Since the plan requires finding a tomato and the current cabinet does not contain one, the agent should continue searching other cabinets or locations where a tomato might be stored. 
+
+The Most Appropriate Action: (2): go to cabinet 3
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to cabinet 3
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 7.251459360122681 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to find a tomato, which is step 1. Based on the current observation and the history information, the agent has already looked in the fridge and a cabinet but has not yet found a tomato. The current observation shows the inside of a cabinet with objects including a cabinet, handle, shelf, and ceiling. There are no tomatoes or other relevant objects for completing the current step visible in the observation. Since the plan requires finding a tomato and the current cabinet does not contain one, the agent should continue searching other cabinets or locations where a tomato might be stored. 
+
+The Most Appropriate Action: (2): go to cabinet 3
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+2. Step Index in the Plan: 1
+3. Objects: Cabinet, Handle, Shelf, Ceiling
+4. Action: go to cabinet 3
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 2. The cabinet 3 is closed. 
+
+--------------------------------------------------------------------------------------------------------------------------task: 12---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------5-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to clean some tomato and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a sink or basin.
+4. Clean the tomato with the sink or basin.
+5. Find a countertop.
+6. Place the cleaned tomato on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['cabinet', 'handle', 'shelf', 'light reflection']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Faucet, Window, Trash Can, Tile Wall
+3. Action: go to fridge 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Magnetic Letters, Refrigerator Handles, Temperature Display, Refrigerator
+3. Action: open fridge 1
+State 3:
+1. Step Index in the Plan: 1
+2. Objects: Shelves, Apple, Kiwi
+3. Action: go to cabinet 1
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handle, Light Reflection
+3. Action: open cabinet 1
+State 5:
+2. Step Index in the Plan: 1
+3. Objects: Cabinet, Handle, Shelf, Ceiling
+4. Action: go to cabinet 3
+
+
+**Admissible Actions**
+(1): go to cabinet 2
+(2): go to microwave 1
+(3): go to cabinet 4
+(4): go to cabinet 5
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to toaster 1
+(9): go to countertop 2
+(10): go to sink 1
+(11): go to sinkbasin 1
+(12): go to fridge 1
+(13): open cabinet 3
+(14): close cabinet 3
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to find a tomato, which is step 1. Based on the history information, the agent has already looked inside the refrigerator and a couple of cabinets but has not found a tomato yet. In the current observation, we see the interior of a cabinet with objects identified as 'cabinet', 'handle', 'shelf', and 'light reflection'. There are no visible tomatoes or other objects that could be hiding the tomato in the current cabinet view. Since the tomato has not been found yet and the current cabinet does not contain it, the agent needs to continue searching in other cabinets. Among the admissible actions, there are several "go to cabinet" options. Since we are following a sequential search strategy, and the agent just went to "cabinet 3" in the last action, the next logical step would be to explore "cabinet 4".
+
+The Most Appropriate Action: (3): go to cabinet 4
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to cabinet 4
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 13.056254625320435 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to find a tomato, which is step 1. Based on the history information, the agent has already looked inside the refrigerator and a couple of cabinets but has not found a tomato yet. In the current observation, we see the interior of a cabinet with objects identified as 'cabinet', 'handle', 'shelf', and 'light reflection'. There are no visible tomatoes or other objects that could be hiding the tomato in the current cabinet view. Since the tomato has not been found yet and the current cabinet does not contain it, the agent needs to continue searching in other cabinets. Among the admissible actions, there are several "go to cabinet" options. Since we are following a sequential search strategy, and the agent just went to "cabinet 3" in the last action, the next logical step would be to explore "cabinet 4".
+
+The Most Appropriate Action: (3): go to cabinet 4
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Light Reflection
+3. Action: go to cabinet 4
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 4. The cabinet 4 is closed. 
+
+--------------------------------------------------------------------------------------------------------------------------task: 12---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------6-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to clean some tomato and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a sink or basin.
+4. Clean the tomato with the sink or basin.
+5. Find a countertop.
+6. Place the cleaned tomato on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['kitchen cabinet', 'cabinet handles', 'backsplash tiles', 'countertop']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Faucet, Window, Trash Can, Tile Wall
+3. Action: go to fridge 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Magnetic Letters, Refrigerator Handles, Temperature Display, Refrigerator
+3. Action: open fridge 1
+State 3:
+1. Step Index in the Plan: 1
+2. Objects: Shelves, Apple, Kiwi
+3. Action: go to cabinet 1
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handle, Light Reflection
+3. Action: open cabinet 1
+State 5:
+2. Step Index in the Plan: 1
+3. Objects: Cabinet, Handle, Shelf, Ceiling
+4. Action: go to cabinet 3
+State 6:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Light Reflection
+3. Action: go to cabinet 4
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to microwave 1
+(4): go to cabinet 5
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to toaster 1
+(9): go to countertop 2
+(10): go to sink 1
+(11): go to sinkbasin 1
+(12): go to fridge 1
+(13): open cabinet 4
+(14): close cabinet 4
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in our plan is to find a tomato, which is step 1. The history shows that we have already searched in the refrigerator, cabinets 1, 3, and 4, but have not found a tomato yet. The current observation shows a kitchen cabinet, cabinet handles, backsplash tiles, and a countertop. There are no tomatoes or other objects related to the task visible in the current observation. Since we are still on step 1 and have not found a tomato, we should continue searching in other cabinets or places where a tomato might be stored. Based on the admissible actions, we have not yet tried to go to cabinet 2, cabinet 5, or cabinet 6, which could potentially contain the tomato we are looking for. Opening cabinet 4 is also an option, but since we have already performed an action related to cabinet 4 in the past (go to cabinet 4), it is less likely that the tomato is there unless we missed it during the first observation. Therefore, we should try one of the unexplored cabinets.
+
+The Most Appropriate Action: (4): go to cabinet 5
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to cabinet 5
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 15.665533542633057 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in our plan is to find a tomato, which is step 1. The history shows that we have already searched in the refrigerator, cabinets 1, 3, and 4, but have not found a tomato yet. The current observation shows a kitchen cabinet, cabinet handles, backsplash tiles, and a countertop. There are no tomatoes or other objects related to the task visible in the current observation. Since we are still on step 1 and have not found a tomato, we should continue searching in other cabinets or places where a tomato might be stored. Based on the admissible actions, we have not yet tried to go to cabinet 2, cabinet 5, or cabinet 6, which could potentially contain the tomato we are looking for. Opening cabinet 4 is also an option, but since we have already performed an action related to cabinet 4 in the past (go to cabinet 4), it is less likely that the tomato is there unless we missed it during the first observation. Therefore, we should try one of the unexplored cabinets.
+
+The Most Appropriate Action: (4): go to cabinet 5
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 5
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 5. The cabinet 5 is closed. 
+
+--------------------------------------------------------------------------------------------------------------------------task: 12---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------7-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to clean some tomato and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a sink or basin.
+4. Clean the tomato with the sink or basin.
+5. Find a countertop.
+6. Place the cleaned tomato on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['cabinet', 'drawer handle', 'backsplash tiles', 'countertop']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Faucet, Window, Trash Can, Tile Wall
+3. Action: go to fridge 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Magnetic Letters, Refrigerator Handles, Temperature Display, Refrigerator
+3. Action: open fridge 1
+State 3:
+1. Step Index in the Plan: 1
+2. Objects: Shelves, Apple, Kiwi
+3. Action: go to cabinet 1
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handle, Light Reflection
+3. Action: open cabinet 1
+State 5:
+2. Step Index in the Plan: 1
+3. Objects: Cabinet, Handle, Shelf, Ceiling
+4. Action: go to cabinet 3
+State 6:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Light Reflection
+3. Action: go to cabinet 4
+State 7:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 5
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to microwave 1
+(4): go to cabinet 6
+(5): go to countertop 1
+(6): go to coffeemachine 1
+(7): go to toaster 1
+(8): go to countertop 2
+(9): go to sink 1
+(10): go to sinkbasin 1
+(11): go to fridge 1
+(12): open cabinet 5
+(13): close cabinet 5
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to find a tomato, which has not been completed yet, as the history shows that we have been searching through various cabinets but have not found one. The current observation shows a cabinet and a countertop, but no tomatoes are visible. Since the current observation does not allow us to complete the step of finding a tomato, we must continue searching. The most appropriate action would be to open cabinet 5, as it is a new action that could reveal hidden objects inside the cabinet, potentially including a tomato.
+
+The Most Appropriate Action: (12): open cabinet 5
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: open cabinet 5
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 10.816232204437256 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to find a tomato, which has not been completed yet, as the history shows that we have been searching through various cabinets but have not found one. The current observation shows a cabinet and a countertop, but no tomatoes are visible. Since the current observation does not allow us to complete the step of finding a tomato, we must continue searching. The most appropriate action would be to open cabinet 5, as it is a new action that could reveal hidden objects inside the cabinet, potentially including a tomato.
+
+The Most Appropriate Action: (12): open cabinet 5
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: Unknown (Currently searching for a tomato)
+2. Objects: Cabinet, Countertop
+3. Action: open cabinet 5
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You open the cabinet 5. The cabinet 5 is open. In it, you see a soapbottle 1.
+
+--------------------------------------------------------------------------------------------------------------------------task: 12---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------8-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to clean some tomato and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a sink or basin.
+4. Clean the tomato with the sink or basin.
+5. Find a countertop.
+6. Place the cleaned tomato on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['cabinet', 'handle', 'backsplash tile', 'countertop']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Faucet, Window, Trash Can, Tile Wall
+3. Action: go to fridge 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Magnetic Letters, Refrigerator Handles, Temperature Display, Refrigerator
+3. Action: open fridge 1
+State 3:
+1. Step Index in the Plan: 1
+2. Objects: Shelves, Apple, Kiwi
+3. Action: go to cabinet 1
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handle, Light Reflection
+3. Action: open cabinet 1
+State 5:
+2. Step Index in the Plan: 1
+3. Objects: Cabinet, Handle, Shelf, Ceiling
+4. Action: go to cabinet 3
+State 6:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Light Reflection
+3. Action: go to cabinet 4
+State 7:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 5
+State 8:
+1. Step Index in the Plan: Unknown (Currently searching for a tomato)
+2. Objects: Cabinet, Countertop
+3. Action: open cabinet 5
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to microwave 1
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to toaster 1
+(9): go to countertop 2
+(10): go to sink 1
+(11): go to sinkbasin 1
+(12): go to fridge 1
+(13): close cabinet 5
+(14): take soapbottle 1 from cabinet 5
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to find a tomato. We are at step 1, based on the history information provided. The current observation shows a view of a kitchen with objects such as a cabinet, cabinet handles, backsplash tiles, and a countertop. These objects do not include a tomato. As per the history information, the agent has been searching various cabinets for a tomato but has not yet found one. The current cabinet (cabinet 5) is already open, but the contents are not visible in the image, so we cannot confirm if a tomato is inside. Since no tomato is visible, and the plan requires finding a tomato before proceeding to the next steps, the agent should continue searching for a tomato by exploring other cabinets.
+
+The Most Appropriate Action: (5): go to cabinet 6
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to cabinet 6
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 11.550015926361084 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to find a tomato. We are at step 1, based on the history information provided. The current observation shows a view of a kitchen with objects such as a cabinet, cabinet handles, backsplash tiles, and a countertop. These objects do not include a tomato. As per the history information, the agent has been searching various cabinets for a tomato but has not yet found one. The current cabinet (cabinet 5) is already open, but the contents are not visible in the image, so we cannot confirm if a tomato is inside. Since no tomato is visible, and the plan requires finding a tomato before proceeding to the next steps, the agent should continue searching for a tomato by exploring other cabinets.
+
+The Most Appropriate Action: (5): go to cabinet 6
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 6
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 6. The cabinet 6 is closed. 
+
+--------------------------------------------------------------------------------------------------------------------------task: 12---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------9-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to clean some tomato and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a sink or basin.
+4. Clean the tomato with the sink or basin.
+5. Find a countertop.
+6. Place the cleaned tomato on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['cabinet', 'handle', 'shelf', 'ceiling']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Faucet, Window, Trash Can, Tile Wall
+3. Action: go to fridge 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Magnetic Letters, Refrigerator Handles, Temperature Display, Refrigerator
+3. Action: open fridge 1
+State 3:
+1. Step Index in the Plan: 1
+2. Objects: Shelves, Apple, Kiwi
+3. Action: go to cabinet 1
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handle, Light Reflection
+3. Action: open cabinet 1
+State 5:
+2. Step Index in the Plan: 1
+3. Objects: Cabinet, Handle, Shelf, Ceiling
+4. Action: go to cabinet 3
+State 6:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Light Reflection
+3. Action: go to cabinet 4
+State 7:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 5
+State 8:
+1. Step Index in the Plan: Unknown (Currently searching for a tomato)
+2. Objects: Cabinet, Countertop
+3. Action: open cabinet 5
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 6
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to microwave 1
+(5): go to cabinet 4
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to toaster 1
+(9): go to countertop 2
+(10): go to sink 1
+(11): go to sinkbasin 1
+(12): go to fridge 1
+(13): open cabinet 6
+(14): close cabinet 6
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to find a tomato, which is step 1. The historical data indicates that various cabinets have been opened (cabinet 1, 3, 4, 5) but the tomato has not yet been found. The current observation shows the interior of a cabinet with no items visible, just the cabinet, handle, shelf, and ceiling. There are no tomatoes or other objects related to the task visible in this image. Since the tomato has not been found in the previously opened cabinets, the next logical action would be to open another cabinet that has not been checked yet. Action (13), "open cabinet 6," aligns with our current objective of finding a tomato and is an admissible action that has not been executed yet according to the history.
+
+The Most Appropriate Action: (13): open cabinet 6
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: open cabinet 6
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 6.774459362030029 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to find a tomato, which is step 1. The historical data indicates that various cabinets have been opened (cabinet 1, 3, 4, 5) but the tomato has not yet been found. The current observation shows the interior of a cabinet with no items visible, just the cabinet, handle, shelf, and ceiling. There are no tomatoes or other objects related to the task visible in this image. Since the tomato has not been found in the previously opened cabinets, the next logical action would be to open another cabinet that has not been checked yet. Action (13), "open cabinet 6," aligns with our current objective of finding a tomato and is an admissible action that has not been executed yet according to the history.
+
+The Most Appropriate Action: (13): open cabinet 6
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Ceiling
+3. Action: open cabinet 6
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You open the cabinet 6. The cabinet 6 is open. In it, you see nothing.
+
+--------------------------------------------------------------------------------------------------------------------------task: 12---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------10-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to clean some tomato and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a sink or basin.
+4. Clean the tomato with the sink or basin.
+5. Find a countertop.
+6. Place the cleaned tomato on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['cabinet doors', 'handles', 'ceiling', 'shelf']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Faucet, Window, Trash Can, Tile Wall
+3. Action: go to fridge 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Magnetic Letters, Refrigerator Handles, Temperature Display, Refrigerator
+3. Action: open fridge 1
+State 3:
+1. Step Index in the Plan: 1
+2. Objects: Shelves, Apple, Kiwi
+3. Action: go to cabinet 1
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handle, Light Reflection
+3. Action: open cabinet 1
+State 5:
+2. Step Index in the Plan: 1
+3. Objects: Cabinet, Handle, Shelf, Ceiling
+4. Action: go to cabinet 3
+State 6:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Light Reflection
+3. Action: go to cabinet 4
+State 7:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 5
+State 8:
+1. Step Index in the Plan: Unknown (Currently searching for a tomato)
+2. Objects: Cabinet, Countertop
+3. Action: open cabinet 5
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 6
+State 10:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Ceiling
+3. Action: open cabinet 6
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to microwave 1
+(5): go to cabinet 4
+(6): go to cabinet 5
+(7): go to countertop 1
+(8): go to coffeemachine 1
+(9): go to toaster 1
+(10): go to countertop 2
+(11): go to sink 1
+(12): go to sinkbasin 1
+(13): go to fridge 1
+(14): close cabinet 6
+(15): take nothing from cabinet 6
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to find a tomato, which is step 1. The agent is currently observing cabinet doors, handles, a ceiling, and a shelf, which indicates the agent is looking inside an open cabinet, likely cabinet 6 based on the history. None of the objects required for the current step, which is a tomato, are visible in the current observation. Since the current observation does not present an opportunity to complete the task of finding a tomato, and the history suggests that cabinets have been searched without success, the next logical action would be to close the current cabinet and move to a new location where tomatoes might be found, such as the refrigerator or countertop where fresh produce is often stored. Since the refrigerator has already been checked according to the history, the agent should consider checking the countertops next.
+
+The Most Appropriate Action: (10): go to countertop 2
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to countertop 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 10.021433115005493 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to find a tomato, which is step 1. The agent is currently observing cabinet doors, handles, a ceiling, and a shelf, which indicates the agent is looking inside an open cabinet, likely cabinet 6 based on the history. None of the objects required for the current step, which is a tomato, are visible in the current observation. Since the current observation does not present an opportunity to complete the task of finding a tomato, and the history suggests that cabinets have been searched without success, the next logical action would be to close the current cabinet and move to a new location where tomatoes might be found, such as the refrigerator or countertop where fresh produce is often stored. Since the refrigerator has already been checked according to the history, the agent should consider checking the countertops next.
+
+The Most Appropriate Action: (10): go to countertop 2
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet Doors, Handles, Ceiling, Shelf
+3. Action: go to countertop 2
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 10. On the countertop 2, you see a ladle 1, a tomato 1, a knife 1, a spatula 1, and a plate 1.
+
+--------------------------------------------------------------------------------------------------------------------------task: 12---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------11-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to clean some tomato and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a sink or basin.
+4. Clean the tomato with the sink or basin.
+5. Find a countertop.
+6. Place the cleaned tomato on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['Microwave', 'Red sphere', 'Knife', 'Fork', 'Golden sphere', 'White tile wall']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Faucet, Window, Trash Can, Tile Wall
+3. Action: go to fridge 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Magnetic Letters, Refrigerator Handles, Temperature Display, Refrigerator
+3. Action: open fridge 1
+State 3:
+1. Step Index in the Plan: 1
+2. Objects: Shelves, Apple, Kiwi
+3. Action: go to cabinet 1
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handle, Light Reflection
+3. Action: open cabinet 1
+State 5:
+2. Step Index in the Plan: 1
+3. Objects: Cabinet, Handle, Shelf, Ceiling
+4. Action: go to cabinet 3
+State 6:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Light Reflection
+3. Action: go to cabinet 4
+State 7:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 5
+State 8:
+1. Step Index in the Plan: Unknown (Currently searching for a tomato)
+2. Objects: Cabinet, Countertop
+3. Action: open cabinet 5
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 6
+State 10:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Ceiling
+3. Action: open cabinet 6
+State 11:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet Doors, Handles, Ceiling, Shelf
+3. Action: go to countertop 2
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to microwave 1
+(5): go to cabinet 4
+(6): go to cabinet 5
+(7): go to countertop 1
+(8): go to coffeemachine 1
+(9): go to toaster 1
+(10): go to sink 1
+(11): go to sinkbasin 1
+(12): go to fridge 1
+(13): take ladle 1 from countertop 2
+(14): take tomato 1 from countertop 2
+(15): take knife 1 from countertop 2
+(16): take spatul1 from countertop 2
+(17): take plate 1 from countertop 2
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to find a tomato, which is step 1. Based on the current observation and the history information provided, the agent appears to be in front of a microwave. The objects visible in the current observation related to the task are a 'Red sphere,' which resembles a tomato, a knife, and a fork. Since the goal is to find a tomato and there is a red sphere that looks like a tomato on the countertop, it is reasonable to assume this is the tomato the agent is supposed to find. Given the plan and the current observation, we can complete step 1 of the plan, which is to find a tomato, because there is an object resembling a tomato in the image. The most appropriate action would be to take the tomato from the countertop.
+
+The Most Appropriate Action: (14): take tomato 1 from countertop 2
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: take tomato 1 from countertop 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 8.933974981307983 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to find a tomato, which is step 1. Based on the current observation and the history information provided, the agent appears to be in front of a microwave. The objects visible in the current observation related to the task are a 'Red sphere,' which resembles a tomato, a knife, and a fork. Since the goal is to find a tomato and there is a red sphere that looks like a tomato on the countertop, it is reasonable to assume this is the tomato the agent is supposed to find. Given the plan and the current observation, we can complete step 1 of the plan, which is to find a tomato, because there is an object resembling a tomato in the image. The most appropriate action would be to take the tomato from the countertop.
+
+The Most Appropriate Action: (14): take tomato 1 from countertop 2
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Microwave, Red Sphere (potential tomato), Knife, Fork
+3. Action: take tomato 1 from countertop 2
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You pick up the tomato 1 from the countertop 2.
+
+--------------------------------------------------------------------------------------------------------------------------task: 12---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------12-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to clean some tomato and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a sink or basin.
+4. Clean the tomato with the sink or basin.
+5. Find a countertop.
+6. Place the cleaned tomato on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['microwave', 'tomato', 'knife', 'fork']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Faucet, Window, Trash Can, Tile Wall
+3. Action: go to fridge 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Magnetic Letters, Refrigerator Handles, Temperature Display, Refrigerator
+3. Action: open fridge 1
+State 3:
+1. Step Index in the Plan: 1
+2. Objects: Shelves, Apple, Kiwi
+3. Action: go to cabinet 1
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handle, Light Reflection
+3. Action: open cabinet 1
+State 5:
+2. Step Index in the Plan: 1
+3. Objects: Cabinet, Handle, Shelf, Ceiling
+4. Action: go to cabinet 3
+State 6:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Light Reflection
+3. Action: go to cabinet 4
+State 7:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 5
+State 8:
+1. Step Index in the Plan: Unknown (Currently searching for a tomato)
+2. Objects: Cabinet, Countertop
+3. Action: open cabinet 5
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 6
+State 10:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Ceiling
+3. Action: open cabinet 6
+State 11:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet Doors, Handles, Ceiling, Shelf
+3. Action: go to countertop 2
+State 12:
+1. Step Index in the Plan: 1
+2. Objects: Microwave, Red Sphere (potential tomato), Knife, Fork
+3. Action: take tomato 1 from countertop 2
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to microwave 1
+(5): go to cabinet 4
+(6): go to cabinet 5
+(7): go to cabinet 6
+(8): go to countertop 1
+(9): go to coffeemachine 1
+(10): go to toaster 1
+(11): go to sink 1
+(12): go to sinkbasin 1
+(13): go to fridge 1
+(14): put tomato 1 in/on countertop 2
+(15): examine tomato 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to clean the tomato, as it has been successfully found and picked up in the previous steps. The current place seems to be near a microwave, as indicated by the objects in the image. Visible objects related to the task in the current observation are the microwave and the tomato. Based on the history and the requirements for the current step, the tomato needs to be cleaned at a sink or basin, which is not visible in the current observation. Therefore, we cannot complete the step with the current observation. The most appropriate action to take next is to go to a sink or basin to clean the tomato.
+
+The Most Appropriate Action: (11): go to sink 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to sink 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 7.728765249252319 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to clean the tomato, as it has been successfully found and picked up in the previous steps. The current place seems to be near a microwave, as indicated by the objects in the image. Visible objects related to the task in the current observation are the microwave and the tomato. Based on the history and the requirements for the current step, the tomato needs to be cleaned at a sink or basin, which is not visible in the current observation. Therefore, we cannot complete the step with the current observation. The most appropriate action to take next is to go to a sink or basin to clean the tomato.
+
+The Most Appropriate Action: (11): go to sink 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+2. Step Index in the Plan: 11
+3. Objects: Microwave, Tomato
+4. Action: go to sink 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 11. On the sink 1, you see a faucet 1, and a plate 1.
+
+--------------------------------------------------------------------------------------------------------------------------task: 12---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------13-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to clean some tomato and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a sink or basin.
+4. Clean the tomato with the sink or basin.
+5. Find a countertop.
+6. Place the cleaned tomato on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['kitchen sink', 'faucet', 'tomato', 'window', 'garbage bin']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Faucet, Window, Trash Can, Tile Wall
+3. Action: go to fridge 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Magnetic Letters, Refrigerator Handles, Temperature Display, Refrigerator
+3. Action: open fridge 1
+State 3:
+1. Step Index in the Plan: 1
+2. Objects: Shelves, Apple, Kiwi
+3. Action: go to cabinet 1
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handle, Light Reflection
+3. Action: open cabinet 1
+State 5:
+2. Step Index in the Plan: 1
+3. Objects: Cabinet, Handle, Shelf, Ceiling
+4. Action: go to cabinet 3
+State 6:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Light Reflection
+3. Action: go to cabinet 4
+State 7:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 5
+State 8:
+1. Step Index in the Plan: Unknown (Currently searching for a tomato)
+2. Objects: Cabinet, Countertop
+3. Action: open cabinet 5
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 6
+State 10:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Ceiling
+3. Action: open cabinet 6
+State 11:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet Doors, Handles, Ceiling, Shelf
+3. Action: go to countertop 2
+State 12:
+1. Step Index in the Plan: 1
+2. Objects: Microwave, Red Sphere (potential tomato), Knife, Fork
+3. Action: take tomato 1 from countertop 2
+State 13:
+2. Step Index in the Plan: 11
+3. Objects: Microwave, Tomato
+4. Action: go to sink 1
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to microwave 1
+(5): go to cabinet 4
+(6): go to cabinet 5
+(7): go to cabinet 6
+(8): go to countertop 1
+(9): go to coffeemachine 1
+(10): go to toaster 1
+(11): go to sinkbasin 1
+(12): go to fridge 1
+(13): put tomato 1 in/on sink 1
+(14): clean tomato 1 with sink 1
+(15): clean tomato 1 with sinkbasin 1
+(16): examine tomato 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to clean the tomato, as the previous actions have already involved finding and picking up the tomato, and the agent is now at the sink, which is the location for cleaning the tomato. The objects visible in the current observation are a kitchen sink, a faucet, a tomato, a window, and a garbage bin. There is no need to open any cabinets or go to any other locations to complete the current step. According to the plan, the tomato should now be cleaned. Therefore, the most appropriate action from the admissible actions is to clean the tomato using the sink.
+
+The Most Appropriate Action: (14): clean tomato 1 with sink 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: clean tomato 1 with sink 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 11.558414936065674 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to clean the tomato, as the previous actions have already involved finding and picking up the tomato, and the agent is now at the sink, which is the location for cleaning the tomato. The objects visible in the current observation are a kitchen sink, a faucet, a tomato, a window, and a garbage bin. There is no need to open any cabinets or go to any other locations to complete the current step. According to the plan, the tomato should now be cleaned. Therefore, the most appropriate action from the admissible actions is to clean the tomato using the sink.
+
+The Most Appropriate Action: (14): clean tomato 1 with sink 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: Unknown (presumed to be cleaning stage)
+2. Objects: Kitchen Sink, Faucet, Tomato, Window, Garbage Bin
+3. Action: clean tomato 1 with sink 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You clean the tomato 1 using the sink 1.
+
+--------------------------------------------------------------------------------------------------------------------------task: 12---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------14-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to clean some tomato and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a sink or basin.
+4. Clean the tomato with the sink or basin.
+5. Find a countertop.
+6. Place the cleaned tomato on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['kitchen sink', 'faucet', 'tomato', 'window', 'trash can']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Faucet, Window, Trash Can, Tile Wall
+3. Action: go to fridge 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Magnetic Letters, Refrigerator Handles, Temperature Display, Refrigerator
+3. Action: open fridge 1
+State 3:
+1. Step Index in the Plan: 1
+2. Objects: Shelves, Apple, Kiwi
+3. Action: go to cabinet 1
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handle, Light Reflection
+3. Action: open cabinet 1
+State 5:
+2. Step Index in the Plan: 1
+3. Objects: Cabinet, Handle, Shelf, Ceiling
+4. Action: go to cabinet 3
+State 6:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Light Reflection
+3. Action: go to cabinet 4
+State 7:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 5
+State 8:
+1. Step Index in the Plan: Unknown (Currently searching for a tomato)
+2. Objects: Cabinet, Countertop
+3. Action: open cabinet 5
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 6
+State 10:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Ceiling
+3. Action: open cabinet 6
+State 11:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet Doors, Handles, Ceiling, Shelf
+3. Action: go to countertop 2
+State 12:
+1. Step Index in the Plan: 1
+2. Objects: Microwave, Red Sphere (potential tomato), Knife, Fork
+3. Action: take tomato 1 from countertop 2
+State 13:
+2. Step Index in the Plan: 11
+3. Objects: Microwave, Tomato
+4. Action: go to sink 1
+State 14:
+1. Step Index in the Plan: Unknown (presumed to be cleaning stage)
+2. Objects: Kitchen Sink, Faucet, Tomato, Window, Garbage Bin
+3. Action: clean tomato 1 with sink 1
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to microwave 1
+(5): go to cabinet 4
+(6): go to cabinet 5
+(7): go to cabinet 6
+(8): go to countertop 1
+(9): go to coffeemachine 1
+(10): go to toaster 1
+(11): go to countertop 2
+(12): go to sinkbasin 1
+(13): go to fridge 1
+(14): put tomato 1 in/on sink 1
+(15): clean tomato 1 with sinkbasin 1
+(16): examine tomato 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current observation shows that the agent is at the sink with a tomato already placed in it, which aligns with the plan's step 4: "Clean the tomato with the sink or basin." The objects visible in the current observation that are relevant to the task are a kitchen sink, a faucet, and a tomato. Based on the history, the tomato has already been picked up and placed in the sink, which means we have completed step 2 and are currently in the process of step 4. The historical action preceding this observation was "clean tomato 1 with sink 1." Given that the tomato is already in the sink, the next logical action according to the plan would be to clean it, if it hasn't been cleaned already. The admissible actions list includes "clean tomato 1 with sinkbasin 1" as an action, which is appropriate for completing the current step in the plan.
+
+The Most Appropriate Action: (15): clean tomato 1 with sinkbasin 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: clean tomato 1 with sinkbasin 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 9.869685411453247 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current observation shows that the agent is at the sink with a tomato already placed in it, which aligns with the plan's step 4: "Clean the tomato with the sink or basin." The objects visible in the current observation that are relevant to the task are a kitchen sink, a faucet, and a tomato. Based on the history, the tomato has already been picked up and placed in the sink, which means we have completed step 2 and are currently in the process of step 4. The historical action preceding this observation was "clean tomato 1 with sink 1." Given that the tomato is already in the sink, the next logical action according to the plan would be to clean it, if it hasn't been cleaned already. The admissible actions list includes "clean tomato 1 with sinkbasin 1" as an action, which is appropriate for completing the current step in the plan.
+
+The Most Appropriate Action: (15): clean tomato 1 with sinkbasin 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 4
+2. Objects: Kitchen Sink, Faucet, Tomato
+3. Action: clean tomato 1 with sinkbasin 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:Nothing happens.
+
+--------------------------------------------------------------------------------------------------------------------------task: 12---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------15-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to clean some tomato and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a sink or basin.
+4. Clean the tomato with the sink or basin.
+5. Find a countertop.
+6. Place the cleaned tomato on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['window', 'kitchen sink', 'tomato', 'faucet', 'countertop', 'trash can']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Faucet, Window, Trash Can, Tile Wall
+3. Action: go to fridge 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Magnetic Letters, Refrigerator Handles, Temperature Display, Refrigerator
+3. Action: open fridge 1
+State 3:
+1. Step Index in the Plan: 1
+2. Objects: Shelves, Apple, Kiwi
+3. Action: go to cabinet 1
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handle, Light Reflection
+3. Action: open cabinet 1
+State 5:
+2. Step Index in the Plan: 1
+3. Objects: Cabinet, Handle, Shelf, Ceiling
+4. Action: go to cabinet 3
+State 6:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Light Reflection
+3. Action: go to cabinet 4
+State 7:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 5
+State 8:
+1. Step Index in the Plan: Unknown (Currently searching for a tomato)
+2. Objects: Cabinet, Countertop
+3. Action: open cabinet 5
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 6
+State 10:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Ceiling
+3. Action: open cabinet 6
+State 11:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet Doors, Handles, Ceiling, Shelf
+3. Action: go to countertop 2
+State 12:
+1. Step Index in the Plan: 1
+2. Objects: Microwave, Red Sphere (potential tomato), Knife, Fork
+3. Action: take tomato 1 from countertop 2
+State 13:
+2. Step Index in the Plan: 11
+3. Objects: Microwave, Tomato
+4. Action: go to sink 1
+State 14:
+1. Step Index in the Plan: Unknown (presumed to be cleaning stage)
+2. Objects: Kitchen Sink, Faucet, Tomato, Window, Garbage Bin
+3. Action: clean tomato 1 with sink 1
+State 15:
+1. Step Index in the Plan: 4
+2. Objects: Kitchen Sink, Faucet, Tomato
+3. Action: clean tomato 1 with sinkbasin 1
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to microwave 1
+(5): go to cabinet 4
+(6): go to cabinet 5
+(7): go to cabinet 6
+(8): go to countertop 1
+(9): go to coffeemachine 1
+(10): go to toaster 1
+(11): go to countertop 2
+(12): go to sinkbasin 1
+(13): go to fridge 1
+(14): put tomato 1 in/on sink 1
+(15): examine tomato 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The historical data indicates that the agent has already found a tomato (Step 1 completed), picked it up (Step 2 completed), and gone to the sink (Step 3 completed). As of the last recorded action, the agent was cleaning the tomato with the sink (Step 4 in progress). The current observation shows a tomato in the sink, which suggests that the cleaning task may have been completed or is at least in progress. The visible objects in the current observation relating to the task are the 'kitchen sink', 'tomato', 'faucet', 'countertop', and 'trash can'. Since cleaning the tomato was the last action and the tomato is in the sink, it is likely that the current step (Step 4: Clean the tomato with the sink or basin) has been completed. The next step in the plan is to find a countertop (Step 5), and since the countertop is visible in the current observation, the agent does not need to move to find it. The final step will be to place the cleaned tomato on the countertop (Step 6). The most appropriate action from the admissible actions to proceed with the plan is to go to the countertop (action 8), because it is the next logical step to enable the agent to place the tomato on the countertop.
+
+The Most Appropriate Action: (8): go to countertop 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to countertop 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 9.478557348251343 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The historical data indicates that the agent has already found a tomato (Step 1 completed), picked it up (Step 2 completed), and gone to the sink (Step 3 completed). As of the last recorded action, the agent was cleaning the tomato with the sink (Step 4 in progress). The current observation shows a tomato in the sink, which suggests that the cleaning task may have been completed or is at least in progress. The visible objects in the current observation relating to the task are the 'kitchen sink', 'tomato', 'faucet', 'countertop', and 'trash can'. Since cleaning the tomato was the last action and the tomato is in the sink, it is likely that the current step (Step 4: Clean the tomato with the sink or basin) has been completed. The next step in the plan is to find a countertop (Step 5), and since the countertop is visible in the current observation, the agent does not need to move to find it. The final step will be to place the cleaned tomato on the countertop (Step 6). The most appropriate action from the admissible actions to proceed with the plan is to go to the countertop (action 8), because it is the next logical step to enable the agent to place the tomato on the countertop.
+
+The Most Appropriate Action: (8): go to countertop 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 4 (completed), moving to 5
+2. Objects: Kitchen Sink, Tomato, Faucet, Countertop, Trash Can
+3. Action: go to countertop 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 7. On the countertop 1, you see a bread 1, a cup 1, a pan 1, a potato 2, a ladle 2, a peppershaker 1, a apple 2, a dishsponge 1, a egg 1, a lightswitch 1, a fork 1, and a butterknife 1.
+
+--------------------------------------------------------------------------------------------------------------------------task: 12---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------16-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to clean some tomato and put it in countertop. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a tomato.
+2. Pick up the tomato.
+3. Find a sink or basin.
+4. Clean the tomato with the sink or basin.
+5. Find a countertop.
+6. Place the cleaned tomato on the countertop.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['window', 'yellow chairs', 'bread', 'green cup', 'egg', 'butter', 'fork', 'potato', 'frying pan', 'spoon', 'red tomato', 'door']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Sink, Faucet, Window, Trash Can, Tile Wall
+3. Action: go to fridge 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Magnetic Letters, Refrigerator Handles, Temperature Display, Refrigerator
+3. Action: open fridge 1
+State 3:
+1. Step Index in the Plan: 1
+2. Objects: Shelves, Apple, Kiwi
+3. Action: go to cabinet 1
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handle, Light Reflection
+3. Action: open cabinet 1
+State 5:
+2. Step Index in the Plan: 1
+3. Objects: Cabinet, Handle, Shelf, Ceiling
+4. Action: go to cabinet 3
+State 6:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Light Reflection
+3. Action: go to cabinet 4
+State 7:
+1. Step Index in the Plan: 1
+2. Objects: Kitchen Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 5
+State 8:
+1. Step Index in the Plan: Unknown (Currently searching for a tomato)
+2. Objects: Cabinet, Countertop
+3. Action: open cabinet 5
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Cabinet Handles, Backsplash Tiles, Countertop
+3. Action: go to cabinet 6
+State 10:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet, Handle, Shelf, Ceiling
+3. Action: open cabinet 6
+State 11:
+1. Step Index in the Plan: 1
+2. Objects: Cabinet Doors, Handles, Ceiling, Shelf
+3. Action: go to countertop 2
+State 12:
+1. Step Index in the Plan: 1
+2. Objects: Microwave, Red Sphere (potential tomato), Knife, Fork
+3. Action: take tomato 1 from countertop 2
+State 13:
+2. Step Index in the Plan: 11
+3. Objects: Microwave, Tomato
+4. Action: go to sink 1
+State 14:
+1. Step Index in the Plan: Unknown (presumed to be cleaning stage)
+2. Objects: Kitchen Sink, Faucet, Tomato, Window, Garbage Bin
+3. Action: clean tomato 1 with sink 1
+State 15:
+1. Step Index in the Plan: 4
+2. Objects: Kitchen Sink, Faucet, Tomato
+3. Action: clean tomato 1 with sinkbasin 1
+State 16:
+1. Step Index in the Plan: 4 (completed), moving to 5
+2. Objects: Kitchen Sink, Tomato, Faucet, Countertop, Trash Can
+3. Action: go to countertop 1
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to microwave 1
+(5): go to cabinet 4
+(6): go to cabinet 5
+(7): go to cabinet 6
+(8): go to coffeemachine 1
+(9): go to toaster 1
+(10): go to countertop 2
+(11): go to sink 1
+(12): go to sinkbasin 1
+(13): go to fridge 1
+(14): put tomato 1 in/on countertop 1
+(15): examine tomato 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the history information, the agent has already completed step 4 of the plan, which involved cleaning the tomato. The current observation shows a tomato, indicating that the agent has the cleaned tomato in its possession and is now ready to move on to step 5: finding a countertop. The historical data indicates that the agent has just moved to a countertop in action 16 (go to countertop 1), and the current observation confirms that the agent is indeed facing a countertop. The admissible actions include "put tomato 1 in/on countertop 1," which aligns with the next step in the plan. As the countertop is visible and accessible, the agent can complete this step with the current observation.
+
+The Most Appropriate Action: (14): put tomato 1 in/on countertop 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: put tomato 1 in/on countertop 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 9.891343593597412 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: According to the history information, the agent has already completed step 4 of the plan, which involved cleaning the tomato. The current observation shows a tomato, indicating that the agent has the cleaned tomato in its possession and is now ready to move on to step 5: finding a countertop. The historical data indicates that the agent has just moved to a countertop in action 16 (go to countertop 1), and the current observation confirms that the agent is indeed facing a countertop. The admissible actions include "put tomato 1 in/on countertop 1," which aligns with the next step in the plan. As the countertop is visible and accessible, the agent can complete this step with the current observation.
+
+The Most Appropriate Action: (14): put tomato 1 in/on countertop 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 5
+2. Objects: Cleaned Tomato, Countertop
+3. Action: put tomato 1 in/on countertop 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You put the tomato 1 in/on the countertop 1.
+
+-----------------------------------------------------------------

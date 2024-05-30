@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Log</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .images-container {
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .images-container img {
+            margin: 10px;
+            max-width: 15%; 
+            height: auto;
+        }
+        .content-container {
+            text-align: left;
+            margin: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="images-container"><img src="../images/task-28-5.jpg" alt="Image" style="max-width: 100%; height: auto;"><img src="../images/task-28-6.jpg" alt="Image" style="max-width: 100%; height: auto;"></div>
+    <div class="content-container">---------------------------------------------------------task: 28---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------6-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+Image1:
+<image>
+Image2:
+<image>
+**Instruction**
+1. Analyze the provided image to identify all visible household objects, focusing on those relevant to the task description "find two spraybottle and put them in toilet."
+2. Use the analysis of the image and the task hint "The agent must find an object of the desired type, pick it up, find the correct location to place it, put it down there, then look for another object of the desired type, pick it up, return to previous location, and put it down there with the other object." to answer the question: what is the most reasonable action in the choices for the task description "find two spraybottle and put them in toilet"?
+4. Decide and write the answer using the template: The answer is: (i): <selected_action>, where i is the real number. If there is no desired object in the image, search every place based on **Initial Observation** to find the object. And if no one is exactly correct, choose a similar answer.
+
+**Initial Observation**
+You are in the middle of a room. Looking quickly around you, you can see bathtub (1), bathtubbasin (1), cart (1), sink (1), garbagecan (1), sinkbasin (1), countertop (1), drawer (1-4), toilet (1), toiletpaperhanger (1)
+
+**Answer Choices**
+(1): go to bathtub 1
+(2): go to bathtubbasin 1
+(3): go to cart 1
+(4): go to sink 1
+(5): go to garbagecan 1
+(6): go to sinkbasin 1
+(7): go to countertop 1
+(8): go to drawer 2
+(9): go to drawer 3
+(10): go to drawer 4
+(11): go to toilet 1
+(12): go to toiletpaperhanger 1
+(13): close drawer 1
+(14): put spraybottle 1 in/on drawer 1
+(15): examine drawer 1
+
+**Answer**
+Let's think step by step by following the instructions.
+----------------------------------------
+
+----------------------------------------
+
+Original Response:
+Firstly, based on the task description "find two spraybottle and put them in toilet," we need to find two spray bottles. In the image provided, we can see there is one spray bottle labeled "spraybottle 1" on the countertop. As per the task hint, the most reasonable action would be to pick up this spray bottle and then look for another one.
+
+Since we only see one spray bottle in the image, the next step is to search every place based on the initial observation to find the second spray bottle. None of the answer choices directly suggest picking up the visible spray bottle, so we will dismiss that and focus on finding the second spray bottle.
+
+The initial observation mentions a list of locations in the room: bathtub, bathtubbasin, cart, sink, garbagecan, sinkbasin, countertop, drawers, toilet, and toiletpaperhanger. Since we are looking for a spray bottle, it is more likely to be located on a countertop or inside a drawer, as these are common storage places for such items in a bathroom.
+
+Considering the information and the answer choices given, the most reasonable action to take next would be to check inside the drawers, as we have already seen the countertop and the spray bottle is not there.
+
+The answer is: (8): go to drawer 2.
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine Original VLM Response and Get Pure Action: go to drawer 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 11.311398267745972 seconds
+
+Total Money: 13.974100000000004
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 8. The drawer 2 is closed. 
+
+-----------------------------------------------------------------
+UNSUCCEED
+</div>
+</body>
+</html>

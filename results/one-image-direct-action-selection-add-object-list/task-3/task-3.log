@@ -1,0 +1,3236 @@
+---------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------0-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['television', 'glass table', 'wall']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+No history.
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 1
+(5): go to shelf 2
+(6): go to sofa 1
+(7): go to coffeetable 1
+(8): go to sidetable 1
+(9): go to sidetable 2
+(10): go to drawer 1
+(11): go to shelf 3
+(12): go to shelf 4
+(13): go to shelf 5
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: Since there is no history available, we are at the first step in the plan, which is to find a plate. The current observation shows a television and a glass table against a wall. Plates are typically not found on or near televisions or TV stands, and since no plate is visible in the current observation, we cannot complete the first step with the current observation. We should look for the plate in a location where plates are more likely to be found, such as on a shelf or a table where dishes are usually kept. Among the admissible actions, going to a shelf seems like the most appropriate choice to find a plate.
+
+The Most Appropriate Action: (4): go to shelf 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to shelf 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 7.692386627197266 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: Since there is no history available, we are at the first step in the plan, which is to find a plate. The current observation shows a television and a glass table against a wall. Plates are typically not found on or near televisions or TV stands, and since no plate is visible in the current observation, we cannot complete the first step with the current observation. We should look for the plate in a location where plates are more likely to be found, such as on a shelf or a table where dishes are usually kept. Among the admissible actions, going to a shelf seems like the most appropriate choice to find a plate.
+
+The Most Appropriate Action: (4): go to shelf 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 3. On the shelf 1, you see a television 1, a statue 1, and a creditcard 1.
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------1-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['television', 'TV stand', 'trash bin']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 2
+(5): go to sofa 1
+(6): go to coffeetable 1
+(7): go to sidetable 1
+(8): go to sidetable 2
+(9): go to drawer 1
+(10): go to shelf 3
+(11): go to shelf 4
+(12): go to shelf 5
+(13): take television 1 from shelf 1
+(14): take statue 1 from shelf 1
+(15): take creditcard 1 from shelf 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to find a plate, which is step 1. Based on the current observation and the history provided, the agent's current place seems to be near a television and TV stand, as identified in the State 1 observation and the current observation. The objects visible in the current observation are a television, a TV stand, and a trash bin. None of these objects are a plate, so we cannot complete step 1 with the current observation. Given the admissible actions and the task of finding a plate, the agent should move to a location where plates are commonly kept, such as shelves or drawers where kitchen items might be stored. Since "shelf 1" was previously visited without finding a plate, the agent should try a different shelf.
+
+The Most Appropriate Action: (10): go to shelf 3
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to shelf 3
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 7.876046895980835 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to find a plate, which is step 1. Based on the current observation and the history provided, the agent's current place seems to be near a television and TV stand, as identified in the State 1 observation and the current observation. The objects visible in the current observation are a television, a TV stand, and a trash bin. None of these objects are a plate, so we cannot complete step 1 with the current observation. Given the admissible actions and the task of finding a plate, the agent should move to a location where plates are commonly kept, such as shelves or drawers where kitchen items might be stored. Since "shelf 1" was previously visited without finding a plate, the agent should try a different shelf.
+
+The Most Appropriate Action: (10): go to shelf 3
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 10. On the shelf 3, you see a statue 2.
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------2-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['door', 'doorknob', 'wall', 'shelf']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 2
+(5): go to sofa 1
+(6): go to coffeetable 1
+(7): go to sidetable 1
+(8): go to sidetable 2
+(9): go to drawer 1
+(10): go to shelf 4
+(11): go to shelf 5
+(12): take statue 2 from shelf 3
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to find a plate. Based on the history, the agent has already visited shelf 1 and shelf 3 without finding a plate. The current observation shows a door and a shelf, but no plate is visible. Since the plan requires us to find a plate, and the current observation does not allow us to complete this step, we should continue searching for the plate by visiting different shelves or areas where a plate might be located. Among the admissible actions, going to another shelf seems to be the most relevant action to take in order to find a plate.
+
+The Most Appropriate Action: (11): go to shelf 5
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to shelf 5
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 9.380828380584717 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to find a plate. Based on the history, the agent has already visited shelf 1 and shelf 3 without finding a plate. The current observation shows a door and a shelf, but no plate is visible. Since the plan requires us to find a plate, and the current observation does not allow us to complete this step, we should continue searching for the plate by visiting different shelves or areas where a plate might be located. Among the admissible actions, going to another shelf seems to be the most relevant action to take in order to find a plate.
+
+The Most Appropriate Action: (11): go to shelf 5
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 12. On the shelf 5, you see a statue 2.
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------3-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['door', 'doorknob', 'shelf', 'wall', 'floor']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 2
+(5): go to sofa 1
+(6): go to coffeetable 1
+(7): go to sidetable 1
+(8): go to sidetable 2
+(9): go to drawer 1
+(10): go to shelf 4
+(11): take statue 2 from shelf 5
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to find a plate, which is step 1. Based on the history information, the agent has already attempted to find a plate by going to different shelves (shelf 1, shelf 3, and shelf 5) but has not yet found one. In the current observation, the agent is facing a door and a shelving unit. The objects in the current observation that are visible and related to the task are the door and the shelf. None of these objects are likely to hold a plate. Since the history suggests that shelves have been checked without success, the next logical step is to check other furniture items that might contain a plate, such as a sideboard, buffet, or kitchen cabinet. However, none of these specific items are listed in the admissible actions. Among the admissible actions, the most appropriate action that could potentially lead to finding a plate would be to go to a drawer, as plates are sometimes stored in drawers. 
+
+The Most Appropriate Action: (9): go to drawer 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to drawer 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 12.28135895729065 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to find a plate, which is step 1. Based on the history information, the agent has already attempted to find a plate by going to different shelves (shelf 1, shelf 3, and shelf 5) but has not yet found one. In the current observation, the agent is facing a door and a shelving unit. The objects in the current observation that are visible and related to the task are the door and the shelf. None of these objects are likely to hold a plate. Since the history suggests that shelves have been checked without success, the next logical step is to check other furniture items that might contain a plate, such as a sideboard, buffet, or kitchen cabinet. However, none of these specific items are listed in the admissible actions. Among the admissible actions, the most appropriate action that could potentially lead to finding a plate would be to go to a drawer, as plates are sometimes stored in drawers. 
+
+The Most Appropriate Action: (9): go to drawer 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit, Shelf
+3. Action: go to drawer 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 9. The drawer 1 is closed. 
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------4-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['bookshelf', 'books', 'bird sculpture', 'table', 'laptop', 'mouse', 'mouse pad', 'desk lamp', 'sofa', 'mobile phone', 'tablet', 'cushion', 'area rug', 'floor lamp', 'picture frame']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit, Shelf
+3. Action: go to drawer 1
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 1
+(5): go to shelf 2
+(6): go to sofa 1
+(7): go to coffeetable 1
+(8): go to sidetable 1
+(9): go to sidetable 2
+(10): go to shelf 4
+(11): open drawer 1
+(12): close drawer 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the plan, the first step is to find a plate. The current observation does not show any plate; however, we can see a bookshelf, desk, sofa, and floor lamp, among other items. The history suggests that previous actions were directed at looking for a plate on various shelves and opening a drawer. As the plate has not yet been found, the task remains at step 1. Since the previous actions did not lead to finding a plate and the current observation does not show any new shelves or drawers, it would be prudent to investigate areas not yet explored. The action "go to shelf 2" seems to be the next logical step, as it may lead to a new area where a plate could be found.
+
+The Most Appropriate Action: (5): go to shelf 2
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to shelf 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 9.461799621582031 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: According to the plan, the first step is to find a plate. The current observation does not show any plate; however, we can see a bookshelf, desk, sofa, and floor lamp, among other items. The history suggests that previous actions were directed at looking for a plate on various shelves and opening a drawer. As the plate has not yet been found, the task remains at step 1. Since the previous actions did not lead to finding a plate and the current observation does not show any new shelves or drawers, it would be prudent to investigate areas not yet explored. The action "go to shelf 2" seems to be the next logical step, as it may lead to a new area where a plate could be found.
+
+The Most Appropriate Action: (5): go to shelf 2
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Bookshelf, Desk, Sofa, Floor Lamp
+3. Action: go to shelf 2
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 4. On the shelf 2, you see a television 1, a statue 1, and a creditcard 1.
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------5-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['television', 'TV stand', 'trash can', 'cable']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit, Shelf
+3. Action: go to drawer 1
+State 5:
+1. Step Index in the Plan: 1
+2. Objects: Bookshelf, Desk, Sofa, Floor Lamp
+3. Action: go to shelf 2
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 1
+(5): go to sofa 1
+(6): go to coffeetable 1
+(7): go to sidetable 1
+(8): go to sidetable 2
+(9): go to shelf 3
+(10): go to shelf 4
+(11): take television 1 from shelf 2
+(12): take statue 1 from shelf 2
+(13): take creditcard 1 from shelf 2
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to find a plate. The current observation does not show a plate among the listed objects, which are 'television', 'TV stand', 'trash can', and 'cable'. None of these objects are relevant to the task of finding a plate. The history indicates that the agent has already attempted to go to various shelves and a drawer without finding a plate. In the previous state, the agent encountered a floor lamp, which is relevant but for a later step. Since the history and current observation do not provide information on the location of a plate, the agent must continue to search in new locations.
+
+The Most Appropriate Action: (6): go to coffeetable 1
+
+This action is chosen because the agent has not yet observed the coffee table, which could be a place where a plate might be found or where further clues to the location of a plate could be discovered.
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to coffeetable 1
+
+This action is chosen because the agent has not yet observed the coffee table, which could be a place where a plate might be found or where further clues to the location of a plate could be discovered
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 13.026041030883789 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to find a plate. The current observation does not show a plate among the listed objects, which are 'television', 'TV stand', 'trash can', and 'cable'. None of these objects are relevant to the task of finding a plate. The history indicates that the agent has already attempted to go to various shelves and a drawer without finding a plate. In the previous state, the agent encountered a floor lamp, which is relevant but for a later step. Since the history and current observation do not provide information on the location of a plate, the agent must continue to search in new locations.
+
+The Most Appropriate Action: (6): go to coffeetable 1
+
+This action is chosen because the agent has not yet observed the coffee table, which could be a place where a plate might be found or where further clues to the location of a plate could be discovered.
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 2
+2. Objects: Television, TV Stand, Trash Can, Cable
+3. Action: go to coffeetable 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:Nothing happens.
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------6-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['television', 'glass coffee table', 'garbage bin', 'electrical outlet', 'cable']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit, Shelf
+3. Action: go to drawer 1
+State 5:
+1. Step Index in the Plan: 1
+2. Objects: Bookshelf, Desk, Sofa, Floor Lamp
+3. Action: go to shelf 2
+State 6:
+1. Step Index in the Plan: 2
+2. Objects: Television, TV Stand, Trash Can, Cable
+3. Action: go to coffeetable 1
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 1
+(5): go to sofa 1
+(6): go to coffeetable 1
+(7): go to sidetable 1
+(8): go to sidetable 2
+(9): go to shelf 3
+(10): go to shelf 4
+(11): go to shelf 5
+(12): take television 1 from shelf 2
+(13): take statue 1 from shelf 2
+(14): take creditcard 1 from shelf 2
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: Reviewing the current observation and the history information, we are at step 2 of the plan, which is to pick up the plate. The current observation shows a television, a glass coffee table, a garbage bin, an electrical outlet, and a cable. None of these objects is a plate that we need to pick up according to the current step. Since we have not yet found and picked up a plate, we cannot proceed to the next steps. The history shows various attempts to locate the plate on different shelves and a coffee table, but none of these actions have resulted in finding a plate. Given the objects listed in the current observation, it appears we should continue searching for the plate elsewhere. 
+
+The Most Appropriate Action: (9): go to shelf 3
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to shelf 3
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 16.870994091033936 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: Reviewing the current observation and the history information, we are at step 2 of the plan, which is to pick up the plate. The current observation shows a television, a glass coffee table, a garbage bin, an electrical outlet, and a cable. None of these objects is a plate that we need to pick up according to the current step. Since we have not yet found and picked up a plate, we cannot proceed to the next steps. The history shows various attempts to locate the plate on different shelves and a coffee table, but none of these actions have resulted in finding a plate. Given the objects listed in the current observation, it appears we should continue searching for the plate elsewhere. 
+
+The Most Appropriate Action: (9): go to shelf 3
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+2. Step Index in the Plan: 2
+3. Objects: Television, Glass Coffee Table, Garbage Bin, Electrical Outlet, Cable
+4. Action: go to shelf 3
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 10. On the shelf 3, you see a statue 2.
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------7-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['door', 'doorknob', 'shelf', 'wall', 'floor']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit, Shelf
+3. Action: go to drawer 1
+State 5:
+1. Step Index in the Plan: 1
+2. Objects: Bookshelf, Desk, Sofa, Floor Lamp
+3. Action: go to shelf 2
+State 6:
+1. Step Index in the Plan: 2
+2. Objects: Television, TV Stand, Trash Can, Cable
+3. Action: go to coffeetable 1
+State 7:
+2. Step Index in the Plan: 2
+3. Objects: Television, Glass Coffee Table, Garbage Bin, Electrical Outlet, Cable
+4. Action: go to shelf 3
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 1
+(5): go to sofa 1
+(6): go to coffeetable 1
+(7): go to sidetable 1
+(8): go to sidetable 2
+(9): go to drawer 1
+(10): go to shelf 4
+(11): go to shelf 5
+(12): take statue 2 from shelf 3
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: Based on the history information, multiple attempts have been made to locate the plate, which is the first step in the plan. The historical actions suggest that the agent has already looked at various shelves and furniture pieces where one might typically find a plate. The current observation shows a door, doorknob, shelf, wall, and floor, but no plate is visible or mentioned in the list of objects. Since none of the visible objects are related to the task of finding a plate, it is not possible to complete the step with the current observation. Therefore, the agent must continue to search for the plate. Looking at the admissible actions and considering that we have already attempted to go to various shelves (shelf 1, shelf 3, and shelf 5) without success in finding the plate, and given that the current observation displays a shelf, it may be beneficial to check another shelving location that has not been checked before, such as "shelf 4".
+
+The Most Appropriate Action: (10): go to shelf 4
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to shelf 4
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 13.551427125930786 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: Based on the history information, multiple attempts have been made to locate the plate, which is the first step in the plan. The historical actions suggest that the agent has already looked at various shelves and furniture pieces where one might typically find a plate. The current observation shows a door, doorknob, shelf, wall, and floor, but no plate is visible or mentioned in the list of objects. Since none of the visible objects are related to the task of finding a plate, it is not possible to complete the step with the current observation. Therefore, the agent must continue to search for the plate. Looking at the admissible actions and considering that we have already attempted to go to various shelves (shelf 1, shelf 3, and shelf 5) without success in finding the plate, and given that the current observation displays a shelf, it may be beneficial to check another shelving location that has not been checked before, such as "shelf 4".
+
+The Most Appropriate Action: (10): go to shelf 4
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Door, Doorknob, Shelf, Wall, Floor
+3. Action: go to shelf 4
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 11. On the shelf 4, you see a statue 2.
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------8-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['door', 'shelf', 'wall', 'floor']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit, Shelf
+3. Action: go to drawer 1
+State 5:
+1. Step Index in the Plan: 1
+2. Objects: Bookshelf, Desk, Sofa, Floor Lamp
+3. Action: go to shelf 2
+State 6:
+1. Step Index in the Plan: 2
+2. Objects: Television, TV Stand, Trash Can, Cable
+3. Action: go to coffeetable 1
+State 7:
+2. Step Index in the Plan: 2
+3. Objects: Television, Glass Coffee Table, Garbage Bin, Electrical Outlet, Cable
+4. Action: go to shelf 3
+State 8:
+1. Step Index in the Plan: 1
+2. Objects: Door, Doorknob, Shelf, Wall, Floor
+3. Action: go to shelf 4
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 1
+(5): go to shelf 2
+(6): go to sofa 1
+(7): go to coffeetable 1
+(8): go to sidetable 1
+(9): go to sidetable 2
+(10): go to drawer 1
+(11): go to shelf 5
+(12): take statue 2 from shelf 4
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to find a plate, which is step 1. The current observation does not show any plates; it only shows a door and a shelving unit with no visible plate. Therefore, we cannot complete the current step with the objects visible in the current observation. Considering the history, the agent has already attempted to find plates by going to various shelves and other furniture items but without success. The admissible actions suggest other places to search. Since the task is to find a plate and there is no plate visible in the current observation, the agent should continue to move to different locations to search for a plate. The action "go to shelf 5" seems to be the most appropriate next step, as it involves searching another shelf that has not been explored in the most recent actions.
+
+The Most Appropriate Action: (11): go to shelf 5
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to shelf 5
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 7.208642244338989 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to find a plate, which is step 1. The current observation does not show any plates; it only shows a door and a shelving unit with no visible plate. Therefore, we cannot complete the current step with the objects visible in the current observation. Considering the history, the agent has already attempted to find plates by going to various shelves and other furniture items but without success. The admissible actions suggest other places to search. Since the task is to find a plate and there is no plate visible in the current observation, the agent should continue to move to different locations to search for a plate. The action "go to shelf 5" seems to be the most appropriate next step, as it involves searching another shelf that has not been explored in the most recent actions.
+
+The Most Appropriate Action: (11): go to shelf 5
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit
+3. Action: go to shelf 5
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 12. On the shelf 5, you see a statue 2.
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------9-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['door', 'staircase', 'wall', 'floor']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit, Shelf
+3. Action: go to drawer 1
+State 5:
+1. Step Index in the Plan: 1
+2. Objects: Bookshelf, Desk, Sofa, Floor Lamp
+3. Action: go to shelf 2
+State 6:
+1. Step Index in the Plan: 2
+2. Objects: Television, TV Stand, Trash Can, Cable
+3. Action: go to coffeetable 1
+State 7:
+2. Step Index in the Plan: 2
+3. Objects: Television, Glass Coffee Table, Garbage Bin, Electrical Outlet, Cable
+4. Action: go to shelf 3
+State 8:
+1. Step Index in the Plan: 1
+2. Objects: Door, Doorknob, Shelf, Wall, Floor
+3. Action: go to shelf 4
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit
+3. Action: go to shelf 5
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 1
+(5): go to shelf 2
+(6): go to sofa 1
+(7): go to coffeetable 1
+(8): go to sidetable 1
+(9): go to sidetable 2
+(10): go to drawer 1
+(11): take statue 2 from shelf 5
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to find a plate, which is the first step. This is deduced from the history information, indicating that the agent has been looking for a plate but has not yet found one. The current observation shows a door and a staircase but does not include a plate or any item that could potentially hold a plate, such as a cabinet or a shelf with plates visible. Therefore, the current step cannot be completed with the current observation. Based on the admissible actions and the history of actions taken, the agent has already attempted to find a plate on various shelves and a coffee table without success. The action to "go to drawer 1" is an option that has not been tried since the agent started looking for a plate, and since plates are often kept in drawers or cabinets in a kitchen or dining area, this action could potentially lead to finding a plate.
+
+The Most Appropriate Action: (10): go to drawer 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to drawer 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 9.477332592010498 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to find a plate, which is the first step. This is deduced from the history information, indicating that the agent has been looking for a plate but has not yet found one. The current observation shows a door and a staircase but does not include a plate or any item that could potentially hold a plate, such as a cabinet or a shelf with plates visible. Therefore, the current step cannot be completed with the current observation. Based on the admissible actions and the history of actions taken, the agent has already attempted to find a plate on various shelves and a coffee table without success. The action to "go to drawer 1" is an option that has not been tried since the agent started looking for a plate, and since plates are often kept in drawers or cabinets in a kitchen or dining area, this action could potentially lead to finding a plate.
+
+The Most Appropriate Action: (10): go to drawer 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Door, Staircase
+3. Action: go to drawer 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 9. The drawer 1 is closed. 
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------10-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['laptop', 'floor lamp', 'bookshelf', 'books', 'decorative bird statue', 'sofa', 'cushion', 'smartphone', 'coffee table', 'area rug', 'decorative vase', 'wall art', 'end table']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit, Shelf
+3. Action: go to drawer 1
+State 5:
+1. Step Index in the Plan: 1
+2. Objects: Bookshelf, Desk, Sofa, Floor Lamp
+3. Action: go to shelf 2
+State 6:
+1. Step Index in the Plan: 2
+2. Objects: Television, TV Stand, Trash Can, Cable
+3. Action: go to coffeetable 1
+State 7:
+2. Step Index in the Plan: 2
+3. Objects: Television, Glass Coffee Table, Garbage Bin, Electrical Outlet, Cable
+4. Action: go to shelf 3
+State 8:
+1. Step Index in the Plan: 1
+2. Objects: Door, Doorknob, Shelf, Wall, Floor
+3. Action: go to shelf 4
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit
+3. Action: go to shelf 5
+State 10:
+1. Step Index in the Plan: 1
+2. Objects: Door, Staircase
+3. Action: go to drawer 1
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 1
+(5): go to shelf 2
+(6): go to sofa 1
+(7): go to coffeetable 1
+(8): go to sidetable 1
+(9): go to sidetable 2
+(10): go to shelf 3
+(11): open drawer 1
+(12): close drawer 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to find a plate. In the current observation, there is no plate visible among the listed objects. The objects relevant to the task at hand are: 'floor lamp', 'bookshelf', 'sofa', 'coffee table', and 'end table'. These objects are potential locations where a plate might be found or placed. However, based on the list of objects and the history of actions taken, it seems that the agent has already attempted to find a plate by going to various shelves and a coffee table without success. Since the plan requires finding a plate and no such item is visible in the current observation, we need to explore new places where a plate might be found. An end table or a side table could be a place where a plate is located, as these have not been explored according to the history provided. Among the admissible actions, going to an end table or side table could potentially reveal a plate. 
+
+The Most Appropriate Action: (9): go to sidetable 2
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to sidetable 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 9.38742971420288 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to find a plate. In the current observation, there is no plate visible among the listed objects. The objects relevant to the task at hand are: 'floor lamp', 'bookshelf', 'sofa', 'coffee table', and 'end table'. These objects are potential locations where a plate might be found or placed. However, based on the list of objects and the history of actions taken, it seems that the agent has already attempted to find a plate by going to various shelves and a coffee table without success. Since the plan requires finding a plate and no such item is visible in the current observation, we need to explore new places where a plate might be found. An end table or a side table could be a place where a plate is located, as these have not been explored according to the history provided. Among the admissible actions, going to an end table or side table could potentially reveal a plate. 
+
+The Most Appropriate Action: (9): go to sidetable 2
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: Unknown
+2. Objects: Floor Lamp, Bookshelf, Sofa, Coffee Table, End Table
+3. Action: go to sidetable 2
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 8. On the sidetable 2, you see a plate 3, and a vase 2.
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------11-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['table', 'papers', 'blue funnel', 'blue book']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit, Shelf
+3. Action: go to drawer 1
+State 5:
+1. Step Index in the Plan: 1
+2. Objects: Bookshelf, Desk, Sofa, Floor Lamp
+3. Action: go to shelf 2
+State 6:
+1. Step Index in the Plan: 2
+2. Objects: Television, TV Stand, Trash Can, Cable
+3. Action: go to coffeetable 1
+State 7:
+2. Step Index in the Plan: 2
+3. Objects: Television, Glass Coffee Table, Garbage Bin, Electrical Outlet, Cable
+4. Action: go to shelf 3
+State 8:
+1. Step Index in the Plan: 1
+2. Objects: Door, Doorknob, Shelf, Wall, Floor
+3. Action: go to shelf 4
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit
+3. Action: go to shelf 5
+State 10:
+1. Step Index in the Plan: 1
+2. Objects: Door, Staircase
+3. Action: go to drawer 1
+State 11:
+1. Step Index in the Plan: Unknown
+2. Objects: Floor Lamp, Bookshelf, Sofa, Coffee Table, End Table
+3. Action: go to sidetable 2
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 1
+(5): go to shelf 2
+(6): go to sofa 1
+(7): go to coffeetable 1
+(8): go to sidetable 1
+(9): go to shelf 3
+(10): go to shelf 4
+(11): take plate 3 from sidetable 2
+(12): take vase 2 from sidetable 2
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to find a plate, which is step 1. The current observation shows a table with objects including papers, a blue funnel, and a blue book, but no plate is visible. Based on the historical data, the agent has visited various shelves, a coffee table, a side table, and other furniture, but there are no records indicating that the agent has found a plate yet. Since the plan requires finding a plate first, we must continue this action. In the admissible actions, there is an action to take a plate from a side table, which suggests that the agent has located a plate in a previous step that was not recorded in the history provided. The most appropriate action to advance towards the objective is to take the plate as it aligns with step 1 of the plan.
+
+The Most Appropriate Action: (11): take plate 3 from sidetable 2
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: take plate 3 from sidetable 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 22.343782424926758 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to find a plate, which is step 1. The current observation shows a table with objects including papers, a blue funnel, and a blue book, but no plate is visible. Based on the historical data, the agent has visited various shelves, a coffee table, a side table, and other furniture, but there are no records indicating that the agent has found a plate yet. Since the plan requires finding a plate first, we must continue this action. In the admissible actions, there is an action to take a plate from a side table, which suggests that the agent has located a plate in a previous step that was not recorded in the history provided. The most appropriate action to advance towards the objective is to take the plate as it aligns with step 1 of the plan.
+
+The Most Appropriate Action: (11): take plate 3 from sidetable 2
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 1
+2. Objects: Table, Papers, Blue Funnel, Blue Book, Side Table, Plate (not visible but inferred)
+3. Action: take plate 3 from sidetable 2
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You pick up the plate 3 from the sidetable 2.
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------12-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['wall', 'door', 'floor', 'table', 'vase', 'papers', 'framed artwork']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit, Shelf
+3. Action: go to drawer 1
+State 5:
+1. Step Index in the Plan: 1
+2. Objects: Bookshelf, Desk, Sofa, Floor Lamp
+3. Action: go to shelf 2
+State 6:
+1. Step Index in the Plan: 2
+2. Objects: Television, TV Stand, Trash Can, Cable
+3. Action: go to coffeetable 1
+State 7:
+2. Step Index in the Plan: 2
+3. Objects: Television, Glass Coffee Table, Garbage Bin, Electrical Outlet, Cable
+4. Action: go to shelf 3
+State 8:
+1. Step Index in the Plan: 1
+2. Objects: Door, Doorknob, Shelf, Wall, Floor
+3. Action: go to shelf 4
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit
+3. Action: go to shelf 5
+State 10:
+1. Step Index in the Plan: 1
+2. Objects: Door, Staircase
+3. Action: go to drawer 1
+State 11:
+1. Step Index in the Plan: Unknown
+2. Objects: Floor Lamp, Bookshelf, Sofa, Coffee Table, End Table
+3. Action: go to sidetable 2
+State 12:
+1. Step Index in the Plan: 1
+2. Objects: Table, Papers, Blue Funnel, Blue Book, Side Table, Plate (not visible but inferred)
+3. Action: take plate 3 from sidetable 2
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 1
+(5): go to shelf 2
+(6): go to sofa 1
+(7): go to coffeetable 1
+(8): go to sidetable 1
+(9): go to shelf 3
+(10): go to shelf 4
+(11): go to shelf 5
+(12): put plate 3 in/on sidetable 2
+(13): examine plate 3
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan appears to be step 2, which is to pick up the plate. We can infer this because the last recorded action in the history involved taking a plate from a side table. The current observation shows a table with various items on it, but no plate is visible. Since the history indicates that a plate was taken from a side table, we must have the plate with us even though it is not visible in the current observation. The next step in the plan after picking up the plate would be to locate a floorlamp. However, since a floorlamp is not listed as an object in the current observation nor in the admissible actions, we cannot proceed to step 3 of the plan. Given the admissible actions, the most appropriate next step would be to examine the plate to ensure we have it and to follow the plan properly before locating the floorlamp. 
+
+The Most Appropriate Action: (13): examine plate 3
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: examine plate 3
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 10.744093179702759 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan appears to be step 2, which is to pick up the plate. We can infer this because the last recorded action in the history involved taking a plate from a side table. The current observation shows a table with various items on it, but no plate is visible. Since the history indicates that a plate was taken from a side table, we must have the plate with us even though it is not visible in the current observation. The next step in the plan after picking up the plate would be to locate a floorlamp. However, since a floorlamp is not listed as an object in the current observation nor in the admissible actions, we cannot proceed to step 3 of the plan. Given the admissible actions, the most appropriate next step would be to examine the plate to ensure we have it and to follow the plan properly before locating the floorlamp. 
+
+The Most Appropriate Action: (13): examine plate 3
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 2
+2. Objects: Various Items, Plate (not visible but inferred to be with us)
+3. Action: examine plate 3
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:This is a normal plate 3
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------13-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['door', 'wall', 'table', 'blue vase', 'papers', 'blue framed artwork']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit, Shelf
+3. Action: go to drawer 1
+State 5:
+1. Step Index in the Plan: 1
+2. Objects: Bookshelf, Desk, Sofa, Floor Lamp
+3. Action: go to shelf 2
+State 6:
+1. Step Index in the Plan: 2
+2. Objects: Television, TV Stand, Trash Can, Cable
+3. Action: go to coffeetable 1
+State 7:
+2. Step Index in the Plan: 2
+3. Objects: Television, Glass Coffee Table, Garbage Bin, Electrical Outlet, Cable
+4. Action: go to shelf 3
+State 8:
+1. Step Index in the Plan: 1
+2. Objects: Door, Doorknob, Shelf, Wall, Floor
+3. Action: go to shelf 4
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit
+3. Action: go to shelf 5
+State 10:
+1. Step Index in the Plan: 1
+2. Objects: Door, Staircase
+3. Action: go to drawer 1
+State 11:
+1. Step Index in the Plan: Unknown
+2. Objects: Floor Lamp, Bookshelf, Sofa, Coffee Table, End Table
+3. Action: go to sidetable 2
+State 12:
+1. Step Index in the Plan: 1
+2. Objects: Table, Papers, Blue Funnel, Blue Book, Side Table, Plate (not visible but inferred)
+3. Action: take plate 3 from sidetable 2
+State 13:
+1. Step Index in the Plan: 2
+2. Objects: Various Items, Plate (not visible but inferred to be with us)
+3. Action: examine plate 3
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 1
+(5): go to shelf 2
+(6): go to sofa 1
+(7): go to coffeetable 1
+(8): go to sidetable 1
+(9): go to drawer 1
+(10): go to shelf 3
+(11): go to shelf 4
+(12): go to shelf 5
+(13): put plate 3 in/on sidetable 2
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan based on the history provided is step 3, "Locate a floorlamp." The previous actions have involved finding and examining the plate, which corresponds to steps 1 and 2 of the plan. In the current observation, we have a blue vase, papers, a blue framed artwork, a door, a wall, and a table visible. However, there is no floorlamp in sight, which is required for step 3. Therefore, we need to move to a location where a floorlamp might be found. Since the "floorlamp" was mentioned in the history information during State 11, but it is not mentioned as an object in the current observation, we can infer that the floorlamp is not in the current room. Among the admissible actions, none specifically mention moving to a floorlamp, but in the historical data, it suggests that the floorlamp was found in the vicinity of a sofa. Therefore, the most appropriate action would be to move to the sofa in hopes of finding the floorlamp in the same area again.
+
+The Most Appropriate Action: (6): go to sofa 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to sofa 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 12.205368280410767 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan based on the history provided is step 3, "Locate a floorlamp." The previous actions have involved finding and examining the plate, which corresponds to steps 1 and 2 of the plan. In the current observation, we have a blue vase, papers, a blue framed artwork, a door, a wall, and a table visible. However, there is no floorlamp in sight, which is required for step 3. Therefore, we need to move to a location where a floorlamp might be found. Since the "floorlamp" was mentioned in the history information during State 11, but it is not mentioned as an object in the current observation, we can infer that the floorlamp is not in the current room. Among the admissible actions, none specifically mention moving to a floorlamp, but in the historical data, it suggests that the floorlamp was found in the vicinity of a sofa. Therefore, the most appropriate action would be to move to the sofa in hopes of finding the floorlamp in the same area again.
+
+The Most Appropriate Action: (6): go to sofa 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 3
+2. Objects: Blue Vase, Papers, Blue Framed Artwork, Door, Wall, Table
+3. Action: go to sofa 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 5. On the sofa 1, you see a pillow 1.
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------14-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['couch', 'framed artwork', 'wall', 'patterned carpet']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit, Shelf
+3. Action: go to drawer 1
+State 5:
+1. Step Index in the Plan: 1
+2. Objects: Bookshelf, Desk, Sofa, Floor Lamp
+3. Action: go to shelf 2
+State 6:
+1. Step Index in the Plan: 2
+2. Objects: Television, TV Stand, Trash Can, Cable
+3. Action: go to coffeetable 1
+State 7:
+2. Step Index in the Plan: 2
+3. Objects: Television, Glass Coffee Table, Garbage Bin, Electrical Outlet, Cable
+4. Action: go to shelf 3
+State 8:
+1. Step Index in the Plan: 1
+2. Objects: Door, Doorknob, Shelf, Wall, Floor
+3. Action: go to shelf 4
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit
+3. Action: go to shelf 5
+State 10:
+1. Step Index in the Plan: 1
+2. Objects: Door, Staircase
+3. Action: go to drawer 1
+State 11:
+1. Step Index in the Plan: Unknown
+2. Objects: Floor Lamp, Bookshelf, Sofa, Coffee Table, End Table
+3. Action: go to sidetable 2
+State 12:
+1. Step Index in the Plan: 1
+2. Objects: Table, Papers, Blue Funnel, Blue Book, Side Table, Plate (not visible but inferred)
+3. Action: take plate 3 from sidetable 2
+State 13:
+1. Step Index in the Plan: 2
+2. Objects: Various Items, Plate (not visible but inferred to be with us)
+3. Action: examine plate 3
+State 14:
+1. Step Index in the Plan: 3
+2. Objects: Blue Vase, Papers, Blue Framed Artwork, Door, Wall, Table
+3. Action: go to sofa 1
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 1
+(5): go to shelf 2
+(6): go to sofa 1
+(7): go to coffeetable 1
+(8): go to sidetable 1
+(9): go to sidetable 2
+(10): go to drawer 1
+(11): go to shelf 3
+(12): go to shelf 4
+(13): go to shelf 5
+(14): put plate 3 in/on sofa 1
+(15): examine sofa 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: Based on the history information and the current observation, the agent has already found a plate (Step 1 completed) and picked up the plate (Step 2 completed). The agent is currently on Step 3 of the plan, which is to locate a floorlamp. The current observation does not display a floorlamp; however, from the historical data, we know that in State 5, a floorlamp was observed when the action "go to shelf 2" was taken. The visible objects in the current observation are a couch, framed artwork, wall, and patterned carpet. None of these objects are related to the current step in the plan (Step 3: Locate a floorlamp). Since we know from the history that the floorlamp was seen when the agent went to shelf 2, the best course of action would be to return to that location to proceed with the next step in the plan.
+
+The Most Appropriate Action: (5): go to shelf 2
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to shelf 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 10.23779296875 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: Based on the history information and the current observation, the agent has already found a plate (Step 1 completed) and picked up the plate (Step 2 completed). The agent is currently on Step 3 of the plan, which is to locate a floorlamp. The current observation does not display a floorlamp; however, from the historical data, we know that in State 5, a floorlamp was observed when the action "go to shelf 2" was taken. The visible objects in the current observation are a couch, framed artwork, wall, and patterned carpet. None of these objects are related to the current step in the plan (Step 3: Locate a floorlamp). Since we know from the history that the floorlamp was seen when the agent went to shelf 2, the best course of action would be to return to that location to proceed with the next step in the plan.
+
+The Most Appropriate Action: (5): go to shelf 2
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 3
+2. Objects: Couch, Framed Artwork, Wall, Patterned Carpet
+3. Action: go to shelf 2
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 4. On the shelf 2, you see a television 1, a statue 1, and a creditcard 1.
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------15-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['television', 'TV stand', 'glass table', 'trash can', 'decorative rug']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit, Shelf
+3. Action: go to drawer 1
+State 5:
+1. Step Index in the Plan: 1
+2. Objects: Bookshelf, Desk, Sofa, Floor Lamp
+3. Action: go to shelf 2
+State 6:
+1. Step Index in the Plan: 2
+2. Objects: Television, TV Stand, Trash Can, Cable
+3. Action: go to coffeetable 1
+State 7:
+2. Step Index in the Plan: 2
+3. Objects: Television, Glass Coffee Table, Garbage Bin, Electrical Outlet, Cable
+4. Action: go to shelf 3
+State 8:
+1. Step Index in the Plan: 1
+2. Objects: Door, Doorknob, Shelf, Wall, Floor
+3. Action: go to shelf 4
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit
+3. Action: go to shelf 5
+State 10:
+1. Step Index in the Plan: 1
+2. Objects: Door, Staircase
+3. Action: go to drawer 1
+State 11:
+1. Step Index in the Plan: Unknown
+2. Objects: Floor Lamp, Bookshelf, Sofa, Coffee Table, End Table
+3. Action: go to sidetable 2
+State 12:
+1. Step Index in the Plan: 1
+2. Objects: Table, Papers, Blue Funnel, Blue Book, Side Table, Plate (not visible but inferred)
+3. Action: take plate 3 from sidetable 2
+State 13:
+1. Step Index in the Plan: 2
+2. Objects: Various Items, Plate (not visible but inferred to be with us)
+3. Action: examine plate 3
+State 14:
+1. Step Index in the Plan: 3
+2. Objects: Blue Vase, Papers, Blue Framed Artwork, Door, Wall, Table
+3. Action: go to sofa 1
+State 15:
+1. Step Index in the Plan: 3
+2. Objects: Couch, Framed Artwork, Wall, Patterned Carpet
+3. Action: go to shelf 2
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 1
+(5): go to sofa 1
+(6): go to coffeetable 1
+(7): go to sidetable 1
+(8): go to sidetable 2
+(9): go to drawer 1
+(10): go to shelf 3
+(11): go to shelf 4
+(12): go to shelf 5
+(13): put plate 3 in/on shelf 2
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to locate a floorlamp, which corresponds to step 3 of the plan. The current observation does not include a floorlamp, so we cannot complete this step with the current observation. The objects visible in the current observation are a television, a TV stand, a glass table, a trash can, and a decorative rug. From the history, we know that the agent has already picked up the plate (step 2 completed) and is now supposed to find a floorlamp to proceed with the plan. None of the admissible actions mention a floorlamp directly, so the agent will need to move to another location that could potentially have a floorlamp. The last known observation of a floorlamp was in State 11, where the objects included a floor lamp, bookshelf, sofa, coffee table, and end table. Since "go to sofa 1" is an action that brings us back to a location where a floorlamp was previously seen, it is the most appropriate next action.
+
+The Most Appropriate Action: (5): go to sofa 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to sofa 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 9.747969627380371 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to locate a floorlamp, which corresponds to step 3 of the plan. The current observation does not include a floorlamp, so we cannot complete this step with the current observation. The objects visible in the current observation are a television, a TV stand, a glass table, a trash can, and a decorative rug. From the history, we know that the agent has already picked up the plate (step 2 completed) and is now supposed to find a floorlamp to proceed with the plan. None of the admissible actions mention a floorlamp directly, so the agent will need to move to another location that could potentially have a floorlamp. The last known observation of a floorlamp was in State 11, where the objects included a floor lamp, bookshelf, sofa, coffee table, and end table. Since "go to sofa 1" is an action that brings us back to a location where a floorlamp was previously seen, it is the most appropriate next action.
+
+The Most Appropriate Action: (5): go to sofa 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 3
+2. Objects: Television, TV Stand, Glass Table, Trash Can, Decorative Rug
+3. Action: go to sofa 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 5. On the sofa 1, you see a pillow 1.
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------16-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['picture frame', 'sofa', 'wall', 'geometric pattern']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit, Shelf
+3. Action: go to drawer 1
+State 5:
+1. Step Index in the Plan: 1
+2. Objects: Bookshelf, Desk, Sofa, Floor Lamp
+3. Action: go to shelf 2
+State 6:
+1. Step Index in the Plan: 2
+2. Objects: Television, TV Stand, Trash Can, Cable
+3. Action: go to coffeetable 1
+State 7:
+2. Step Index in the Plan: 2
+3. Objects: Television, Glass Coffee Table, Garbage Bin, Electrical Outlet, Cable
+4. Action: go to shelf 3
+State 8:
+1. Step Index in the Plan: 1
+2. Objects: Door, Doorknob, Shelf, Wall, Floor
+3. Action: go to shelf 4
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit
+3. Action: go to shelf 5
+State 10:
+1. Step Index in the Plan: 1
+2. Objects: Door, Staircase
+3. Action: go to drawer 1
+State 11:
+1. Step Index in the Plan: Unknown
+2. Objects: Floor Lamp, Bookshelf, Sofa, Coffee Table, End Table
+3. Action: go to sidetable 2
+State 12:
+1. Step Index in the Plan: 1
+2. Objects: Table, Papers, Blue Funnel, Blue Book, Side Table, Plate (not visible but inferred)
+3. Action: take plate 3 from sidetable 2
+State 13:
+1. Step Index in the Plan: 2
+2. Objects: Various Items, Plate (not visible but inferred to be with us)
+3. Action: examine plate 3
+State 14:
+1. Step Index in the Plan: 3
+2. Objects: Blue Vase, Papers, Blue Framed Artwork, Door, Wall, Table
+3. Action: go to sofa 1
+State 15:
+1. Step Index in the Plan: 3
+2. Objects: Couch, Framed Artwork, Wall, Patterned Carpet
+3. Action: go to shelf 2
+State 16:
+1. Step Index in the Plan: 3
+2. Objects: Television, TV Stand, Glass Table, Trash Can, Decorative Rug
+3. Action: go to sofa 1
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 1
+(5): go to sofa 1
+(6): go to coffeetable 1
+(7): go to sidetable 1
+(8): go to sidetable 2
+(9): go to drawer 1
+(10): go to shelf 3
+(11): go to shelf 4
+(12): go to shelf 5
+(13): put plate 3 in/on sofa 1
+(14): examine plate 3
+(15): examine sofa 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to locate a floorlamp, which corresponds to step 3. In the current observation, the agent appears to be looking at a plate with a geometric pattern, and based on the history, the plate has been picked up already, which means steps 1 and 2 of the plan have been completed. The objects visible in the current observation are a picture frame, a sofa, a wall, and the plate with a geometric pattern. Since the floorlamp is not visible in the current observation, we cannot complete the current step with what we see. Therefore, the most appropriate action is to move to a location where the floorlamp may be found. Looking at the admissible actions, none of them directly suggest a move to a location with a floorlamp; however, in state 11, the agent observed a floorlamp while at the sofa. Thus, the best action to take would be to go to the sofa in hopes of reorienting to find the floorlamp again.
+
+The Most Appropriate Action: (5): go to sofa 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to sofa 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 10.225589275360107 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to locate a floorlamp, which corresponds to step 3. In the current observation, the agent appears to be looking at a plate with a geometric pattern, and based on the history, the plate has been picked up already, which means steps 1 and 2 of the plan have been completed. The objects visible in the current observation are a picture frame, a sofa, a wall, and the plate with a geometric pattern. Since the floorlamp is not visible in the current observation, we cannot complete the current step with what we see. Therefore, the most appropriate action is to move to a location where the floorlamp may be found. Looking at the admissible actions, none of them directly suggest a move to a location with a floorlamp; however, in state 11, the agent observed a floorlamp while at the sofa. Thus, the best action to take would be to go to the sofa in hopes of reorienting to find the floorlamp again.
+
+The Most Appropriate Action: (5): go to sofa 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 3
+2. Objects: Picture Frame, Sofa, Wall, Plate (with a geometric pattern)
+3. Action: go to sofa 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:Nothing happens.
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------17-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['picture frame', 'sofa', 'wall', 'optical illusion artwork']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit, Shelf
+3. Action: go to drawer 1
+State 5:
+1. Step Index in the Plan: 1
+2. Objects: Bookshelf, Desk, Sofa, Floor Lamp
+3. Action: go to shelf 2
+State 6:
+1. Step Index in the Plan: 2
+2. Objects: Television, TV Stand, Trash Can, Cable
+3. Action: go to coffeetable 1
+State 7:
+2. Step Index in the Plan: 2
+3. Objects: Television, Glass Coffee Table, Garbage Bin, Electrical Outlet, Cable
+4. Action: go to shelf 3
+State 8:
+1. Step Index in the Plan: 1
+2. Objects: Door, Doorknob, Shelf, Wall, Floor
+3. Action: go to shelf 4
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit
+3. Action: go to shelf 5
+State 10:
+1. Step Index in the Plan: 1
+2. Objects: Door, Staircase
+3. Action: go to drawer 1
+State 11:
+1. Step Index in the Plan: Unknown
+2. Objects: Floor Lamp, Bookshelf, Sofa, Coffee Table, End Table
+3. Action: go to sidetable 2
+State 12:
+1. Step Index in the Plan: 1
+2. Objects: Table, Papers, Blue Funnel, Blue Book, Side Table, Plate (not visible but inferred)
+3. Action: take plate 3 from sidetable 2
+State 13:
+1. Step Index in the Plan: 2
+2. Objects: Various Items, Plate (not visible but inferred to be with us)
+3. Action: examine plate 3
+State 14:
+1. Step Index in the Plan: 3
+2. Objects: Blue Vase, Papers, Blue Framed Artwork, Door, Wall, Table
+3. Action: go to sofa 1
+State 15:
+1. Step Index in the Plan: 3
+2. Objects: Couch, Framed Artwork, Wall, Patterned Carpet
+3. Action: go to shelf 2
+State 16:
+1. Step Index in the Plan: 3
+2. Objects: Television, TV Stand, Glass Table, Trash Can, Decorative Rug
+3. Action: go to sofa 1
+State 17:
+1. Step Index in the Plan: 3
+2. Objects: Picture Frame, Sofa, Wall, Plate (with a geometric pattern)
+3. Action: go to sofa 1
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 1
+(5): go to sofa 1
+(6): go to coffeetable 1
+(7): go to sidetable 1
+(8): go to sidetable 2
+(9): go to drawer 1
+(10): go to shelf 3
+(11): go to shelf 4
+(12): go to shelf 5
+(13): put plate 3 in/on sofa 1
+(14): examine plate 3
+(15): examine sofa 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: Based on the history, the agent has picked up the plate (Step 2) and is currently trying to locate a floorlamp (Step 3). In the current observation, the agent is facing a sofa and a wall with a picture frame, but there is no floorlamp visible. Considering the plan, the agent needs to locate a floorlamp to proceed to the next steps. Since none of the admissible actions directly involve finding or interacting with a floorlamp, the agent must select an action that could potentially reveal the location of a floorlamp or move to a vantage point that provides a better view of the room.
+
+The Most Appropriate Action: (1): go to armchair 1
+
+Choosing to go to the armchair may provide a new perspective of the room, potentially revealing the location of the floorlamp and allowing the agent to continue following the plan.
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to armchair 1
+
+Choosing to go to the armchair may provide a new perspective of the room, potentially revealing the location of the floorlamp and allowing the agent to continue following the plan
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 10.764436960220337 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: Based on the history, the agent has picked up the plate (Step 2) and is currently trying to locate a floorlamp (Step 3). In the current observation, the agent is facing a sofa and a wall with a picture frame, but there is no floorlamp visible. Considering the plan, the agent needs to locate a floorlamp to proceed to the next steps. Since none of the admissible actions directly involve finding or interacting with a floorlamp, the agent must select an action that could potentially reveal the location of a floorlamp or move to a vantage point that provides a better view of the room.
+
+The Most Appropriate Action: (1): go to armchair 1
+
+Choosing to go to the armchair may provide a new perspective of the room, potentially revealing the location of the floorlamp and allowing the agent to continue following the plan.
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 3
+2. Objects: Sofa, Wall, Picture Frame
+3. Action: go to armchair 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:Nothing happens.
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------18-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['picture frame', 'wall', 'sofa', 'blue patterned object']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit, Shelf
+3. Action: go to drawer 1
+State 5:
+1. Step Index in the Plan: 1
+2. Objects: Bookshelf, Desk, Sofa, Floor Lamp
+3. Action: go to shelf 2
+State 6:
+1. Step Index in the Plan: 2
+2. Objects: Television, TV Stand, Trash Can, Cable
+3. Action: go to coffeetable 1
+State 7:
+2. Step Index in the Plan: 2
+3. Objects: Television, Glass Coffee Table, Garbage Bin, Electrical Outlet, Cable
+4. Action: go to shelf 3
+State 8:
+1. Step Index in the Plan: 1
+2. Objects: Door, Doorknob, Shelf, Wall, Floor
+3. Action: go to shelf 4
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit
+3. Action: go to shelf 5
+State 10:
+1. Step Index in the Plan: 1
+2. Objects: Door, Staircase
+3. Action: go to drawer 1
+State 11:
+1. Step Index in the Plan: Unknown
+2. Objects: Floor Lamp, Bookshelf, Sofa, Coffee Table, End Table
+3. Action: go to sidetable 2
+State 12:
+1. Step Index in the Plan: 1
+2. Objects: Table, Papers, Blue Funnel, Blue Book, Side Table, Plate (not visible but inferred)
+3. Action: take plate 3 from sidetable 2
+State 13:
+1. Step Index in the Plan: 2
+2. Objects: Various Items, Plate (not visible but inferred to be with us)
+3. Action: examine plate 3
+State 14:
+1. Step Index in the Plan: 3
+2. Objects: Blue Vase, Papers, Blue Framed Artwork, Door, Wall, Table
+3. Action: go to sofa 1
+State 15:
+1. Step Index in the Plan: 3
+2. Objects: Couch, Framed Artwork, Wall, Patterned Carpet
+3. Action: go to shelf 2
+State 16:
+1. Step Index in the Plan: 3
+2. Objects: Television, TV Stand, Glass Table, Trash Can, Decorative Rug
+3. Action: go to sofa 1
+State 17:
+1. Step Index in the Plan: 3
+2. Objects: Picture Frame, Sofa, Wall, Plate (with a geometric pattern)
+3. Action: go to sofa 1
+State 18:
+1. Step Index in the Plan: 3
+2. Objects: Sofa, Wall, Picture Frame
+3. Action: go to armchair 1
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 1
+(5): go to shelf 2
+(6): go to sofa 1
+(7): go to coffeetable 1
+(8): go to sidetable 1
+(9): go to sidetable 2
+(10): go to drawer 1
+(11): go to shelf 3
+(12): go to shelf 4
+(13): go to shelf 5
+(14): put plate 3 in/on sofa 1
+(15): examine plate 3
+(16): examine sofa 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to locate a floorlamp, which corresponds to step 3 of the plan. The current place, based on the objects identified in the image, is near a sofa and a wall with a picture frame. The objects related to the task in the current observation are a sofa and a picture frame; however, the floorlamp is not visible in this image. Since the floorlamp is not within the current field of view and is necessary to proceed to step 4 of the plan, we need to locate it. Looking at the admissible actions, none directly suggest moving towards a floorlamp, but based on previous history, we know that the floorlamp was mentioned in State 5 near a sofa. The action "go to sofa 1" may help us get closer to the position where the floorlamp was previously seen.
+
+The Most Appropriate Action: (6): go to sofa 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to sofa 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 11.464653968811035 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: The current step in the plan is to locate a floorlamp, which corresponds to step 3 of the plan. The current place, based on the objects identified in the image, is near a sofa and a wall with a picture frame. The objects related to the task in the current observation are a sofa and a picture frame; however, the floorlamp is not visible in this image. Since the floorlamp is not within the current field of view and is necessary to proceed to step 4 of the plan, we need to locate it. Looking at the admissible actions, none directly suggest moving towards a floorlamp, but based on previous history, we know that the floorlamp was mentioned in State 5 near a sofa. The action "go to sofa 1" may help us get closer to the position where the floorlamp was previously seen.
+
+The Most Appropriate Action: (6): go to sofa 1
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Step Index in the Plan: 3
+2. Objects: Sofa, Picture Frame
+3. Action: go to sofa 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:Nothing happens.
+
+--------------------------------------------------------------------------------------------------------------------------task: 3---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------19-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to look at plate under the floorlamp. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a plate.
+2. Pick up the plate.
+3. Locate a floorlamp.
+4. Turn on the floorlamp.
+5. Stand under the floorlamp with the plate in hand.
+6. Look at the plate while standing under the floorlamp.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+Objects in The Image: ['picture frame', 'sofa', 'wall', 'decorative pillow']
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+State 0:
+No history.
+State 1:
+1. Step Index in the Plan: 1
+2. Objects: Television, Glass Table
+3. Action: go to shelf 1
+State 2:
+1. Step Index in the Plan: 1
+2. Objects: Television, TV Stand, Trash Bin
+3. Action: go to shelf 3
+State 3:
+1. Step Index in the Plan: 2
+2. Objects: Door, Shelf (number unspecified)
+3. Action: go to shelf 5
+State 4:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit, Shelf
+3. Action: go to drawer 1
+State 5:
+1. Step Index in the Plan: 1
+2. Objects: Bookshelf, Desk, Sofa, Floor Lamp
+3. Action: go to shelf 2
+State 6:
+1. Step Index in the Plan: 2
+2. Objects: Television, TV Stand, Trash Can, Cable
+3. Action: go to coffeetable 1
+State 7:
+2. Step Index in the Plan: 2
+3. Objects: Television, Glass Coffee Table, Garbage Bin, Electrical Outlet, Cable
+4. Action: go to shelf 3
+State 8:
+1. Step Index in the Plan: 1
+2. Objects: Door, Doorknob, Shelf, Wall, Floor
+3. Action: go to shelf 4
+State 9:
+1. Step Index in the Plan: 1
+2. Objects: Door, Shelving Unit
+3. Action: go to shelf 5
+State 10:
+1. Step Index in the Plan: 1
+2. Objects: Door, Staircase
+3. Action: go to drawer 1
+State 11:
+1. Step Index in the Plan: Unknown
+2. Objects: Floor Lamp, Bookshelf, Sofa, Coffee Table, End Table
+3. Action: go to sidetable 2
+State 12:
+1. Step Index in the Plan: 1
+2. Objects: Table, Papers, Blue Funnel, Blue Book, Side Table, Plate (not visible but inferred)
+3. Action: take plate 3 from sidetable 2
+State 13:
+1. Step Index in the Plan: 2
+2. Objects: Various Items, Plate (not visible but inferred to be with us)
+3. Action: examine plate 3
+State 14:
+1. Step Index in the Plan: 3
+2. Objects: Blue Vase, Papers, Blue Framed Artwork, Door, Wall, Table
+3. Action: go to sofa 1
+State 15:
+1. Step Index in the Plan: 3
+2. Objects: Couch, Framed Artwork, Wall, Patterned Carpet
+3. Action: go to shelf 2
+State 16:
+1. Step Index in the Plan: 3
+2. Objects: Television, TV Stand, Glass Table, Trash Can, Decorative Rug
+3. Action: go to sofa 1
+State 17:
+1. Step Index in the Plan: 3
+2. Objects: Picture Frame, Sofa, Wall, Plate (with a geometric pattern)
+3. Action: go to sofa 1
+State 18:
+1. Step Index in the Plan: 3
+2. Objects: Sofa, Wall, Picture Frame
+3. Action: go to armchair 1
+State 19:
+1. Step Index in the Plan: 3
+2. Objects: Sofa, Picture Frame
+3. Action: go to sofa 1
+
+
+**Admissible Actions**
+(1): go to armchair 1
+(2): go to garbagecan 1
+(3): go to tvstand 1
+(4): go to shelf 1
+(5): go to shelf 2
+(6): go to sofa 1
+(7): go to coffeetable 1
+(8): go to sidetable 1
+(9): go to sidetable 2
+(10): go to drawer 1
+(11): go to shelf 3
+(12): go to shelf 4
+(13): go to shelf 5
+(14): put plate 3 in/on sofa 1
+(15): examine plate 3
+(16): examine sofa 1
+
+**Analysis Guideline**
+1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. We must determine and provide the single action which must be in the **Admissible Actions**.
+6. If there is no history available, we are at the first step and the current place is "Unknown".
+
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: Based on the history information, the agent has already found and picked up a plate, which corresponds to steps 1 and 2 in the plan. The current step in the plan is to locate a floorlamp, which is step 3. The current observation shows a picture frame, a sofa, a wall, and a decorative pillow, but no floorlamp is visible. Since the goal is to stand under the floorlamp with the plate in hand, and the floorlamp was previously seen in State 11, none of the objects in the current observation help us complete this step. Therefore, we must move to a location where the floorlamp is visible. Looking at the admissible actions, there are no specific actions that mention moving towards a floorlamp. However, considering the historical states, the floorlamp was previously mentioned in State 5 where the agent was directed to go to shelf 2 in a room that also contained a bookshelf, desk, and sofa. Since "go to shelf 2" is an admissible action and it might take us closer to where the floorlamp was last seen, it would be the best action to take at this moment.
+
+The Most Appropriate Action: (5): go to shelf 2
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to shelf 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 12.414974927902222 seconds
+
+Total Money: 0
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history information, we are at the first step in the plan, which is to find a statue. The current place is unknown. In the current observation, we see a floorlamp next to an armchair with a small table that has a small object on it, which could potentially be the statue we are looking for. Since the plan requires us to find a statue first and it appears there might be one on the table next to the armchair, we should investigate this object to determine if it is the statue we need.
+The Most Appropriate Action: (1): go to armchair 1
+
+**Summary**
+1. Step Index in the Plan: 1
+2. Objects: Floorlamp, Armchair, Small Table, Small Object (potential statue)
+3. Action: go to armchair 1
+
+**Context**
+Analysis: Based on the history information, the agent has already found and picked up a plate, which corresponds to steps 1 and 2 in the plan. The current step in the plan is to locate a floorlamp, which is step 3. The current observation shows a picture frame, a sofa, a wall, and a decorative pillow, but no floorlamp is visible. Since the goal is to stand under the floorlamp with the plate in hand, and the floorlamp was previously seen in State 11, none of the objects in the current observation help us complete this step. Therefore, we must move to a location where the floorlamp is visible. Looking at the admissible actions, there are no specific actions that mention moving towards a floorlamp. However, considering the historical states, the floorlamp was previously mentioned in State 5 where the agent was directed to go to shelf 2 in a room that also contained a bookshelf, desk, and sofa. Since "go to shelf 2" is an admissible action and it might take us closer to where the floorlamp was last seen, it would be the best action to take at this moment.
+
+The Most Appropriate Action: (5): go to shelf 2
+
+Please summarize the context by following above examples when providing the summary, and ensure that only the summary is included, without any extra explanation.
+
+**Summary**
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+2. Step Index in the Plan: 3
+3. Objects: Picture Frame, Sofa, Wall, Decorative Pillow
+3. Action: go to shelf 2
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 4. On the shelf 2, you see a television 1, a statue 1, and a creditcard 1.
+
+-----------------------------------------------------------------

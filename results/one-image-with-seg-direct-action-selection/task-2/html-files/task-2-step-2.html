@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Log</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .images-container {
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .images-container img {
+            margin: 10px;
+            max-width: 15%; 
+            height: auto;
+        }
+        .content-container {
+            text-align: left;
+            margin: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="images-container"><img src="../images/task-2-2.jpg" alt="Image" style="max-width: 100%; height: auto;"></div>
+    <div class="content-container">---------------------------------------------------------task: 2---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------2-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+Image1:
+<image>
+**Instruction**
+1. Analyze the provided image to identify all visible household objects, focusing on those relevant to the task description "look at pen under the desklamp."
+2. Use the analysis of the image and the task hint "The agent must find an object of the desired type, locate and turn on a light source with the desired object in-hand." to answer the question: what is the most reasonable action in the choices for the task description "look at pen under the desklamp"?
+4. Decide and write the answer using the template: The answer is: (i): <selected_action>, where i is the real number. If there is no desired object in the image, search every place based on **Initial Observation** to find the object. And if no one is exactly correct, choose a similar answer.
+
+**Initial Observation**
+You are in the middle of a room. Looking quickly around you, you can see bed (1-2), dresser (1), drawer (1-11), sidetable (1-2), desk (1), garbagecan (1), safe (1)
+
+**Answer Choices**
+(1): go to bed 1
+(2): go to dresser 1
+(3): go to bed 2
+(4): go to drawer 1
+(5): go to sidetable 1
+(6): go to drawer 2
+(7): go to sidetable 2
+(8): go to drawer 3
+(9): go to drawer 4
+(10): go to garbagecan 1
+(11): go to drawer 5
+(12): go to drawer 6
+(13): go to drawer 7
+(14): go to drawer 8
+(15): go to drawer 9
+(16): go to drawer 10
+(17): go to drawer 11
+(18): go to safe 1
+(19): take bowl 1 from desk 1
+(20): take mug 1 from desk 1
+(21): take pencil 1 from desk 1
+
+**Answer**
+Let's think step by step by following the instructions.
+----------------------------------------
+
+----------------------------------------
+
+Original Response:
+The task is to "look at pen under the desklamp." The image provided shows a desk with a bowl, a mug, and a pencil labeled as "pencil 1" on it. There is no pen visible in the image, nor is there any desklamp visible.
+
+Based on the **Initial Observation**, there are several places to search for the pen, such as the bed, dresser, sidetable, and drawers. Since we are looking for a pen and not a pencil, taking the pencil from the desk would not fulfill the task description. Since there is no desklamp visible in the image, we cannot perform any action related to turning on a light source with the desired object in hand.
+
+Therefore, the most reasonable action would be to search every place based on the **Initial Observation** to find the pen. Out of the provided answer choices, the drawers seem to be the most likely place to find a pen, as pens are commonly stored in drawers.
+
+The answer is: (4): go to drawer 1.
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine Original VLM Response and Get Pure Action: go to drawer 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 9.275767087936401 seconds
+
+Total Money: 0.49191000000000007
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 3. The drawer 1 is closed. 
+
+-----------------------------------------------------------------
+UNSUCCEED
+</div>
+</body>
+</html>

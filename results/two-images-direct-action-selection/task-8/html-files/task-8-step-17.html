@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Log</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        .images-container {
+            margin: 20px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .images-container img {
+            margin: 10px;
+            max-width: 15%; 
+            height: auto;
+        }
+        .content-container {
+            text-align: left;
+            margin: 20px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="images-container"><img src="../images/task-8-16.jpg" alt="Image" style="max-width: 100%; height: auto;"><img src="../images/task-8-17.jpg" alt="Image" style="max-width: 100%; height: auto;"></div>
+    <div class="content-container">---------------------------------------------------------task: 8---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------17-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+Image1:
+<image>
+Image2:
+<image>
+**Instruction**
+1. Analyze the provided images to identify all visible household objects and compare the difference between images (e.h. whether the object is opened or not and taken on hand or not), focusing on those relevant to the task description "put a laptop in desk."
+2. Use the analysis of images and the task hint "The agent must find an object of the desired type, pick it up, find the correct location to place it, and put it down there." to answer the question: what is the most reasonable action in the choices for the task description "put a laptop in desk"?
+3. Decide and write the answer using the template: The answer is: (i): <selected_action>, where i is the real number. If there is no desired object in images, search every place based on **Initial Observation** to find the object. And if no one is exactly correct, choose a similar answer.
+
+**Initial Observation**
+You are in the middle of a room. Looking quickly around you, you can see bed (1), garbagecan (1), desk (1), sidetable (1), drawer (1-5), laundryhamper (1)
+
+**Answer Choices**
+(1): go to bed 1
+(2): go to garbagecan 1
+(3): go to desk 1
+(4): go to sidetable 1
+(5): go to drawer 1
+(6): go to laundryhamper 1
+(7): go to drawer 3
+(8): go to drawer 4
+(9): go to drawer 5
+(10): open drawer 2
+(11): close drawer 2
+(12): examine drawer 2
+
+
+**Answer**
+Let's think step by step by following the instructions.
+----------------------------------------
+
+----------------------------------------
+
+Original Response:
+First, we analyze the provided images. In both images, we can see a sidetable with a CD and a book on it, and a mirror reflecting a bed with a panda plush on it. There is no visible laptop on the sidetable or any other objects that could be confused with a laptop.
+
+Based on the initial observation, there are several places to search for the laptop, such as the desk, drawers, and laundry hamper. The task description specifies "put a laptop in desk," which implies that the laptop is not already on the desk, so we can eliminate "go to desk 1" as the most reasonable action for now.
+
+Among the answer choices, the only actions that involve searching for an object are "go to drawer X" and "open drawer 2." Since we do not have information about the contents of the drawers, it makes sense to start with the closest drawer and work our way through them. The task hint suggests that the agent must find the object, pick it up, and then place it in the correct location. Therefore, the most reasonable action would be to start with opening a drawer to search for the laptop.
+
+The answer is: (10): open drawer 2.
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine Original VLM Response and Get Pure Action: open drawer 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 11.732430696487427 seconds
+
+Total Money: 3.4754600000000027
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You open the drawer 2. The drawer 2 is open. In it, you see a book 1, a cd 1, and a pen 2.
+
+-----------------------------------------------------------------
+UNSUCCEED
+</div>
+</body>
+</html>

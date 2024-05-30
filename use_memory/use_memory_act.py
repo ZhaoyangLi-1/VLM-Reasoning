@@ -11,6 +11,7 @@ from utils import *
 from utils.logger import Global_Logger, Task_Logger
 import ast
 import csv
+from agi.utils.chatbot_utils import DecodingArguments, ChatBot
 
 
 ALFWORLD_DATA = os.getenv("ALFWORLD_DATA")
@@ -51,7 +52,11 @@ def get_prompts():
     extract_related_objects_path = os.path.join(PROMPT_PATH, "use-memory/extract_related_objects.txt")
     with open(extract_related_objects_path, "r") as f:
         extract_related_objects_prompt = f.read()
-    return generate_plan_prompt, vlm_prompt_for_one_img, summary_promp, task_hints, extract_related_objects_prompt
+    generate_object_list_path = os.path.join(PROMPT_PATH, "use-memory/list_objects.txt")
+    with open(generate_object_list_path, "r") as f:
+        generate_object_list_prompt = f.read()
+    
+    return generate_plan_prompt, vlm_prompt_for_one_img, summary_promp, task_hints, extract_related_objects_prompt, generate_object_list_prompt
 
 
 def delete_inefficient_action(admissible_commands, no_try_actions):
@@ -59,13 +64,11 @@ def delete_inefficient_action(admissible_commands, no_try_actions):
 
 
 def test_tasks(args):
-    generate_plan_prompt, vlm_prompt_for_one_img, summary_promp, task_hints, extract_related_objects_prompt = get_prompts()
+    generate_plan_prompt, vlm_prompt_for_one_img, summary_promp, task_hints, extract_related_objects_prompt, generate_object_list_prompt = get_prompts()
     env_url = "http://127.0.0.1:" + str(args.env_url)
     # initial VLM and LLM model
     os.environ["AGI_ROOT"] = "/home/zhaoyang/projects/neural-reasoning"
     sys.path.append(os.path.join(os.environ["AGI_ROOT"]))
-    # from agi.utils.openai_utils import get_total_money
-    from agi.utils.chatbot_utils import DecodingArguments, ChatBot
     action_vlm_decoding_args = DecodingArguments(
         max_tokens=8192,
         n=1,
@@ -73,9 +76,10 @@ def test_tasks(args):
         image_detail="auto",
         )
     actor_vlm_model = ChatBot(args.vlm_model)
+
+    # breakpoint()
     print(f"VLM Model: {args.vlm_model}")
     # Setup VLM(gpt4-v) model as action selector and current attempts relfector
-   
     llm_decoding_args = DecodingArguments(
         max_tokens=1024,
         n=1,
@@ -115,8 +119,6 @@ def test_tasks(args):
             eval(requests.post(env_url + "/reset", json={"json_file": json_file}).text)
         )
         obs, infos = loads(text)
-        # first one is initial observation
-        # ini_obs = refine_ini_obs(ini_obs)
         receps, task_desc, ini_obs = format_initial_obs_to_get_rceps(obs)
         admissible_commands = delete_examine_action_for_receps(infos["admissible_commands"][0], receps)
         admissible_commands = format_admissible_commands(admissible_commands)
@@ -157,17 +159,20 @@ def test_tasks(args):
             images_log.append(image)
             image_paths_queue.append(image_path)
             
+            messages = {"text": generate_object_list_prompt,"images": list(images_queue)}
+            object_list = actor_vlm_model.call_model(messages, decoding_args=action_vlm_decoding_args, return_list=False).strip()
             
             if all_history is None:
                 all_history = f"State {0}:\nNo history.\n"
-                one_image_prompt = vlm_prompt_for_one_img.format(task_description=task_desc, plan=plan, history="No history.", admissible_commands=admissible_commands)
+                one_image_prompt = vlm_prompt_for_one_img.format(object_list=object_list, task_description=task_desc, plan=plan, history="No history.", admissible_commands=admissible_commands)
             else:
-                one_image_prompt = vlm_prompt_for_one_img.format(task_description=task_desc, plan=plan, history=all_history, admissible_commands=admissible_commands)
+                one_image_prompt = vlm_prompt_for_one_img.format(object_list=object_list, task_description=task_desc, plan=plan, history=all_history, admissible_commands=admissible_commands)
             
             
             messages = {"text": one_image_prompt,"images": list(images_queue)}
             start_time = time.time()
             response = actor_vlm_model.call_model(messages, decoding_args=action_vlm_decoding_args, return_list=False).strip()
+            # breakpoint()
             end_time = time.time()
             # print(f"Response:\n{response}")
             action = refine_action(response)
@@ -186,8 +191,6 @@ def test_tasks(args):
             current_num_history = len(history_steps)
             history_steps.append(f"State {current_num_history}:\n{history}\n")
             all_history = ''.join(history_steps)
-            
-    
             
             text = b64decode(
                 eval(requests.post(env_url + "/step", json={"action": action}).text)
@@ -208,7 +211,6 @@ def test_tasks(args):
                 start_time,
                 end_time,
                 0,
-                # get_total_money(),
                 summary_prompt_for_one_img,
                 history,
                 obs,
@@ -233,7 +235,6 @@ def test_tasks(args):
                 images_queue.append(image)
                 images_log.append(image)
                 image_paths_queue.append(image_path)
-                # images_dic_list.append({"images": image, "path": image_path})
                 total_tasks_log.write(
                     f"{task_idx} Path:{json_file}: SUCCEED, Goal condition success rate: {goal_condition_success_rate}\n"
                 )
@@ -266,15 +267,9 @@ def test_tasks(args):
     csv_save_folder = os.path.join(PARENT_FOLDER, "test-detect")
     if not os.path.exists(csv_save_folder):
         os.makedirs(csv_save_folder)
-    csv_save_path = os.path.join(csv_save_folder, f"gpt-aflworld-history-infor.csv")
+    csv_save_path = os.path.join(csv_save_folder, f"{args.vlm_model}-add-object-list-aflworld-history-infor.csv")
     print(f"Save path: {csv_save_path}")
     write_data_to_csv(csv_save_path, data)
-    # total_money = get_total_money()
-    total_tasks_log.write(f"\nTotal number: {len(json_file_list)}\n")
     total_tasks_log.write(f"Total succeed number: {num_succeess}\n")
-    # total_tasks_log.write(f"Total money Cost: {total_money}\n")
 
     requests.post(env_url + "/close", json={})
-            
-            # a=1
-# '**Analysis**\n\n1. As there is no history available, we are at the first step in the plan and our current place is "Unknown".\n2. In the current observation, we can see a sidetable with a desklamp and an alarm clock on it.\n3. Based on the requirements for the current step, which is to find an alarm clock, we can confirm that we have already found it as it is visible on the sidetable in the current observation.\n4. The most appropriate action to take next is to pick up the alarm clock, but the admissible actions do not include any "pick up" actions. Therefore, the next best action to take is to "go to sidetable 1" to be closer to the alarm clock and prepare for the next step in the plan.\n5. The most suitable action to take next is: (2) go to sidetable 1.'

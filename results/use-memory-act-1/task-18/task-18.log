@@ -1,0 +1,3577 @@
+---------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------0-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+No history.
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to cabinet 4
+(5): go to cabinet 5
+(6): go to cabinet 6
+(7): go to countertop 1
+(8): go to coffeemachine 1
+(9): go to cabinet 7
+(10): go to toaster 1
+(11): go to cabinet 8
+(12): go to sink 1
+(13): go to fridge 1
+(14): go to microwave 1
+(15): go to garbagecan 1
+(16): go to cabinet 9
+(17): go to cabinet 10
+(18): go to countertop 2
+(19): go to cabinet 11
+(20): go to cabinet 12
+(21): go to drawer 1
+(22): go to countertop 3
+(23): go to drawer 2
+(24): go to cabinet 13
+(25): go to sinkbasin 1
+(26): go to cabinet 14
+(27): go to drawer 3
+(28): go to stoveburner 1
+(29): go to stoveburner 2
+(30): go to stoveburner 3
+(31): go to cabinet 15
+(32): go to stoveburner 4
+(33): go to cabinet 16
+(34): go to cabinet 17
+(35): go to cabinet 18
+(36): go to cabinet 19
+(37): go to cabinet 20
+(38): go to shelf 1
+(39): go to shelf 2
+(40): go to shelf 3
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: Since there is no history available, we are at the first step of the plan, which is to find a pot. In the current observation, there are no pots visible. The agent is currently near the sink and coffee machine. In order to find a pot, the agent should move to areas where pots are usually stored, such as cabinets or countertops.
+
+The Most Appropriate Action: (7): go to countertop 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to countertop 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 15.141682147979736 seconds
+
+Total Money: 8.813689999999996
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Since there is no history available, we are at the first step of the plan, which is to find a pot. In the current observation, there are no pots visible. The agent is currently near the sink and coffee machine. In order to find a pot, the agent should move to areas where pots are usually stored, such as cabinets or countertops.
+
+The Most Appropriate Action: (7): go to countertop 1
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 6. On the countertop 1, you see a lettuce 1, a soapbottle 1, a mug 1, a pan 1, and a spatula 1.
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------1-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to cabinet 4
+(5): go to cabinet 5
+(6): go to cabinet 6
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to fridge 1
+(13): go to microwave 1
+(14): go to garbagecan 1
+(15): go to cabinet 9
+(16): go to cabinet 10
+(17): go to countertop 2
+(18): go to cabinet 11
+(19): go to cabinet 12
+(20): go to drawer 1
+(21): go to countertop 3
+(22): go to drawer 2
+(23): go to cabinet 13
+(24): go to sinkbasin 1
+(25): go to cabinet 14
+(26): go to drawer 3
+(27): go to stoveburner 1
+(28): go to stoveburner 2
+(29): go to stoveburner 3
+(30): go to cabinet 15
+(31): go to stoveburner 4
+(32): go to cabinet 16
+(33): go to cabinet 17
+(34): go to cabinet 18
+(35): go to cabinet 19
+(36): go to cabinet 20
+(37): go to shelf 1
+(38): go to shelf 2
+(39): go to shelf 3
+(40): take lettuce 1 from countertop 1
+(41): take soapbottle 1 from countertop 1
+(42): take mug 1 from countertop 1
+(43): take pan 1 from countertop 1
+(44): take spatul1 from countertop 1
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the History Information, we have completed Step 1 by going to the countertop and finding a pot. The current observation shows us near several kitchen appliances, but the pot is not visible in this image. No fridge is visible either, which is required for Step 4. Hence, we cannot complete the current step with the current observation. The next logical action is to find and go to the fridge.
+
+The Most Appropriate Action: (12): go to fridge 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to fridge 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 11.95234227180481 seconds
+
+Total Money: 8.837439999999996
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: According to the History Information, we have completed Step 1 by going to the countertop and finding a pot. The current observation shows us near several kitchen appliances, but the pot is not visible in this image. No fridge is visible either, which is required for Step 4. Hence, we cannot complete the current step with the current observation. The next logical action is to find and go to the fridge.
+
+The Most Appropriate Action: (12): go to fridge 1
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 12. The fridge 1 is closed. 
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------2-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+Current State 2:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to cabinet 4
+(5): go to cabinet 5
+(6): go to cabinet 6
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to microwave 1
+(13): go to garbagecan 1
+(14): go to cabinet 9
+(15): go to cabinet 10
+(16): go to countertop 2
+(17): go to cabinet 11
+(18): go to cabinet 12
+(19): go to drawer 1
+(20): go to countertop 3
+(21): go to drawer 2
+(22): go to cabinet 13
+(23): go to sinkbasin 1
+(24): go to cabinet 14
+(25): go to drawer 3
+(26): go to stoveburner 1
+(27): go to stoveburner 2
+(28): go to stoveburner 3
+(29): go to cabinet 15
+(30): go to stoveburner 4
+(31): go to cabinet 16
+(32): go to cabinet 17
+(33): go to cabinet 18
+(34): go to cabinet 19
+(35): go to cabinet 20
+(36): go to shelf 1
+(37): go to shelf 2
+(38): go to shelf 3
+(39): open fridge 1
+(40): close fridge 1
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the History Information, we are currently at step 4 of the plan, which is to cool the pot with the fridge. The current observation shows that we are next to a fridge, as it is the large appliance on the left side of the image. There are no other relevant objects to this task visible in the observation. Given that we are at the fridge, we can proceed to complete step 4 of the plan by cooling the pot.
+
+The Most Appropriate Action: (39): open fridge 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: open fridge 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 12.090690851211548 seconds
+
+Total Money: 8.861209999999996
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: According to the History Information, we are currently at step 4 of the plan, which is to cool the pot with the fridge. The current observation shows that we are next to a fridge, as it is the large appliance on the left side of the image. There are no other relevant objects to this task visible in the observation. Given that we are at the fridge, we can proceed to complete step 4 of the plan by cooling the pot.
+
+The Most Appropriate Action: (39): open fridge 1
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: Next to a fridge
+2. Step Index in Plan: 4
+3. Objects: Fridge
+4. Action: Open fridge 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You open the fridge 1. The fridge 1 is open. In it, you see nothing.
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------3-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+Current State 2:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+Current State 3:
+1. Place: Next to a fridge
+2. Step Index in Plan: 4
+3. Objects: Fridge
+4. Action: Open fridge 1
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to cabinet 4
+(5): go to cabinet 5
+(6): go to cabinet 6
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to microwave 1
+(13): go to garbagecan 1
+(14): go to cabinet 9
+(15): go to cabinet 10
+(16): go to countertop 2
+(17): go to cabinet 11
+(18): go to cabinet 12
+(19): go to drawer 1
+(20): go to countertop 3
+(21): go to drawer 2
+(22): go to cabinet 13
+(23): go to sinkbasin 1
+(24): go to cabinet 14
+(25): go to drawer 3
+(26): go to stoveburner 1
+(27): go to stoveburner 2
+(28): go to stoveburner 3
+(29): go to cabinet 15
+(30): go to stoveburner 4
+(31): go to cabinet 16
+(32): go to cabinet 17
+(33): go to cabinet 18
+(34): go to cabinet 19
+(35): go to cabinet 20
+(36): go to shelf 1
+(37): go to shelf 2
+(38): go to shelf 3
+(39): close fridge 1
+(40): take nothing from fridge 1
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the History Information, the last action taken was "Open fridge 1," correlating with step 4 in the plan - cool the pot with the fridge. Since the fridge is now open and the current observation shows the fridge in the image, we can assume the pot has been cooled. The next step in the plan is to find a cabinet. The current observation does not show any cabinet, so we cannot complete this step with the current observation. The Most Appropriate Action: (1): go to cabinet 1.
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to cabinet 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 6.896355152130127 seconds
+
+Total Money: 8.885659999999996
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: According to the History Information, the last action taken was "Open fridge 1," correlating with step 4 in the plan - cool the pot with the fridge. Since the fridge is now open and the current observation shows the fridge in the image, we can assume the pot has been cooled. The next step in the plan is to find a cabinet. The current observation does not show any cabinet, so we cannot complete this step with the current observation. The Most Appropriate Action: (1): go to cabinet 1.
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: Fridge 1
+2. Step Index in Plan: 4
+3. Objects: Pot, Fridge 1
+4. Action: Go to cabinet 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 0. The cabinet 1 is closed. 
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------4-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+Current State 2:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+Current State 3:
+1. Place: Next to a fridge
+2. Step Index in Plan: 4
+3. Objects: Fridge
+4. Action: Open fridge 1
+Current State 4:
+1. Place: Fridge 1
+2. Step Index in Plan: 4
+3. Objects: Pot, Fridge 1
+4. Action: Go to cabinet 1
+
+
+**Admissible Actions**
+(1): go to cabinet 2
+(2): go to cabinet 3
+(3): go to cabinet 4
+(4): go to cabinet 5
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to microwave 1
+(13): go to garbagecan 1
+(14): go to cabinet 9
+(15): go to cabinet 10
+(16): go to countertop 2
+(17): go to cabinet 11
+(18): go to cabinet 12
+(19): go to drawer 1
+(20): go to countertop 3
+(21): go to drawer 2
+(22): go to cabinet 13
+(23): go to sinkbasin 1
+(24): go to cabinet 14
+(25): go to drawer 3
+(26): go to stoveburner 1
+(27): go to stoveburner 2
+(28): go to stoveburner 3
+(29): go to cabinet 15
+(30): go to stoveburner 4
+(31): go to cabinet 16
+(32): go to cabinet 17
+(33): go to cabinet 18
+(34): go to cabinet 19
+(35): go to cabinet 20
+(36): go to shelf 1
+(37): go to shelf 2
+(38): go to shelf 3
+(39): open cabinet 1
+(40): close cabinet 1
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the History Information, the last recorded step in the plan was step 4, and the agent was instructed to go to cabinet 1. The Current Observation shows the agent positioned in front of a closed cabinet, which is likely cabinet 1 that the agent was previously instructed to go to. Since the plan requires the cooled pot to be placed in a cabinet, and the current observation does not show any other objects, the next logical step is to open the cabinet to place the cooled pot inside. 
+
+The Most Appropriate Action: (39): open cabinet 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: open cabinet 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 14.095813035964966 seconds
+
+Total Money: 8.910819999999996
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: According to the History Information, the last recorded step in the plan was step 4, and the agent was instructed to go to cabinet 1. The Current Observation shows the agent positioned in front of a closed cabinet, which is likely cabinet 1 that the agent was previously instructed to go to. Since the plan requires the cooled pot to be placed in a cabinet, and the current observation does not show any other objects, the next logical step is to open the cabinet to place the cooled pot inside. 
+
+The Most Appropriate Action: (39): open cabinet 1
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 4
+3. Objects: Cooled pot
+4. Action: Open cabinet 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You open the cabinet 1. The cabinet 1 is open. In it, you see nothing.
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------5-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+Current State 2:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+Current State 3:
+1. Place: Next to a fridge
+2. Step Index in Plan: 4
+3. Objects: Fridge
+4. Action: Open fridge 1
+Current State 4:
+1. Place: Fridge 1
+2. Step Index in Plan: 4
+3. Objects: Pot, Fridge 1
+4. Action: Go to cabinet 1
+Current State 5:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 4
+3. Objects: Cooled pot
+4. Action: Open cabinet 1
+
+
+**Admissible Actions**
+(1): go to cabinet 2
+(2): go to cabinet 3
+(3): go to cabinet 4
+(4): go to cabinet 5
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to fridge 1
+(13): go to microwave 1
+(14): go to garbagecan 1
+(15): go to cabinet 9
+(16): go to cabinet 10
+(17): go to countertop 2
+(18): go to cabinet 11
+(19): go to cabinet 12
+(20): go to drawer 1
+(21): go to countertop 3
+(22): go to drawer 2
+(23): go to cabinet 13
+(24): go to sinkbasin 1
+(25): go to cabinet 14
+(26): go to drawer 3
+(27): go to stoveburner 1
+(28): go to stoveburner 2
+(29): go to stoveburner 3
+(30): go to cabinet 15
+(31): go to stoveburner 4
+(32): go to cabinet 16
+(33): go to cabinet 17
+(34): go to cabinet 18
+(35): go to cabinet 19
+(36): go to cabinet 20
+(37): go to shelf 1
+(38): go to shelf 2
+(39): go to shelf 3
+(40): close cabinet 1
+(41): take nothing from cabinet 1
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: Based on the **History Information**, we are currently at step 5 of the plan which is "Find a cabinet." The agent has just opened cabinet 1, and the **Current Observation** shows the inside of cabinet 1. No other objects are visible in the current observation, except for the opened cabinet 1. Since the goal is to place the cooled pot in a cabinet and cabinet 1 is open and appears to be empty, we can complete the current step with the current observation. The most appropriate action is to close cabinet 1 after placing the cooled pot inside it.
+
+The Most Appropriate Action: (40): close cabinet 1
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: close cabinet 1
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 34.83125329017639 seconds
+
+Total Money: 8.937279999999996
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Based on the **History Information**, we are currently at step 5 of the plan which is "Find a cabinet." The agent has just opened cabinet 1, and the **Current Observation** shows the inside of cabinet 1. No other objects are visible in the current observation, except for the opened cabinet 1. Since the goal is to place the cooled pot in a cabinet and cabinet 1 is open and appears to be empty, we can complete the current step with the current observation. The most appropriate action is to close cabinet 1 after placing the cooled pot inside it.
+
+The Most Appropriate Action: (40): close cabinet 1
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 1
+4. Action: Close cabinet 1
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You close the cabinet 1.
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------6-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+Current State 2:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+Current State 3:
+1. Place: Next to a fridge
+2. Step Index in Plan: 4
+3. Objects: Fridge
+4. Action: Open fridge 1
+Current State 4:
+1. Place: Fridge 1
+2. Step Index in Plan: 4
+3. Objects: Pot, Fridge 1
+4. Action: Go to cabinet 1
+Current State 5:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 4
+3. Objects: Cooled pot
+4. Action: Open cabinet 1
+Current State 6:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 1
+4. Action: Close cabinet 1
+
+
+**Admissible Actions**
+(1): go to cabinet 2
+(2): go to cabinet 3
+(3): go to cabinet 4
+(4): go to cabinet 5
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to fridge 1
+(13): go to microwave 1
+(14): go to garbagecan 1
+(15): go to cabinet 9
+(16): go to cabinet 10
+(17): go to countertop 2
+(18): go to cabinet 11
+(19): go to cabinet 12
+(20): go to drawer 1
+(21): go to countertop 3
+(22): go to drawer 2
+(23): go to cabinet 13
+(24): go to sinkbasin 1
+(25): go to cabinet 14
+(26): go to drawer 3
+(27): go to stoveburner 1
+(28): go to stoveburner 2
+(29): go to stoveburner 3
+(30): go to cabinet 15
+(31): go to stoveburner 4
+(32): go to cabinet 16
+(33): go to cabinet 17
+(34): go to cabinet 18
+(35): go to cabinet 19
+(36): go to cabinet 20
+(37): go to shelf 1
+(38): go to shelf 2
+(39): go to shelf 3
+(40): take nothing from cabinet 1
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the History Information, we are currently at step 5 of the plan, which is "Find a cabinet." The current observation shows us in front of a closed cabinet, and based on the history, we have already cooled the pot and are now ready to place it in the cabinet. The action 'Close cabinet 1' in the history suggests that we have already opened, and interacted with cabinet 1, and now we are observing it closed in the current observation, which likely indicates that this is a different cabinet. Since 'Open cabinet 1' is not an admissible action, we cannot interact with this cabinet again, and we should move to a different cabinet to complete step 5 of the plan.
+
+The Most Appropriate Action: (1): go to cabinet 2
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to cabinet 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 8.708415508270264 seconds
+
+Total Money: 8.965379999999994
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: According to the History Information, we are currently at step 5 of the plan, which is "Find a cabinet." The current observation shows us in front of a closed cabinet, and based on the history, we have already cooled the pot and are now ready to place it in the cabinet. The action 'Close cabinet 1' in the history suggests that we have already opened, and interacted with cabinet 1, and now we are observing it closed in the current observation, which likely indicates that this is a different cabinet. Since 'Open cabinet 1' is not an admissible action, we cannot interact with this cabinet again, and we should move to a different cabinet to complete step 5 of the plan.
+
+The Most Appropriate Action: (1): go to cabinet 2
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: In front of a closed cabinet
+2. Step Index in Plan: 5
+3. Objects: Cabinet 1, Cabinet 2, Pot
+4. Action: Go to cabinet 2
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 1. The cabinet 2 is closed. 
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------7-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+Current State 2:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+Current State 3:
+1. Place: Next to a fridge
+2. Step Index in Plan: 4
+3. Objects: Fridge
+4. Action: Open fridge 1
+Current State 4:
+1. Place: Fridge 1
+2. Step Index in Plan: 4
+3. Objects: Pot, Fridge 1
+4. Action: Go to cabinet 1
+Current State 5:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 4
+3. Objects: Cooled pot
+4. Action: Open cabinet 1
+Current State 6:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 1
+4. Action: Close cabinet 1
+Current State 7:
+1. Place: In front of a closed cabinet
+2. Step Index in Plan: 5
+3. Objects: Cabinet 1, Cabinet 2, Pot
+4. Action: Go to cabinet 2
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 3
+(3): go to cabinet 4
+(4): go to cabinet 5
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to fridge 1
+(13): go to microwave 1
+(14): go to garbagecan 1
+(15): go to cabinet 9
+(16): go to cabinet 10
+(17): go to countertop 2
+(18): go to cabinet 11
+(19): go to cabinet 12
+(20): go to drawer 1
+(21): go to countertop 3
+(22): go to drawer 2
+(23): go to cabinet 13
+(24): go to sinkbasin 1
+(25): go to cabinet 14
+(26): go to drawer 3
+(27): go to stoveburner 1
+(28): go to stoveburner 2
+(29): go to stoveburner 3
+(30): go to cabinet 15
+(31): go to stoveburner 4
+(32): go to cabinet 16
+(33): go to cabinet 17
+(34): go to cabinet 18
+(35): go to cabinet 19
+(36): go to cabinet 20
+(37): go to shelf 1
+(38): go to shelf 2
+(39): go to shelf 3
+(40): open cabinet 2
+(41): close cabinet 2
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the history information, we are currently at step 5 in the plan, which is to place the cooled pot in the cabinet. The last action taken was to go to cabinet 2, suggesting that we are currently in front of cabinet 2. The current observation shows two closed cabinets. Since we are in front of cabinet 2, our next step is to open cabinet 2 to place the cooled pot inside.
+
+The Most Appropriate Action: (40): open cabinet 2
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: open cabinet 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 72.14653062820435 seconds
+
+Total Money: 8.991509999999993
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: According to the history information, we are currently at step 5 in the plan, which is to place the cooled pot in the cabinet. The last action taken was to go to cabinet 2, suggesting that we are currently in front of cabinet 2. The current observation shows two closed cabinets. Since we are in front of cabinet 2, our next step is to open cabinet 2 to place the cooled pot inside.
+
+The Most Appropriate Action: (40): open cabinet 2
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 2
+4. Action: Open cabinet 2
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You open the cabinet 2. The cabinet 2 is open. In it, you see nothing.
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------8-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+Current State 2:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+Current State 3:
+1. Place: Next to a fridge
+2. Step Index in Plan: 4
+3. Objects: Fridge
+4. Action: Open fridge 1
+Current State 4:
+1. Place: Fridge 1
+2. Step Index in Plan: 4
+3. Objects: Pot, Fridge 1
+4. Action: Go to cabinet 1
+Current State 5:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 4
+3. Objects: Cooled pot
+4. Action: Open cabinet 1
+Current State 6:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 1
+4. Action: Close cabinet 1
+Current State 7:
+1. Place: In front of a closed cabinet
+2. Step Index in Plan: 5
+3. Objects: Cabinet 1, Cabinet 2, Pot
+4. Action: Go to cabinet 2
+Current State 8:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 2
+4. Action: Open cabinet 2
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 3
+(3): go to cabinet 4
+(4): go to cabinet 5
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to fridge 1
+(13): go to microwave 1
+(14): go to garbagecan 1
+(15): go to cabinet 9
+(16): go to cabinet 10
+(17): go to countertop 2
+(18): go to cabinet 11
+(19): go to cabinet 12
+(20): go to drawer 1
+(21): go to countertop 3
+(22): go to drawer 2
+(23): go to cabinet 13
+(24): go to sinkbasin 1
+(25): go to cabinet 14
+(26): go to drawer 3
+(27): go to stoveburner 1
+(28): go to stoveburner 2
+(29): go to stoveburner 3
+(30): go to cabinet 15
+(31): go to stoveburner 4
+(32): go to cabinet 16
+(33): go to cabinet 17
+(34): go to cabinet 18
+(35): go to cabinet 19
+(36): go to cabinet 20
+(37): go to shelf 1
+(38): go to shelf 2
+(39): go to shelf 3
+(40): close cabinet 2
+(41): take nothing from cabinet 2
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the history information, we have already completed step 5 of the plan, which is to find a cabinet. The last action taken was to open cabinet 2, and based on the current observation, the agent is in front of cabinet 2, which is open. The next step in the plan is step 6, to place the cooled pot in the cabinet. Since we have an open cabinet and a cooled pot, we can complete this step with the current observation.
+
+The Most Appropriate Action: (40): close cabinet 2
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: close cabinet 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 5.692239761352539 seconds
+
+Total Money: 9.018539999999993
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: According to the history information, we have already completed step 5 of the plan, which is to find a cabinet. The last action taken was to open cabinet 2, and based on the current observation, the agent is in front of cabinet 2, which is open. The next step in the plan is step 6, to place the cooled pot in the cabinet. Since we have an open cabinet and a cooled pot, we can complete this step with the current observation.
+
+The Most Appropriate Action: (40): close cabinet 2
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 6
+3. Objects: Cabinet 2, cooled pot
+4. Action: Close cabinet 2
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You close the cabinet 2.
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------9-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+Current State 2:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+Current State 3:
+1. Place: Next to a fridge
+2. Step Index in Plan: 4
+3. Objects: Fridge
+4. Action: Open fridge 1
+Current State 4:
+1. Place: Fridge 1
+2. Step Index in Plan: 4
+3. Objects: Pot, Fridge 1
+4. Action: Go to cabinet 1
+Current State 5:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 4
+3. Objects: Cooled pot
+4. Action: Open cabinet 1
+Current State 6:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 1
+4. Action: Close cabinet 1
+Current State 7:
+1. Place: In front of a closed cabinet
+2. Step Index in Plan: 5
+3. Objects: Cabinet 1, Cabinet 2, Pot
+4. Action: Go to cabinet 2
+Current State 8:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 2
+4. Action: Open cabinet 2
+Current State 9:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 6
+3. Objects: Cabinet 2, cooled pot
+4. Action: Close cabinet 2
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 3
+(3): go to cabinet 4
+(4): go to cabinet 5
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to fridge 1
+(13): go to microwave 1
+(14): go to garbagecan 1
+(15): go to cabinet 9
+(16): go to cabinet 10
+(17): go to countertop 2
+(18): go to cabinet 11
+(19): go to cabinet 12
+(20): go to drawer 1
+(21): go to countertop 3
+(22): go to drawer 2
+(23): go to cabinet 13
+(24): go to sinkbasin 1
+(25): go to cabinet 14
+(26): go to drawer 3
+(27): go to stoveburner 1
+(28): go to stoveburner 2
+(29): go to stoveburner 3
+(30): go to cabinet 15
+(31): go to stoveburner 4
+(32): go to cabinet 16
+(33): go to cabinet 17
+(34): go to cabinet 18
+(35): go to cabinet 19
+(36): go to cabinet 20
+(37): go to shelf 1
+(38): go to shelf 2
+(39): go to shelf 3
+(40): take nothing from cabinet 2
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is to place the cooled pot in the cabinet, which is step 6. According to the history information, the agent has already cooled the pot and attempted to place it in cabinet 2, but then closed cabinet 2 without placing the pot inside. The current observation shows the agent in front of closed cabinets, which aligns with the history that cabinet 2 was closed. Since the pot needs to be placed in a cabinet, and cabinet 2 has been interacted with but not used to store the pot, the next logical action is to open cabinet 2 again and place the pot inside.
+
+The Most Appropriate Action: (8): go to cabinet 2
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to cabinet 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 12.888757467269897 seconds
+
+Total Money: 9.047219999999992
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: The current step in the plan is to place the cooled pot in the cabinet, which is step 6. According to the history information, the agent has already cooled the pot and attempted to place it in cabinet 2, but then closed cabinet 2 without placing the pot inside. The current observation shows the agent in front of closed cabinets, which aligns with the history that cabinet 2 was closed. Since the pot needs to be placed in a cabinet, and cabinet 2 has been interacted with but not used to store the pot, the next logical action is to open cabinet 2 again and place the pot inside.
+
+The Most Appropriate Action: (8): go to cabinet 2
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinet 2
+4. Action: Go to cabinet 2
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:Nothing happens.
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------10-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+Current State 2:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+Current State 3:
+1. Place: Next to a fridge
+2. Step Index in Plan: 4
+3. Objects: Fridge
+4. Action: Open fridge 1
+Current State 4:
+1. Place: Fridge 1
+2. Step Index in Plan: 4
+3. Objects: Pot, Fridge 1
+4. Action: Go to cabinet 1
+Current State 5:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 4
+3. Objects: Cooled pot
+4. Action: Open cabinet 1
+Current State 6:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 1
+4. Action: Close cabinet 1
+Current State 7:
+1. Place: In front of a closed cabinet
+2. Step Index in Plan: 5
+3. Objects: Cabinet 1, Cabinet 2, Pot
+4. Action: Go to cabinet 2
+Current State 8:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 2
+4. Action: Open cabinet 2
+Current State 9:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 6
+3. Objects: Cabinet 2, cooled pot
+4. Action: Close cabinet 2
+Current State 10:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinet 2
+4. Action: Go to cabinet 2
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 3
+(3): go to cabinet 4
+(4): go to cabinet 5
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to fridge 1
+(13): go to microwave 1
+(14): go to garbagecan 1
+(15): go to cabinet 9
+(16): go to cabinet 10
+(17): go to countertop 2
+(18): go to cabinet 11
+(19): go to cabinet 12
+(20): go to drawer 1
+(21): go to countertop 3
+(22): go to drawer 2
+(23): go to cabinet 13
+(24): go to sinkbasin 1
+(25): go to cabinet 14
+(26): go to drawer 3
+(27): go to stoveburner 1
+(28): go to stoveburner 2
+(29): go to stoveburner 3
+(30): go to cabinet 15
+(31): go to stoveburner 4
+(32): go to cabinet 16
+(33): go to cabinet 17
+(34): go to cabinet 18
+(35): go to cabinet 19
+(36): go to cabinet 20
+(37): go to shelf 1
+(38): go to shelf 2
+(39): go to shelf 3
+(40): take nothing from cabinet 2
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the History Information, we are currently at step 6 of the plan, which is to place the cooled pot in the cabinet. The current observation shows us in front of closed cabinets, and the historical data indicates that we have just closed cabinet 2 after previously opening it. Since the historical data mentions a cooled pot and cabinet 2, we can deduce that the pot is likely inside cabinet 2. As no further steps are required in the plan, and the pot has been placed in the cabinet, our task is complete.
+
+The Most Appropriate Action: (40): take nothing from cabinet 2
+
+This action implies that we acknowledge the completion of the task and do not need to interact with the cabinet any further.
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: take nothing from cabinet 2
+
+This action implies that we acknowledge the completion of the task and do not need to interact with the cabinet any further
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 9.704277992248535 seconds
+
+Total Money: 9.076669999999991
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: According to the History Information, we are currently at step 6 of the plan, which is to place the cooled pot in the cabinet. The current observation shows us in front of closed cabinets, and the historical data indicates that we have just closed cabinet 2 after previously opening it. Since the historical data mentions a cooled pot and cabinet 2, we can deduce that the pot is likely inside cabinet 2. As no further steps are required in the plan, and the pot has been placed in the cabinet, our task is complete.
+
+The Most Appropriate Action: (40): take nothing from cabinet 2
+
+This action implies that we acknowledge the completion of the task and do not need to interact with the cabinet any further.
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, Cabinet 2
+4. Action: Take nothing from cabinet 2
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:Nothing happens.
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------11-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+Current State 2:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+Current State 3:
+1. Place: Next to a fridge
+2. Step Index in Plan: 4
+3. Objects: Fridge
+4. Action: Open fridge 1
+Current State 4:
+1. Place: Fridge 1
+2. Step Index in Plan: 4
+3. Objects: Pot, Fridge 1
+4. Action: Go to cabinet 1
+Current State 5:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 4
+3. Objects: Cooled pot
+4. Action: Open cabinet 1
+Current State 6:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 1
+4. Action: Close cabinet 1
+Current State 7:
+1. Place: In front of a closed cabinet
+2. Step Index in Plan: 5
+3. Objects: Cabinet 1, Cabinet 2, Pot
+4. Action: Go to cabinet 2
+Current State 8:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 2
+4. Action: Open cabinet 2
+Current State 9:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 6
+3. Objects: Cabinet 2, cooled pot
+4. Action: Close cabinet 2
+Current State 10:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinet 2
+4. Action: Go to cabinet 2
+Current State 11:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, Cabinet 2
+4. Action: Take nothing from cabinet 2
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 3
+(3): go to cabinet 4
+(4): go to cabinet 5
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to fridge 1
+(13): go to microwave 1
+(14): go to garbagecan 1
+(15): go to cabinet 9
+(16): go to cabinet 10
+(17): go to countertop 2
+(18): go to cabinet 11
+(19): go to cabinet 12
+(20): go to drawer 1
+(21): go to countertop 3
+(22): go to drawer 2
+(23): go to cabinet 13
+(24): go to sinkbasin 1
+(25): go to cabinet 14
+(26): go to drawer 3
+(27): go to stoveburner 1
+(28): go to stoveburner 2
+(29): go to stoveburner 3
+(30): go to cabinet 15
+(31): go to stoveburner 4
+(32): go to cabinet 16
+(33): go to cabinet 17
+(34): go to cabinet 18
+(35): go to cabinet 19
+(36): go to cabinet 20
+(37): go to shelf 1
+(38): go to shelf 2
+(39): go to shelf 3
+(40): open cabinet 2
+(41): take nothing from cabinet 2
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the History Information, we are currently at step 6 of the plan, which is to place the cooled pot in the cabinet. The current observation shows us in front of closed cabinets with no visible objects related to the task. Based on the history, we have already cooled the pot and are now trying to place it in a cabinet. However, the last action was taking nothing from cabinet 2, implying that the pot is not yet in the cabinet. Therefore, we need to open a cabinet to put the pot inside. The admissible action that aligns with our current step is to open cabinet 2.
+
+The Most Appropriate Action: (40): open cabinet 2
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: open cabinet 2
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 9.434257745742798 seconds
+
+Total Money: 9.106109999999992
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: According to the History Information, we are currently at step 6 of the plan, which is to place the cooled pot in the cabinet. The current observation shows us in front of closed cabinets with no visible objects related to the task. Based on the history, we have already cooled the pot and are now trying to place it in a cabinet. However, the last action was taking nothing from cabinet 2, implying that the pot is not yet in the cabinet. Therefore, we need to open a cabinet to put the pot inside. The admissible action that aligns with our current step is to open cabinet 2.
+
+The Most Appropriate Action: (40): open cabinet 2
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot
+4. Action: Open cabinet 2
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You open the cabinet 2. The cabinet 2 is open. In it, you see nothing.
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------12-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+Current State 2:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+Current State 3:
+1. Place: Next to a fridge
+2. Step Index in Plan: 4
+3. Objects: Fridge
+4. Action: Open fridge 1
+Current State 4:
+1. Place: Fridge 1
+2. Step Index in Plan: 4
+3. Objects: Pot, Fridge 1
+4. Action: Go to cabinet 1
+Current State 5:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 4
+3. Objects: Cooled pot
+4. Action: Open cabinet 1
+Current State 6:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 1
+4. Action: Close cabinet 1
+Current State 7:
+1. Place: In front of a closed cabinet
+2. Step Index in Plan: 5
+3. Objects: Cabinet 1, Cabinet 2, Pot
+4. Action: Go to cabinet 2
+Current State 8:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 2
+4. Action: Open cabinet 2
+Current State 9:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 6
+3. Objects: Cabinet 2, cooled pot
+4. Action: Close cabinet 2
+Current State 10:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinet 2
+4. Action: Go to cabinet 2
+Current State 11:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, Cabinet 2
+4. Action: Take nothing from cabinet 2
+Current State 12:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot
+4. Action: Open cabinet 2
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 3
+(3): go to cabinet 4
+(4): go to cabinet 5
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to fridge 1
+(13): go to microwave 1
+(14): go to garbagecan 1
+(15): go to cabinet 9
+(16): go to cabinet 10
+(17): go to countertop 2
+(18): go to cabinet 11
+(19): go to cabinet 12
+(20): go to drawer 1
+(21): go to countertop 3
+(22): go to drawer 2
+(23): go to cabinet 13
+(24): go to sinkbasin 1
+(25): go to cabinet 14
+(26): go to drawer 3
+(27): go to stoveburner 1
+(28): go to stoveburner 2
+(29): go to stoveburner 3
+(30): go to cabinet 15
+(31): go to stoveburner 4
+(32): go to cabinet 16
+(33): go to cabinet 17
+(34): go to cabinet 18
+(35): go to cabinet 19
+(36): go to cabinet 20
+(37): go to shelf 1
+(38): go to shelf 2
+(39): go to shelf 3
+(40): close cabinet 2
+(41): take nothing from cabinet 2
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the History Information, we are currently at step 6 of the plan, which is "Place the cooled pot in the cabinet." The current observation shows us in front of closed cabinets, and the history indicates we have just opened cabinet 2. Since the last action was to open cabinet 2, the next logical step would be to place the cooled pot inside cabinet 2. However, the image shows closed cabinets, meaning the cabinet has been closed again without the pot being placed inside. The Most Appropriate Action: (40): close cabinet 2 seems redundant because the cabinet already appears closed. Action (41): take nothing from cabinet 2 is not relevant as we need to place the pot into the cabinet. None of the "go to" actions seem relevant since we're already at the cabinet where we need to place the pot. Therefore, it seems there might be an error in the admissible actions or the observation, as the necessary action of placing the pot in the cabinet is not listed. To resolve this, we might need to open cabinet 2 again and then place the pot inside.
+
+The Most Appropriate Action: (40): close cabinet 2
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: close cabinet 2 seems redundant because the cabinet already appears closed
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 13.378440856933594 seconds
+
+Total Money: 9.140049999999992
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: According to the History Information, we are currently at step 6 of the plan, which is "Place the cooled pot in the cabinet." The current observation shows us in front of closed cabinets, and the history indicates we have just opened cabinet 2. Since the last action was to open cabinet 2, the next logical step would be to place the cooled pot inside cabinet 2. However, the image shows closed cabinets, meaning the cabinet has been closed again without the pot being placed inside. The Most Appropriate Action: (40): close cabinet 2 seems redundant because the cabinet already appears closed. Action (41): take nothing from cabinet 2 is not relevant as we need to place the pot into the cabinet. None of the "go to" actions seem relevant since we're already at the cabinet where we need to place the pot. Therefore, it seems there might be an error in the admissible actions or the observation, as the necessary action of placing the pot in the cabinet is not listed. To resolve this, we might need to open cabinet 2 again and then place the pot inside.
+
+The Most Appropriate Action: (40): close cabinet 2
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, Cabinet 2
+4. Action: Close cabinet 2
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:Nothing happens.
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------14-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+Current State 2:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+Current State 3:
+1. Place: Next to a fridge
+2. Step Index in Plan: 4
+3. Objects: Fridge
+4. Action: Open fridge 1
+Current State 4:
+1. Place: Fridge 1
+2. Step Index in Plan: 4
+3. Objects: Pot, Fridge 1
+4. Action: Go to cabinet 1
+Current State 5:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 4
+3. Objects: Cooled pot
+4. Action: Open cabinet 1
+Current State 6:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 1
+4. Action: Close cabinet 1
+Current State 7:
+1. Place: In front of a closed cabinet
+2. Step Index in Plan: 5
+3. Objects: Cabinet 1, Cabinet 2, Pot
+4. Action: Go to cabinet 2
+Current State 8:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 2
+4. Action: Open cabinet 2
+Current State 9:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 6
+3. Objects: Cabinet 2, cooled pot
+4. Action: Close cabinet 2
+Current State 10:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinet 2
+4. Action: Go to cabinet 2
+Current State 11:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, Cabinet 2
+4. Action: Take nothing from cabinet 2
+Current State 12:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot
+4. Action: Open cabinet 2
+Current State 13:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, Cabinet 2
+4. Action: Close cabinet 2
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 3
+(3): go to cabinet 4
+(4): go to cabinet 5
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to fridge 1
+(13): go to microwave 1
+(14): go to garbagecan 1
+(15): go to cabinet 9
+(16): go to cabinet 10
+(17): go to countertop 2
+(18): go to cabinet 11
+(19): go to cabinet 12
+(20): go to drawer 1
+(21): go to countertop 3
+(22): go to drawer 2
+(23): go to cabinet 13
+(24): go to sinkbasin 1
+(25): go to cabinet 14
+(26): go to drawer 3
+(27): go to stoveburner 1
+(28): go to stoveburner 2
+(29): go to stoveburner 3
+(30): go to cabinet 15
+(31): go to stoveburner 4
+(32): go to cabinet 16
+(33): go to cabinet 17
+(34): go to cabinet 18
+(35): go to cabinet 19
+(36): go to cabinet 20
+(37): go to shelf 1
+(38): go to shelf 2
+(39): go to shelf 3
+(40): close cabinet 2
+(41): take nothing from cabinet 2
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the History Information, the current step in the plan is step 6, which involves placing the cooled pot in the cabinet. The current place is in front of closed cabinets, specifically cabinet 2. The last action taken was to close cabinet 2. The current observation shows closed cabinets, but the specific cabinet number is not visible, and there are no other objects related to the task visible in the current observation. Since we have repeated actions related to cabinet 2 without success, it would be best to try a different cabinet. 
+
+The Most Appropriate Action: (2): go to cabinet 3
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to cabinet 3
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 61.29696249961853 seconds
+
+Total Money: 9.200639999999993
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: According to the History Information, the current step in the plan is step 6, which involves placing the cooled pot in the cabinet. The current place is in front of closed cabinets, specifically cabinet 2. The last action taken was to close cabinet 2. The current observation shows closed cabinets, but the specific cabinet number is not visible, and there are no other objects related to the task visible in the current observation. Since we have repeated actions related to cabinet 2 without success, it would be best to try a different cabinet. 
+
+The Most Appropriate Action: (2): go to cabinet 3
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: In front of closed cabinets, specifically cabinet 2
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinets
+4. Action: Go to cabinet 3
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 2. The cabinet 3 is closed. 
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------15-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+Current State 2:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+Current State 3:
+1. Place: Next to a fridge
+2. Step Index in Plan: 4
+3. Objects: Fridge
+4. Action: Open fridge 1
+Current State 4:
+1. Place: Fridge 1
+2. Step Index in Plan: 4
+3. Objects: Pot, Fridge 1
+4. Action: Go to cabinet 1
+Current State 5:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 4
+3. Objects: Cooled pot
+4. Action: Open cabinet 1
+Current State 6:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 1
+4. Action: Close cabinet 1
+Current State 7:
+1. Place: In front of a closed cabinet
+2. Step Index in Plan: 5
+3. Objects: Cabinet 1, Cabinet 2, Pot
+4. Action: Go to cabinet 2
+Current State 8:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 2
+4. Action: Open cabinet 2
+Current State 9:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 6
+3. Objects: Cabinet 2, cooled pot
+4. Action: Close cabinet 2
+Current State 10:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinet 2
+4. Action: Go to cabinet 2
+Current State 11:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, Cabinet 2
+4. Action: Take nothing from cabinet 2
+Current State 12:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot
+4. Action: Open cabinet 2
+Current State 13:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, Cabinet 2
+4. Action: Close cabinet 2
+Current State 15:
+1. Place: In front of closed cabinets, specifically cabinet 2
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinets
+4. Action: Go to cabinet 3
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 4
+(4): go to cabinet 5
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to fridge 1
+(13): go to microwave 1
+(14): go to garbagecan 1
+(15): go to cabinet 9
+(16): go to cabinet 10
+(17): go to countertop 2
+(18): go to cabinet 11
+(19): go to cabinet 12
+(20): go to drawer 1
+(21): go to countertop 3
+(22): go to drawer 2
+(23): go to cabinet 13
+(24): go to sinkbasin 1
+(25): go to cabinet 14
+(26): go to drawer 3
+(27): go to stoveburner 1
+(28): go to stoveburner 2
+(29): go to stoveburner 3
+(30): go to cabinet 15
+(31): go to stoveburner 4
+(32): go to cabinet 16
+(33): go to cabinet 17
+(34): go to cabinet 18
+(35): go to cabinet 19
+(36): go to cabinet 20
+(37): go to shelf 1
+(38): go to shelf 2
+(39): go to shelf 3
+(40): open cabinet 3
+(41): close cabinet 3
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the History Information, we are currently at step 6 in the plan, which is to place the cooled pot in the cabinet. The current observation shows us in front of closed cabinets, specifically cabinet 2, with the cooled pot. As per the history, we have already attempted to place the pot in cabinet 2, but for some reason, the task has not been completed. We have also attempted to go to cabinet 3 but have not interacted with it yet. The visible objects related to the task in the current observation are the cabinets. Since we need to place the cooled pot in a cabinet and cabinet 2 has already been interacted with unsuccessfully, we should try interacting with cabinet 3 to complete the task.
+
+The Most Appropriate Action: (40): open cabinet 3
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: open cabinet 3
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 7.941744565963745 seconds
+
+Total Money: 9.232639999999993
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: According to the History Information, we are currently at step 6 in the plan, which is to place the cooled pot in the cabinet. The current observation shows us in front of closed cabinets, specifically cabinet 2, with the cooled pot. As per the history, we have already attempted to place the pot in cabinet 2, but for some reason, the task has not been completed. We have also attempted to go to cabinet 3 but have not interacted with it yet. The visible objects related to the task in the current observation are the cabinets. Since we need to place the cooled pot in a cabinet and cabinet 2 has already been interacted with unsuccessfully, we should try interacting with cabinet 3 to complete the task.
+
+The Most Appropriate Action: (40): open cabinet 3
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cabinet 2, Cabinet 3, Cooled Pot
+4. Action: Open cabinet 3
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You open the cabinet 3. The cabinet 3 is open. In it, you see nothing.
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------16-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+Current State 2:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+Current State 3:
+1. Place: Next to a fridge
+2. Step Index in Plan: 4
+3. Objects: Fridge
+4. Action: Open fridge 1
+Current State 4:
+1. Place: Fridge 1
+2. Step Index in Plan: 4
+3. Objects: Pot, Fridge 1
+4. Action: Go to cabinet 1
+Current State 5:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 4
+3. Objects: Cooled pot
+4. Action: Open cabinet 1
+Current State 6:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 1
+4. Action: Close cabinet 1
+Current State 7:
+1. Place: In front of a closed cabinet
+2. Step Index in Plan: 5
+3. Objects: Cabinet 1, Cabinet 2, Pot
+4. Action: Go to cabinet 2
+Current State 8:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 2
+4. Action: Open cabinet 2
+Current State 9:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 6
+3. Objects: Cabinet 2, cooled pot
+4. Action: Close cabinet 2
+Current State 10:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinet 2
+4. Action: Go to cabinet 2
+Current State 11:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, Cabinet 2
+4. Action: Take nothing from cabinet 2
+Current State 12:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot
+4. Action: Open cabinet 2
+Current State 13:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, Cabinet 2
+4. Action: Close cabinet 2
+Current State 15:
+1. Place: In front of closed cabinets, specifically cabinet 2
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinets
+4. Action: Go to cabinet 3
+Current State 16:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cabinet 2, Cabinet 3, Cooled Pot
+4. Action: Open cabinet 3
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 4
+(4): go to cabinet 5
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to fridge 1
+(13): go to microwave 1
+(14): go to garbagecan 1
+(15): go to cabinet 9
+(16): go to cabinet 10
+(17): go to countertop 2
+(18): go to cabinet 11
+(19): go to cabinet 12
+(20): go to drawer 1
+(21): go to countertop 3
+(22): go to drawer 2
+(23): go to cabinet 13
+(24): go to sinkbasin 1
+(25): go to cabinet 14
+(26): go to drawer 3
+(27): go to stoveburner 1
+(28): go to stoveburner 2
+(29): go to stoveburner 3
+(30): go to cabinet 15
+(31): go to stoveburner 4
+(32): go to cabinet 16
+(33): go to cabinet 17
+(34): go to cabinet 18
+(35): go to cabinet 19
+(36): go to cabinet 20
+(37): go to shelf 1
+(38): go to shelf 2
+(39): go to shelf 3
+(40): close cabinet 3
+(41): take nothing from cabinet 3
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: The current step in the plan is step 6, which is to place the cooled pot in the cabinet. From the history information, we are currently in front of cabinet 3, and the cooled pot is with us. In the current observation, we can see the interior of an open cabinet, which is presumably cabinet 3 since that was the last action taken in the history. However, the history does not show any action of placing the pot inside the cabinet. Since the cabinet is already open, the next logical step would be to place the cooled pot inside it.
+
+The Most Appropriate Action: (40): close cabinet 3
+
+Note: While closing the cabinet is the admissible action listed, there is no specific action for placing the pot in the cabinet. However, since we're at the step of the plan where we need to place the pot in the cabinet, and the last action was opening cabinet 3, it's implied that the pot should be placed in it before closing. Therefore, the action of closing the cabinet is the next best step as it implies that the pot has been placed inside and the task is being completed.
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: close cabinet 3
+
+Note: While closing the cabinet is the admissible action listed, there is no specific action for placing the pot in the cabinet
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 12.547969818115234 seconds
+
+Total Money: 9.267849999999992
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: The current step in the plan is step 6, which is to place the cooled pot in the cabinet. From the history information, we are currently in front of cabinet 3, and the cooled pot is with us. In the current observation, we can see the interior of an open cabinet, which is presumably cabinet 3 since that was the last action taken in the history. However, the history does not show any action of placing the pot inside the cabinet. Since the cabinet is already open, the next logical step would be to place the cooled pot inside it.
+
+The Most Appropriate Action: (40): close cabinet 3
+
+Note: While closing the cabinet is the admissible action listed, there is no specific action for placing the pot in the cabinet. However, since we're at the step of the plan where we need to place the pot in the cabinet, and the last action was opening cabinet 3, it's implied that the pot should be placed in it before closing. Therefore, the action of closing the cabinet is the next best step as it implies that the pot has been placed inside and the task is being completed.
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: In front of cabinet 3
+2. Step Index in Plan: Step 6
+3. Objects: Cooled pot, cabinet 3
+4. Action: Close cabinet 3
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:Nothing happens.
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------17-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+Current State 2:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+Current State 3:
+1. Place: Next to a fridge
+2. Step Index in Plan: 4
+3. Objects: Fridge
+4. Action: Open fridge 1
+Current State 4:
+1. Place: Fridge 1
+2. Step Index in Plan: 4
+3. Objects: Pot, Fridge 1
+4. Action: Go to cabinet 1
+Current State 5:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 4
+3. Objects: Cooled pot
+4. Action: Open cabinet 1
+Current State 6:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 1
+4. Action: Close cabinet 1
+Current State 7:
+1. Place: In front of a closed cabinet
+2. Step Index in Plan: 5
+3. Objects: Cabinet 1, Cabinet 2, Pot
+4. Action: Go to cabinet 2
+Current State 8:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 2
+4. Action: Open cabinet 2
+Current State 9:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 6
+3. Objects: Cabinet 2, cooled pot
+4. Action: Close cabinet 2
+Current State 10:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinet 2
+4. Action: Go to cabinet 2
+Current State 11:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, Cabinet 2
+4. Action: Take nothing from cabinet 2
+Current State 12:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot
+4. Action: Open cabinet 2
+Current State 13:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, Cabinet 2
+4. Action: Close cabinet 2
+Current State 15:
+1. Place: In front of closed cabinets, specifically cabinet 2
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinets
+4. Action: Go to cabinet 3
+Current State 16:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cabinet 2, Cabinet 3, Cooled Pot
+4. Action: Open cabinet 3
+Current State 17:
+1. Place: In front of cabinet 3
+2. Step Index in Plan: Step 6
+3. Objects: Cooled pot, cabinet 3
+4. Action: Close cabinet 3
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 4
+(4): go to cabinet 5
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to fridge 1
+(13): go to microwave 1
+(14): go to garbagecan 1
+(15): go to cabinet 9
+(16): go to cabinet 10
+(17): go to countertop 2
+(18): go to cabinet 11
+(19): go to cabinet 12
+(20): go to drawer 1
+(21): go to countertop 3
+(22): go to drawer 2
+(23): go to cabinet 13
+(24): go to sinkbasin 1
+(25): go to cabinet 14
+(26): go to drawer 3
+(27): go to stoveburner 1
+(28): go to stoveburner 2
+(29): go to stoveburner 3
+(30): go to cabinet 15
+(31): go to stoveburner 4
+(32): go to cabinet 16
+(33): go to cabinet 17
+(34): go to cabinet 18
+(35): go to cabinet 19
+(36): go to cabinet 20
+(37): go to shelf 1
+(38): go to shelf 2
+(39): go to shelf 3
+(40): close cabinet 3
+(41): take nothing from cabinet 3
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the plan, the final objective is to place the cooled pot in a cabinet. The History Information indicates that we have repeatedly attempted to place the cooled pot in various cabinets (cabinet 1, 2, and 3), but for some reason, the task has not been completed. The Current Observation shows us in front of closed cabinets. Since there is a cooled pot in the historical data, it suggests that we have the pot with us and it has been cooled. Our current step in the plan should be step 6 - placing the cooled pot in the cabinet. However, the history suggests an issue with cabinets 1, 2, and 3. To progress, we should attempt to place the pot in a different cabinet. The Admissible Actions list provides us with the option to go to other cabinets.
+
+The Most Appropriate Action: (3): go to cabinet 4.
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to cabinet 4
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 9.829497337341309 seconds
+
+Total Money: 9.301429999999991
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: According to the plan, the final objective is to place the cooled pot in a cabinet. The History Information indicates that we have repeatedly attempted to place the cooled pot in various cabinets (cabinet 1, 2, and 3), but for some reason, the task has not been completed. The Current Observation shows us in front of closed cabinets. Since there is a cooled pot in the historical data, it suggests that we have the pot with us and it has been cooled. Our current step in the plan should be step 6 - placing the cooled pot in the cabinet. However, the history suggests an issue with cabinets 1, 2, and 3. To progress, we should attempt to place the pot in a different cabinet. The Admissible Actions list provides us with the option to go to other cabinets.
+
+The Most Appropriate Action: (3): go to cabinet 4.
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot
+4. Action: Go to cabinet 4
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 3. The cabinet 4 is closed. 
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------18-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+Current State 2:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+Current State 3:
+1. Place: Next to a fridge
+2. Step Index in Plan: 4
+3. Objects: Fridge
+4. Action: Open fridge 1
+Current State 4:
+1. Place: Fridge 1
+2. Step Index in Plan: 4
+3. Objects: Pot, Fridge 1
+4. Action: Go to cabinet 1
+Current State 5:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 4
+3. Objects: Cooled pot
+4. Action: Open cabinet 1
+Current State 6:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 1
+4. Action: Close cabinet 1
+Current State 7:
+1. Place: In front of a closed cabinet
+2. Step Index in Plan: 5
+3. Objects: Cabinet 1, Cabinet 2, Pot
+4. Action: Go to cabinet 2
+Current State 8:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 2
+4. Action: Open cabinet 2
+Current State 9:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 6
+3. Objects: Cabinet 2, cooled pot
+4. Action: Close cabinet 2
+Current State 10:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinet 2
+4. Action: Go to cabinet 2
+Current State 11:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, Cabinet 2
+4. Action: Take nothing from cabinet 2
+Current State 12:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot
+4. Action: Open cabinet 2
+Current State 13:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, Cabinet 2
+4. Action: Close cabinet 2
+Current State 15:
+1. Place: In front of closed cabinets, specifically cabinet 2
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinets
+4. Action: Go to cabinet 3
+Current State 16:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cabinet 2, Cabinet 3, Cooled Pot
+4. Action: Open cabinet 3
+Current State 17:
+1. Place: In front of cabinet 3
+2. Step Index in Plan: Step 6
+3. Objects: Cooled pot, cabinet 3
+4. Action: Close cabinet 3
+Current State 18:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot
+4. Action: Go to cabinet 4
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to cabinet 5
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to fridge 1
+(13): go to microwave 1
+(14): go to garbagecan 1
+(15): go to cabinet 9
+(16): go to cabinet 10
+(17): go to countertop 2
+(18): go to cabinet 11
+(19): go to cabinet 12
+(20): go to drawer 1
+(21): go to countertop 3
+(22): go to drawer 2
+(23): go to cabinet 13
+(24): go to sinkbasin 1
+(25): go to cabinet 14
+(26): go to drawer 3
+(27): go to stoveburner 1
+(28): go to stoveburner 2
+(29): go to stoveburner 3
+(30): go to cabinet 15
+(31): go to stoveburner 4
+(32): go to cabinet 16
+(33): go to cabinet 17
+(34): go to cabinet 18
+(35): go to cabinet 19
+(36): go to cabinet 20
+(37): go to shelf 1
+(38): go to shelf 2
+(39): go to shelf 3
+(40): open cabinet 4
+(41): close cabinet 4
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: Based on the history information, we are currently at step 6 of the plan, which is to place the cooled pot in the cabinet. The current observation shows us in front of closed cabinets, specifically cabinet 4, as indicated by the history information stating "Go to cabinet 4" as the last action taken. Since cabinet 4 is closed, we need to open it to proceed with placing the cooled pot inside. The most appropriate next action is to open cabinet 4. 
+
+The Most Appropriate Action: (40): open cabinet 4
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: open cabinet 4
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 8.786502122879028 seconds
+
+Total Money: 9.332739999999992
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: Based on the history information, we are currently at step 6 of the plan, which is to place the cooled pot in the cabinet. The current observation shows us in front of closed cabinets, specifically cabinet 4, as indicated by the history information stating "Go to cabinet 4" as the last action taken. Since cabinet 4 is closed, we need to open it to proceed with placing the cooled pot inside. The most appropriate next action is to open cabinet 4. 
+
+The Most Appropriate Action: (40): open cabinet 4
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: In front of closed cabinet 4
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinet 4
+4. Action: Open cabinet 4
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You open the cabinet 4. The cabinet 4 is open. In it, you see nothing.
+
+--------------------------------------------------------------------------------------------------------------------------task: 18---------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Step:--------------------------------------------------------------------------19-------------------------------------------------------------------------------
+----------------------------------------
+VLM Prompt:
+**Task**  
+Please perform as an embodied AI agent. Our final objective is to cool some pot and put it in cabinet. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+
+**Plan**
+Below is a detailed step-by-step plan to complete the task.
+1. Find a pot.
+2. Pick up the pot.
+3. Find a fridge.
+4. Cool the pot with the fridge.
+5. Find a cabinet.
+6. Place the cooled pot in the cabinet.
+
+**Current Observation**
+Displayed is an image capturing the current position of the agent.
+<image>
+
+**History Information**
+Displayed are the previous observations with their corresponding actions.
+Current State 1:
+1. Place: Near the sink and coffee machine
+2. Step Index in Plan: 1
+3. Objects: Pot, sink, coffee machine, cabinets, countertops
+4. Action: Go to countertop 1
+Current State 2:
+1. Place: Kitchen Countertop
+2. Step Index in Plan: 3
+3. Objects: Kitchen Appliances, Pot
+4. Action: go to fridge 1
+Current State 3:
+1. Place: Next to a fridge
+2. Step Index in Plan: 4
+3. Objects: Fridge
+4. Action: Open fridge 1
+Current State 4:
+1. Place: Fridge 1
+2. Step Index in Plan: 4
+3. Objects: Pot, Fridge 1
+4. Action: Go to cabinet 1
+Current State 5:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 4
+3. Objects: Cooled pot
+4. Action: Open cabinet 1
+Current State 6:
+1. Place: In front of cabinet 1
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 1
+4. Action: Close cabinet 1
+Current State 7:
+1. Place: In front of a closed cabinet
+2. Step Index in Plan: 5
+3. Objects: Cabinet 1, Cabinet 2, Pot
+4. Action: Go to cabinet 2
+Current State 8:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 5
+3. Objects: Cooled pot, cabinet 2
+4. Action: Open cabinet 2
+Current State 9:
+1. Place: In front of cabinet 2
+2. Step Index in Plan: 6
+3. Objects: Cabinet 2, cooled pot
+4. Action: Close cabinet 2
+Current State 10:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinet 2
+4. Action: Go to cabinet 2
+Current State 11:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, Cabinet 2
+4. Action: Take nothing from cabinet 2
+Current State 12:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot
+4. Action: Open cabinet 2
+Current State 13:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, Cabinet 2
+4. Action: Close cabinet 2
+Current State 15:
+1. Place: In front of closed cabinets, specifically cabinet 2
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinets
+4. Action: Go to cabinet 3
+Current State 16:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cabinet 2, Cabinet 3, Cooled Pot
+4. Action: Open cabinet 3
+Current State 17:
+1. Place: In front of cabinet 3
+2. Step Index in Plan: Step 6
+3. Objects: Cooled pot, cabinet 3
+4. Action: Close cabinet 3
+Current State 18:
+1. Place: In front of closed cabinets
+2. Step Index in Plan: 6
+3. Objects: Cooled pot
+4. Action: Go to cabinet 4
+Current State 19:
+1. Place: In front of closed cabinet 4
+2. Step Index in Plan: 6
+3. Objects: Cooled pot, cabinet 4
+4. Action: Open cabinet 4
+
+
+**Admissible Actions**
+(1): go to cabinet 1
+(2): go to cabinet 2
+(3): go to cabinet 3
+(4): go to cabinet 5
+(5): go to cabinet 6
+(6): go to countertop 1
+(7): go to coffeemachine 1
+(8): go to cabinet 7
+(9): go to toaster 1
+(10): go to cabinet 8
+(11): go to sink 1
+(12): go to fridge 1
+(13): go to microwave 1
+(14): go to garbagecan 1
+(15): go to cabinet 9
+(16): go to cabinet 10
+(17): go to countertop 2
+(18): go to cabinet 11
+(19): go to cabinet 12
+(20): go to drawer 1
+(21): go to countertop 3
+(22): go to drawer 2
+(23): go to cabinet 13
+(24): go to sinkbasin 1
+(25): go to cabinet 14
+(26): go to drawer 3
+(27): go to stoveburner 1
+(28): go to stoveburner 2
+(29): go to stoveburner 3
+(30): go to cabinet 15
+(31): go to stoveburner 4
+(32): go to cabinet 16
+(33): go to cabinet 17
+(34): go to cabinet 18
+(35): go to cabinet 19
+(36): go to cabinet 20
+(37): go to shelf 1
+(38): go to shelf 2
+(39): go to shelf 3
+(40): close cabinet 4
+(41): take nothing from cabinet 4
+
+**Analysis Guideline**
+1. Analyze the **History Information** and determine our current step in the plan and our current place. 
+2. List all visible objects related to the task in the current observation.
+3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
+4. Analyze and decide on the most appropriate action to take.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+
+**Notes**
+1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
+2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
+3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
+4. Pay attention to synonyms and ensure clarity in the terms used.
+5. If there is no history available, we are at the first step and the current place is "Unknown".
+6. The most appropriate action must be in the **Admissible Actions**, and we cannot generate a new action that is not in the **Admissible Actions**.
+
+**Answer**
+Please select the most suitable action by following the **Analysis Guideline**, keeping the above **Notes** in mind.
+----------------------------------------
+
+----------------------------------------
+
+VLM Response:
+Analysis: According to the history information, we are currently at step 6 of the plan, which is to place the cooled pot in the cabinet. We have attempted to place the pot in cabinets 1, 2, 3, and 4, completing the action of opening and then closing each without placing the pot inside. In the current observation, we see an open cabinet and a countertop, but the cooled pot is not visible. Since we have already interacted with cabinets 1 through 4 without success, and cabinet 5 or 6 have not been attempted yet, the next logical step would be to try one of them.
+
+The Most Appropriate Action: (5): go to cabinet 6
+
+----------------------------------------
+
+----------------------------------------
+
+>>> Refine VLM Response and Get Pure Action: go to cabinet 6
+
+----------------------------------------
+
+-----------------------------------------------------------------
+
+Running time: 57.65005373954773 seconds
+
+Total Money: 9.366459999999993
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Prompt:
+**Context**
+Analysis: According to the history information, we are currently at step 6 of the plan, which is to place the cooled pot in the cabinet. We have attempted to place the pot in cabinets 1, 2, 3, and 4, completing the action of opening and then closing each without placing the pot inside. In the current observation, we see an open cabinet and a countertop, but the cooled pot is not visible. Since we have already interacted with cabinets 1 through 4 without success, and cabinet 5 or 6 have not been attempted yet, the next logical step would be to try one of them.
+
+The Most Appropriate Action: (5): go to cabinet 6
+
+**Summary Format**
+1. Place: [Specify the current location]
+2. Step Index in Plan: [Dispkay the current step number in the plan before taking the current action]
+3. Objects: [List the objects relevant to the task]
+4. Action: [Describe the most appropriate action without the "(x)" and keep the integer of the object]
+
+Please analyze the **Context** and summarize the analysis using the **Summary Format**.
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Summarization Response:
+1. Place: In front of an open cabinet and a countertop
+2. Step Index in Plan: 6
+3. Objects: Cabinets 1, 2, 3, 4, 5, 6, cooled pot, countertop
+4. Action: Go to cabinet 6
+
+-----------------------------------------------------------------
+
+-----------------------------------------------------------------
+
+Text Observation:You arrive at loc 5. The cabinet 6 is closed. 
+
+-----------------------------------------------------------------
