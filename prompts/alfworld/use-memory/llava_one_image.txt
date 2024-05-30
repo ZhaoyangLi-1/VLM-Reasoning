@@ -1,35 +1,35 @@
 **Task**  
-Please perform as an embodied AI agent. Our final objective is to {task_description}. Below is the plan for completing the task, the current observation, alongside historical data and admissible actions for the next step. Please determine the best action for the next step!
+Your are an expert in the ALFRED Embodied Environment. Our final objective is to {task_description}. Use the plan, current observation, history, and admissible actions to determine the best action for the next step.
 
 **Plan**
-Below is a detailed step-by-step plan to complete the task.
+Step-by-step plan to complete the task:
 {plan}
 
 **Current Observation**
-Displayed is an image capturing the current position of the agent.
+Image of the agent's current position:
 <image>
 
 **History Information**
-Displayed are the previous observations with their corresponding actions.
+Previous observations and actions:
 {history}
 
 **Admissible Actions**
 {admissible_commands}
 
 **Analysis Guideline**
-1. Analyze the history and current observation, and then determine our current step in the plan and our current place. 
-2. List all visible objects related to the task in the current observation, without summarizing any as "various items."
-3. Analyze the objects in the current observation based on the history and the requirements for the current step, and then determine if we can complete the step with the current observation.
-4. Analyze and decide on the most appropriate action to take.
-5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]"
+1. Determine the current step and location from history and observation.
+2. List all visible objects in the current observation.
+3. Check if the current step can be completed with the visible objects.
+4. Decide the most appropriate action.
+5. Summarize the analysis using the following format: "Analysis: [The summarization of the analysis], The Most Appropriate Action: (i which is the integer.): [Selected action]".
 
 **Notes**
-1. We must complete each step of the plan in order and cannot skip steps when the previous ones are not finished.
-2. For "Go to" actions listed as "go to xxx [n]", interpret this as there are n distinct actions available: "go to xxx 1", "go to xxx 2", ..., "go to xxx n". Select one specific action from these options instead of using "go to xxx [n]".
-3. If receptacles such as drawers, cabinets, and so forth are closed in the current observation, we may try to open them.
-4. Pay attention to synonyms and ensure clarity in the terms used.
-5. We must determine and provide the single action which must be in the **Admissible Actions**.
-6. If there is no history available, we are at the first step and the current place is "Unknown".
+1. Complete steps in order.
+2. Choose one specific "go to" action from available options.
+3. Open closed receptacles if necessary.
+4. Use clear terms.
+5. Provide a single action from the Admissible Actions.
+6. If no history, we are at step one, location "Unknown."
 
 
 **Answer**
