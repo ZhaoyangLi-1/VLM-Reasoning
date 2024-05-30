@@ -182,6 +182,7 @@ def test_tasks(args):
             messages = {"text": one_image_prompt,"images": list(images_queue)}
             start_time = time.time()
             response = actor_vlm_model.call_model(messages, decoding_args=action_vlm_decoding_args, return_list=False).strip()
+            print(f"Response: {response}")
             end_time = time.time()
             action = refine_action(response)
             if "No action" in action:
