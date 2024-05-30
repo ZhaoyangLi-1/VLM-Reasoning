@@ -18,7 +18,6 @@ ALFWORLD_DATA = os.getenv("ALFWORLD_DATA")
 ALFWORLD_SAVE = os.getenv("ALFWORLD_SAVE")
 CURRENT_FOLDER = os.path.dirname(os.path.abspath(__file__))
 PARENT_FOLDER = os.path.dirname(CURRENT_FOLDER)
-PROMPT_PATH = os.path.join(PARENT_FOLDER, "prompts/alfworld")
 
 
 def write_data_to_csv(filename, data):
@@ -28,7 +27,8 @@ def write_data_to_csv(filename, data):
             writer.writerow(row)
             print(f'Added row: {row}')
 
-def get_prompts(is_generate_object_list=False):
+def get_prompts(args):
+    prompt_path = os.path.join(PARENT_FOLDER, "prompts/alfworld")
     def get_task_hints(task_hints_prompt_path):
         task_hints = {}
         for filepath, _, filenames in os.walk(task_hints_prompt_path):
@@ -37,29 +37,33 @@ def get_prompts(is_generate_object_list=False):
                 with open(os.path.join(filepath, filename), "r") as f:
                     task_hints[take_name] = f.read().replace("\n", " ")
         return task_hints
-    task_hints_prompt_path = os.path.join(PROMPT_PATH, "task-hints")
+    task_hints_prompt_path = os.path.join(prompt_path, "task-hints")
     task_hints = get_task_hints(task_hints_prompt_path)
     
-    generate_plan_prompt_path = os.path.join(PROMPT_PATH, "use-memory/generate_plan.txt")
+    generate_plan_prompt_path = os.path.join(prompt_path, "use-memory/generate_plan.txt")
     with open(generate_plan_prompt_path, "r") as f:
         generate_plan_prompt = f.read()
     
-    if is_generate_object_list:
-        vlm_prompt_for_one_img_path = os.path.join(PROMPT_PATH, "use-memory/one_image_with_object_list.txt")
+    if "llava" in args.vlm_model:
+        vlm_prompt_txt_head = "llava"
+    elif "gpt" in args.vlm_model:
+        vlm_prompt_txt_head = "gpt"
+    if args.is_generate_object_list:
+        vlm_prompt_for_one_img_path = os.path.join(prompt_path, f"use-memory/{vlm_prompt_txt_head}_one_image_with_object_list.txt")
     else:
-        vlm_prompt_for_one_img_path = os.path.join(PROMPT_PATH, "use-memory/one_image.txt")
+        vlm_prompt_for_one_img_path = os.path.join(prompt_path, f"use-memory/{vlm_prompt_txt_head}_one_image.txt")
     with open(vlm_prompt_for_one_img_path, "r") as f:
         vlm_prompt_for_one_img = f.read()
         
-    summary_prompt_path = os.path.join(PROMPT_PATH, "use-memory/summerize_the_analysis.txt")
+    summary_prompt_path = os.path.join(prompt_path, "use-memory/summerize_the_analysis.txt")
     with open(summary_prompt_path, "r") as f:
         summary_promp = f.read()
         
-    extract_related_objects_path = os.path.join(PROMPT_PATH, "use-memory/extract_related_objects.txt")
+    extract_related_objects_path = os.path.join(prompt_path, "use-memory/extract_related_objects.txt")
     with open(extract_related_objects_path, "r") as f:
         extract_related_objects_prompt = f.read()
         
-    generate_object_list_path = os.path.join(PROMPT_PATH, "use-memory/list_objects.txt")
+    generate_object_list_path = os.path.join(prompt_path, "use-memory/list_objects.txt")
     with open(generate_object_list_path, "r") as f:
         generate_object_list_prompt = f.read()
     
@@ -71,7 +75,7 @@ def delete_inefficient_action(admissible_commands, no_try_actions):
 
 
 def test_tasks(args):
-    generate_plan_prompt, vlm_prompt_for_one_img, summary_promp, task_hints, extract_related_objects_prompt, generate_object_list_prompt = get_prompts(args.is_generate_object_list)
+    generate_plan_prompt, vlm_prompt_for_one_img, summary_promp, task_hints, extract_related_objects_prompt, generate_object_list_prompt = get_prompts(args)
     env_url = "http://127.0.0.1:" + str(args.env_url)
     # initial VLM and LLM model
     action_vlm_decoding_args = DecodingArguments(
