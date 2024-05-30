@@ -421,7 +421,7 @@ def format_obs_task_desc(obs):
 #     # Extract and return the action if the match is found
 #     return match.group(1).strip() if match else "No action"
 
-def refine_action(response):
+def refine_action_gpt(response):
     # response = response.split("The answer is:")
     response = response.split("The Most Appropriate Action: ")
     if len(response) == 1:
@@ -435,7 +435,14 @@ def refine_action(response):
     if not bool(re.search(r'\d$', action)):
         action = "No action"
     return action
-    
+
+def refine_action_llava(response):
+    match = re.search(r'"Action":\s*(.*)}', response, re.IGNORECASE | re.DOTALL)
+    if match:
+        return match.group(1).strip().lower()
+    return "No action"
+
+
 def delete_examine_action_for_receps(admissible_commands, recep_names):
     return [command for command in admissible_commands if "examine" not in command or not any(name in command for name in recep_names)]
 
@@ -570,7 +577,3 @@ def generate_html_with_task_log(context, image_paths, output_file):
     with open(output_file, 'w') as file:
         file.write(html)
 
-
-        
-a = "Analysis: The history information indicates that we are at step 1 of the plan, which is to find an alarm clock. The current observation shows us in a room with a sidetable and a desklamp. The sidetable has a drawer that could potentially contain an alarm clock. The objects relevant to our task in the current observation are the sidetable and the desklamp. Since we need to find an alarm clock, examining the sidetable where alarm clocks are commonly placed would be a logical next step.\n\nThe Most Appropriate Action: examine sidetable 1"
-b = refine_action(a)
