@@ -211,8 +211,9 @@ def draw_instance_img(original_image, env_url, image_size_margin_ratio=0.005):
     )
 
     draw = ImageDraw.Draw(original_image)
-    font = ImageFont.truetype("/home/zhaoyang/.fonts/Helvetica.ttf", size=50)  # ImageFont.load_default() #ImageFont.truetype("/home/zhaoyang/.fonts/Helvetica.ttf", size=50) 
-
+    # font = ImageFont.truetype("/home/zhaoyang/.fonts/Helvetica.ttf", size=50)  # ImageFont.load_default() #ImageFont.truetype("/home/zhaoyang/.fonts/Helvetica.ttf", size=50) 
+    font = ImageFont.load_default()
+    
     drawn_text_positions = []
     obj_dic = {}
     for obj_id, obj in objects_receps.items():
