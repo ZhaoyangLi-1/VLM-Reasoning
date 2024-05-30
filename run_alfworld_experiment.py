@@ -16,7 +16,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--save_path",
         default="one-image-direct-action-selection-add-object-list",
-        # default="llava-v1.6-7b-existence-use-memory-act-2",
+        # default="llava-v1.6-7b-use-memory-act-2",
         type=str,
     )
     parser.add_argument(
