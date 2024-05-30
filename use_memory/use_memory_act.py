@@ -28,7 +28,7 @@ def write_data_to_csv(filename, data):
             writer.writerow(row)
             print(f'Added row: {row}')
 
-def get_prompts():
+def get_prompts(is_generate_object_list=False):
     def get_task_hints(task_hints_prompt_path):
         task_hints = {}
         for filepath, _, filenames in os.walk(task_hints_prompt_path):
@@ -43,15 +43,22 @@ def get_prompts():
     generate_plan_prompt_path = os.path.join(PROMPT_PATH, "use-memory/generate_plan.txt")
     with open(generate_plan_prompt_path, "r") as f:
         generate_plan_prompt = f.read()
-    vlm_prompt_for_one_img_path = os.path.join(PROMPT_PATH, "use-memory/one_image.txt")
+    
+    if is_generate_object_list:
+        vlm_prompt_for_one_img_path = os.path.join(PROMPT_PATH, "use-memory/one_image_with_object_list.txt")
+    else:
+        vlm_prompt_for_one_img_path = os.path.join(PROMPT_PATH, "use-memory/one_image.txt")
     with open(vlm_prompt_for_one_img_path, "r") as f:
         vlm_prompt_for_one_img = f.read()
+        
     summary_prompt_path = os.path.join(PROMPT_PATH, "use-memory/summerize_the_analysis.txt")
     with open(summary_prompt_path, "r") as f:
         summary_promp = f.read()
+        
     extract_related_objects_path = os.path.join(PROMPT_PATH, "use-memory/extract_related_objects.txt")
     with open(extract_related_objects_path, "r") as f:
         extract_related_objects_prompt = f.read()
+        
     generate_object_list_path = os.path.join(PROMPT_PATH, "use-memory/list_objects.txt")
     with open(generate_object_list_path, "r") as f:
         generate_object_list_prompt = f.read()
@@ -64,7 +71,7 @@ def delete_inefficient_action(admissible_commands, no_try_actions):
 
 
 def test_tasks(args):
-    generate_plan_prompt, vlm_prompt_for_one_img, summary_promp, task_hints, extract_related_objects_prompt, generate_object_list_prompt = get_prompts()
+    generate_plan_prompt, vlm_prompt_for_one_img, summary_promp, task_hints, extract_related_objects_prompt, generate_object_list_prompt = get_prompts(args.is_generate_object_list)
     env_url = "http://127.0.0.1:" + str(args.env_url)
     # initial VLM and LLM model
     action_vlm_decoding_args = DecodingArguments(
@@ -156,14 +163,20 @@ def test_tasks(args):
             images_log.append(image)
             image_paths_queue.append(image_path)
             
-            messages = {"text": generate_object_list_prompt,"images": list(images_queue)}
-            object_list = actor_vlm_model.call_model(messages, decoding_args=action_vlm_decoding_args, return_list=False).strip()
-            
-            if all_history is None:
-                all_history = f"State {0}:\nNo history.\n"
-                one_image_prompt = vlm_prompt_for_one_img.format(object_list=object_list, task_description=task_desc, plan=plan, history="No history.", admissible_commands=admissible_commands)
+            if args.is_generate_object_list:
+                messages = {"text": generate_object_list_prompt,"images": list(images_queue)}
+                object_list = actor_vlm_model.call_model(messages, decoding_args=action_vlm_decoding_args, return_list=False).strip()
+                if all_history is None:
+                    all_history = f"State {0}:\nNo history.\n"
+                    one_image_prompt = vlm_prompt_for_one_img.format(object_list=object_list, task_description=task_desc, plan=plan, history="No history.", admissible_commands=admissible_commands)
+                else:
+                    one_image_prompt = vlm_prompt_for_one_img.format(object_list=object_list, task_description=task_desc, plan=plan, history=all_history, admissible_commands=admissible_commands)
             else:
-                one_image_prompt = vlm_prompt_for_one_img.format(object_list=object_list, task_description=task_desc, plan=plan, history=all_history, admissible_commands=admissible_commands)
+                if all_history is None:
+                    all_history = f"State {0}:\nNo history.\n"
+                    one_image_prompt = vlm_prompt_for_one_img.format(task_description=task_desc, plan=plan, history="No history.", admissible_commands=admissible_commands)
+                else:
+                    one_image_prompt = vlm_prompt_for_one_img.format(task_description=task_desc, plan=plan, history=all_history, admissible_commands=admissible_commands)
             
             
             messages = {"text": one_image_prompt,"images": list(images_queue)}

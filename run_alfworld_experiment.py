@@ -60,7 +60,7 @@ if __name__ == "__main__":
         type=int,
         default=20,
     )
-    parser.add_argument("--is_generate_object_list", default="existence", type=str)
+    parser.add_argument("--is_generate_object_list", default=False, type=bool)
     parser.add_argument("--QA_Mode", default="existence", type=str)
     parser.add_argument("--refine_type", default="no-refine", type=str)
     parser.add_argument("--result_csv_folder", default="GPT4-V-result", type=str)
