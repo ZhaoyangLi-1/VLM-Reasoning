@@ -188,7 +188,11 @@ def test_tasks(args):
             response = actor_vlm_model.call_model(messages, decoding_args=action_vlm_decoding_args, return_list=False).strip()
             print(f"Response: {response}")
             end_time = time.time()
-            action = refine_action(response)
+            if "llava" in args.vlm_model:
+                action = refine_action_llava(response)
+            elif "gpt" in args.vlm_model:    
+                action = refine_action_gpt(response)
+            print(f"Action: {action}")
             if "No action" in action:
                 continue
             no_try_actions.append(action)
@@ -196,7 +200,7 @@ def test_tasks(args):
             messages = {"text": summary_prompt_for_one_img}
             
             # data.append(["task_id", "task_desc", "step", "action", "original_image_path", "ins_image_path", "task_related_objects", "object_count_infor", "object_bboxes", "history_num", "history"])
-            print(f"task_idx: {task_idx}, task_desc: {task_desc}, step: {step+1}, action: {action}, count_dic: {count_dic},  current_num_history: {current_num_history}")
+            # print(f"task_idx: {task_idx}, task_desc: {task_desc}, step: {step+1}, action: {action}, count_dic: {count_dic},  current_num_history: {current_num_history}")
             data.append([task_idx, task_desc, step+1, action, image_path, instance_image_path, task_related_objects, count_dic, merged_obj_dic, current_num_history, all_history])
             history = llm_model.call_model(messages, decoding_args=action_vlm_decoding_args, return_list=False).strip()
             current_num_history = len(history_steps)

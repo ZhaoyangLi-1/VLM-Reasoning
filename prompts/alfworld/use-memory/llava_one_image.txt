@@ -1,8 +1,7 @@
 **Task**  
-Your are an expert in the ALFRED Embodied Environment. Our final objective is to {task_description}. Use the plan, current observation, history, and admissible actions to determine the best action for the next step.
+Please perform as an embodied AI agent. Our final objective is to {task_description}. Below is the plan for completing the task, the current observation, historical data, and admissible actions for the next step. We also pay attention to synonyms and ensure clarity in the terms used. Please determine the best action for the next step.
 
 **Plan**
-Step-by-step plan to complete the task:
 {plan}
 
 **Current Observation**
@@ -10,28 +9,14 @@ Image of the agent's current position:
 <image>
 
 **History Information**
-Previous observations and actions:
 {history}
 
-**Admissible Actions**
+**Admissible Actions List**
 {admissible_commands}
 
-**Analysis Guideline**
-1. Determine the current step and location from history and observation.
-2. List all visible objects in the current observation.
-3. Check if the current step can be completed with the visible objects.
-4. Decide the most appropriate action based on the analysis.
-5. Summarize the analysis using the following format: {{"Analysis": The summarization of the analysis. "Action": [Selected action]}}
-
-
-**Notes**
-1. Complete steps in order.
-2. Choose one specific "go to" action from available options.
-3. Open closed receptacles if necessary.
-4. Use clear terms.
-5. Provide a single action from the Admissible Actions.
-6. If no history, we are at step one, location "Unknown."
-
-
 **Answer**
-Select the most suitable action using the Analysis Guideline and Notes.
+Select the most suitable action. Your response should be a valid JSON file:
+{{
+  "analysis": "determine our current step and position based on history and current observations. List all visible objects related to the task, analyze them to decide if we can complete the step, and then determine the most appropriate action to take.",
+  "action": "the most appropriate action from the admissible actions list"
+}}
