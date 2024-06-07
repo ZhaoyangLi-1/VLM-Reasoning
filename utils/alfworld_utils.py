@@ -37,8 +37,11 @@ def save_video(frames: Sequence[np.ndarray], filename: str, fps: int = 3):
 
 # Get the tasks and return the task list
 def get_path_tasks(task_list_path):
+    import chardet
+    with open(task_list_path, 'rb') as f:
+        result = chardet.detect(f.read())
     task_paths = []
-    with open(task_list_path, "rb") as f:
+    with open(task_list_path, 'r', encoding=result['encoding']) as f:
         relative_path_json = json.load(f)
         for _, rel_paths in relative_path_json.items():
             for rel_path in rel_paths:
@@ -155,8 +158,8 @@ def get_path_tasks(task_list_path):
 
 #     combined = combined.convert("RGB")
 #     return combined
-
-def draw_instance_img(original_image, env_url, image_size_margin_ratio=0.005):
+# image_size_margin_ratio=0.005
+def draw_instance_img(original_image, env_url, image_size_margin_ratio=0):
     def is_dark_color(color):
         r, g, b = color
         return (0.299 * r + 0.587 * g + 0.114 * b) < 128

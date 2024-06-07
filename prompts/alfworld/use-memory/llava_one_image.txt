@@ -1,5 +1,5 @@
 **Task**  
-Please act as an embodied AI agent. Our objective is to {task_description}. Here is the plan, current observation, history, and admissible actions. Ensure term clarity and consider synonyms. Determine the best action of next step.
+Please act as an embodied AI agent. Our objective is to look at alarmclock under the desklamp. Here is the plan, current observation, history, and admissible actions .Ensure term clarity and consider synonyms. Determine the best action from admissible actions for the next step.
 
 **Plan**
 {plan}
@@ -14,9 +14,14 @@ Image of the agent's current position:
 **Admissible Actions List**
 {admissible_commands}
 
+**Notes**
+1. Complete steps in order.
+2. Provide a single action from the Admissible Actions.
+3. If no history, we are at step one, location "Unknown.
+
 **Answer**
 Select the best action. Respond with a valid JSON:
 {{
-"analysis": "Determine the current step and position based on history and observations. List visible objects related to the task, analyze them to decide if the step can be completed, and then choose the appropriate action.",
+"analysis": "Determine the current step and position based on history and observations. List visible objects related to the task, analyze them to decide if the step can be completed, and then choose the appropriate action. Please pay attention to Notes.",
 "action": "the most appropriate action from the admissible actions list"
 }}
