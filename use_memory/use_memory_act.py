@@ -167,20 +167,35 @@ def test_tasks(args):
             images_log.append(image)
             image_paths_queue.append(image_path)
             
+            # if args.is_generate_object_list:
+            #     messages = {"text": generate_object_list_prompt,"images": list(images_queue)}
+            #     object_list = actor_vlm_model.call_model(messages, decoding_args=action_vlm_decoding_args, return_list=False).strip()
+            #     if all_history is None:
+            #         all_history = f"State {0}:\nNo history.\n"
+            #         one_image_prompt = vlm_prompt_for_one_img.format(object_list=object_list, task_description=task_desc, plan=plan, history="No history.", admissible_commands=admissible_commands)
+            #     else:
+            #         one_image_prompt = vlm_prompt_for_one_img.format(object_list=object_list, task_description=task_desc, plan=plan, history=all_history, admissible_commands=admissible_commands)
+            # else:
+            #     if all_history is None:
+            #         all_history = f"State {0}:\nNo history.\n"
+            #         one_image_prompt = vlm_prompt_for_one_img.format(task_description=task_desc, plan=plan, history="No history.", admissible_commands=admissible_commands)
+            #     else:
+            #         one_image_prompt = vlm_prompt_for_one_img.format(task_description=task_desc, plan=plan, history=all_history, admissible_commands=admissible_commands)
+            
             if args.is_generate_object_list:
                 messages = {"text": generate_object_list_prompt,"images": list(images_queue)}
                 object_list = actor_vlm_model.call_model(messages, decoding_args=action_vlm_decoding_args, return_list=False).strip()
                 if all_history is None:
                     all_history = f"State {0}:\nNo history.\n"
-                    one_image_prompt = vlm_prompt_for_one_img.format(object_list=object_list, task_description=task_desc, plan=plan, history="No history.", admissible_commands=admissible_commands)
+                    one_image_prompt = vlm_prompt_for_one_img.format(object_list=object_list, task_description=task_desc, plan=plan, admissible_commands=admissible_commands)
                 else:
-                    one_image_prompt = vlm_prompt_for_one_img.format(object_list=object_list, task_description=task_desc, plan=plan, history=all_history, admissible_commands=admissible_commands)
+                    one_image_prompt = vlm_prompt_for_one_img.format(object_list=object_list, task_description=task_desc, plan=plan, admissible_commands=admissible_commands)
             else:
                 if all_history is None:
                     all_history = f"State {0}:\nNo history.\n"
-                    one_image_prompt = vlm_prompt_for_one_img.format(task_description=task_desc, plan=plan, history="No history.", admissible_commands=admissible_commands)
+                    one_image_prompt = vlm_prompt_for_one_img.format(task_description=task_desc, plan=plan, admissible_commands=admissible_commands)
                 else:
-                    one_image_prompt = vlm_prompt_for_one_img.format(task_description=task_desc, plan=plan, history=all_history, admissible_commands=admissible_commands)
+                    one_image_prompt = vlm_prompt_for_one_img.format(task_description=task_desc, plan=plan, admissible_commands=admissible_commands)
             
             
             messages = {"text": one_image_prompt,"images": list(images_queue)}
