@@ -76,6 +76,7 @@ def delete_inefficient_action(admissible_commands, no_try_actions):
 
 def test_tasks(args):
     generate_plan_prompt, vlm_prompt_for_one_img, summary_promp, task_hints, extract_related_objects_prompt, generate_object_list_prompt = get_prompts(args)
+    print(f"Action Prompt:\n {vlm_prompt_for_one_img}")
     env_url = "http://127.0.0.1:" + str(args.env_url)
     # initial VLM and LLM model
     action_vlm_decoding_args = DecodingArguments(
