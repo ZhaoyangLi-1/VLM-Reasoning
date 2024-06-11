@@ -104,7 +104,7 @@ def generate_balanced_go_to_actions(
     executable_go_to_actions, no_executable_go_to_actions, all_executable_go_to_actions
 ):
     action_executable_dict = {}
-    
+
     for action in executable_go_to_actions:
         action_executable_dict[action] = 1
 
@@ -120,14 +120,16 @@ def generate_balanced_go_to_actions(
 
 
 def get_prompts():
-    action_prompt_path =  os.path.join(CURRENT_FOLDER, "prompts/alfworld/test-ground/action_prompt.txt")
+    action_prompt_path = os.path.join(
+        CURRENT_FOLDER, "prompts/alfworld/test-ground/action_prompt.txt"
+    )
     with open(action_prompt_path, "r") as f:
         action_prompt = f.read().strip()
     return action_prompt
 
 
 def extract_object_place(task_desk):
-    match = re.search(r'\b(\w+)\s+(in|on)\s+(\w+)', task_desk)
+    match = re.search(r"\b(\w+)\s+(in|on)\s+(\w+)", task_desk)
     if match:
         return (match.group(1), match.group(3))
     return None
@@ -152,14 +154,14 @@ def map_reponse_from_vlm(response):
 
 
 def formorlize_action(executable_go_to_actions, target_object, tried_actions):
-    pick_action = f"pick {target_object}"
+    pick_action = f"take {target_object}"
     if len(executable_go_to_actions) == 0:
-       go_to_action = tried_actions[0]
+        go_to_action = tried_actions[0]
     else:
         go_to_action = executable_go_to_actions[0]
-    
+
     return f"[{go_to_action}, {pick_action}]"
-            
+
 
 def check_grounding_infor_in_pick(args, env_url):
     action_basic_prompt = get_prompts()
@@ -168,23 +170,30 @@ def check_grounding_infor_in_pick(args, env_url):
         n=1,
         temperature=0.7,
         image_detail="auto",
-        )
+    )
     actor_vlm_model = ChatBot(args.vlm_model)
     print(f"VLM Model: {args.vlm_model}")
-    
-    # llm_decoding_args = DecodingArguments(
-    #     max_tokens=1024,
-    #     n=1,
-    #     temperature=0.7,
-    #     image_detail="auto",
-    # )
-    # llm_model = ChatBot(args.llm_model)
-    # print(f"LLM Model: {args.llm_model}")
-    
+
     csv_save_path = os.path.join(CURRENT_FOLDER, args.csv_save_name + ".csv")
     df = pd.read_csv(csv_save_path)
     data = []
-    data.append(["task_id", "task_path", "task_desc", "image_save_path", "prompt", "posterior_action", "successor_action", "thought", "is_pick_can_be_done", "vlm_succeed", "target_object", "place", "admissible_commands_env"])
+    # data.append(['task_id', 'task_path', 'task_desc', 'image_save_path', 'prompt', 'posterior_action', 'successor_action', 'thought', 'is_pick_can_be_done', 'vlm_succeed', 'target_object', 'place', 'admissible_commands_env'])
+    columns = [
+        "task_id",
+        "task_path",
+        "task_desc",
+        "image_save_path",
+        "prompt",
+        "posterior_action",
+        "successor_action",
+        "thought",
+        "is_pick_can_be_done",
+        "vlm_succeed",
+        "target_object",
+        "place",
+        "grounded_objects",
+        "admissible_commands_env",
+    ]
     image_save_folder = os.path.join(CURRENT_FOLDER, "test-grounded-images")
     if not os.path.exists(image_save_folder):
         os.makedirs(image_save_folder)
@@ -193,10 +202,13 @@ def check_grounding_infor_in_pick(args, env_url):
         task_path = row["task_path"]
         task_desc = row["task_desc"]
         executable_go_to_actions = eval(row["executable_go_to_actions"])
-        requests.post(env_url + "/reset", json={"json_file": os.path.join(ALFWORLD_DATA, task_path)})
-        
+        requests.post(
+            env_url + "/reset",
+            json={"json_file": os.path.join(ALFWORLD_DATA, task_path)},
+        )
+
         target_object, place = extract_object_place(task_desc)
-        
+
         task_id_image_save_folder = os.path.join(image_save_folder, f"task-{task_id}")
         if not os.path.exists(task_id_image_save_folder):
             os.makedirs(task_id_image_save_folder)
@@ -205,56 +217,93 @@ def check_grounding_infor_in_pick(args, env_url):
             posterior_action = executable_go_to_actions.pop(0)
             tried_actions.append(posterior_action)
             text = b64decode(
-                eval(requests.post(env_url + "/step", json={"action": posterior_action}).text)
+                eval(
+                    requests.post(
+                        env_url + "/step", json={"action": posterior_action}
+                    ).text
+                )
             )
             obs, _, done, infos = loads(text)
             admissible_commands = infos["admissible_commands"][0]
             obs = obs[0]
-            
+
             count_dic, _, image, _ = get_obj_infor(env_url)
             file_name = copy.deepcopy(posterior_action).replace(" ", "-")
-            image_save_path = os.path.join(task_id_image_save_folder, f"{file_name}.png")
+            image_save_path = os.path.join(
+                task_id_image_save_folder, f"{file_name}.png"
+            )
             image.save(image_save_path, "JPEG")
-            grounded_objects = [object_name.lower() for object_name in list(count_dic.keys())]
+            grounded_objects = [
+                object_name.lower() for object_name in list(count_dic.keys())
+            ]
             print(f"Grounded Objects: {grounded_objects}")
-            is_pick_can_be_done = check_pick_can_be_done(admissible_commands, target_object)
-            
-            admissible_commands_prompt =  formorlize_action(executable_go_to_actions, target_object, tried_actions)
-            prompt = action_basic_prompt.format(task_desc=task_desc, admissible_commands=admissible_commands_prompt, task_related_object=target_object)
+            is_pick_can_be_done = check_pick_can_be_done(
+                admissible_commands, target_object
+            )
+
+            admissible_commands_prompt = formorlize_action(
+                executable_go_to_actions, target_object, tried_actions
+            )
+            prompt = action_basic_prompt.format(
+                task_desc=task_desc,
+                admissible_commands=admissible_commands_prompt,
+                task_related_object=target_object,
+            )
             messages = {"image": [image], "text": prompt}
-            
-            response = actor_vlm_model.call_model(messages, decoding_args=action_vlm_decoding_args, return_list=False).strip()
+
+            response = actor_vlm_model.call_model(
+                messages, decoding_args=action_vlm_decoding_args, return_list=False
+            ).strip()
             thought, successor_action = map_reponse_from_vlm(response)
-            
-            if is_pick_can_be_done and "pick" in successor_action:
+
+            if is_pick_can_be_done and "take" in successor_action:
                 action_succeed = True
             elif "go to" in successor_action and not is_pick_can_be_done:
                 action_succeed = True
             else:
                 action_succeed = False
-            print(f"Posterior Action : {posterior_action},  Successor Action: {successor_action},  Thought: {thought}, Action Succeed: {action_succeed}")
-            data.append([task_id, task_path, task_desc, image_save_path, prompt, posterior_action, successor_action, thought, is_pick_can_be_done, action_succeed, target_object, place, grounded_objects, admissible_commands])
-    csv_save_path = os.path.join(CURRENT_FOLDER, "grounded_pick_planning.csv")
-    write_data_to_csv(csv_save_path, data)
-    print(f"Data saved to {csv_save_path}")
-        
+            print(
+                f"Posterior Action : {posterior_action},  Successor Action: {successor_action},  Thought: {thought}, Action Succeed: {action_succeed}"
+            )
 
-def get_posterior_action_for_pick(group):
-    for index, row in group.iterrows():
-        is_pick_can_be_done = row['is_pick_can_be_done']
-        task_desc = row['task_desc']
-        if is_pick_can_be_done:
-            task_path = row["task_path"]
-            posterior_action = row["posterior_action"]
-            target_object = row['target_object']
-            admissible_commands_env = eval(row["admissible_commands_env"])
-            place = row['place']
-            for admissible_command in admissible_commands_env:
-                if "take" in admissible_command:
-                    target_object_action = f"take {target_object}"
-                    if target_object_action in admissible_command:
-                        pick_action = admissible_command
-                        return (posterior_action, pick_action, place, task_desc, target_object, task_path)
+            # data.append([task_id, task_path, task_desc, image_save_path, prompt, posterior_action, successor_action, thought, is_pick_can_be_done, action_succeed, target_object, place, grounded_objects, admissible_commands])
+            data.append(
+                {
+                    "task_id": task_id,
+                    "task_path": task_path,
+                    "task_desc": task_desc,
+                    "image_save_path": image_save_path,
+                    "prompt": prompt,
+                    "posterior_action": posterior_action,
+                    "successor_action": successor_action,
+                    "thought": thought,
+                    "is_pick_can_be_done": is_pick_can_be_done,
+                    "vlm_succeed": action_succeed,
+                    "target_object": target_object,
+                    "place": place,
+                    "grounded_objects": grounded_objects,
+                    "admissible_commands_env": admissible_commands,
+                }
+            )
+    result_df = pd.DataFrame(data, columns=columns)
+    result_csv_save_path = os.path.join(CURRENT_FOLDER, "grounded_pick_planning.csv")
+    result_df.to_csv(result_csv_save_path, index=False)
+    print(f"Data saved to {result_csv_save_path}")
+
+
+def get_take_action(admissible_commands, target_object):
+    for admissible_command in admissible_commands:
+        take_action = f"take {target_object}"
+        if take_action in admissible_command:
+            if target_object in admissible_command:
+                return admissible_command
+
+
+def get_go_to_place_action(admissible_commands, place):
+    for admissible_command in admissible_commands:
+        go_to_place = f"go to {place}"
+        if go_to_place in admissible_command:
+            return admissible_command
 
 
 def check_put_can_be_done(args, env_url):
@@ -263,106 +312,185 @@ def check_put_can_be_done(args, env_url):
         n=1,
         temperature=0.7,
         image_detail="auto",
-        )
+    )
     actor_vlm_model = ChatBot(args.vlm_model)
     print(f"VLM Model: {args.vlm_model}")
-    
-    put_prompt_path =  os.path.join(CURRENT_FOLDER, "prompts/alfworld/test-ground/put_object.txt")
+
+    put_prompt_path = os.path.join(
+        CURRENT_FOLDER, "prompts/alfworld/test-ground/put_object.txt"
+    )
     with open(put_prompt_path, "r") as f:
         put_basic_prompt = f.read().strip()
         assert put_basic_prompt is not None
-    
+
     csv_save_path_pick = os.path.join(CURRENT_FOLDER, "grounded_pick_planning.csv")
     df_pick = pd.read_csv(csv_save_path_pick)
     df_task_group = df_pick.groupby("task_id")
-    
-    csv_save_path_executable = os.path.join(CURRENT_FOLDER, args.csv_save_name + ".csv")
-    df_executable = pd.read_csv(csv_save_path_executable)
-    data = ["task_id", "task_path", "task_desc", "image_save_path", "prompt", "posterior_action", "go_to_action" "successor_action", "thought", "is_vlm_response_pu", "action_succeed",  "target_object", "place", "admissible_commands_env"]
+
+    executable_and_not_for_30_tasks_path = os.path.join(
+        CURRENT_FOLDER, args.csv_save_name + ".csv"
+    )
+    df_executable_for_all_tasks = pd.read_csv(executable_and_not_for_30_tasks_path)
+
+    wrong_task_path = os.path.join(CURRENT_FOLDER, args.csv_save_name + ".csv")
+    wrong_task_data_columns = ["task_id", "task_path", "task_desc", "error_reason"]
+    wrong_task_data = []
+    data = []
+    columns = [
+        "task_id",
+        "task_path",
+        "task_desc",
+        "image_save_path",
+        "prompt",
+        "posterior_action",
+        "go_to_action",
+        "successor_action",
+        "thought",
+        "is_vlm_response_pu",
+        "action_succeed",
+        "target_object",
+        "place",
+        "admissible_commands_env",
+    ]
+
     for task_id, group in df_task_group:
-        if task_id == 5:
-            continue
-        posterior_action, pick_action, place, task_desc, target_object, task_path = get_posterior_action_for_pick(group)
-        requests.post(env_url + "/reset", json={"json_file": os.path.join(ALFWORLD_DATA, task_path)})
-        task_executable_action = eval(df_executable[df_executable["task_id"] == task_id]["executable_go_to_actions"].values[0])
-        text = b64decode(
-            eval(requests.post(env_url + "/step", json={"action": posterior_action}).text)
+        # if task_id != 5:
+        #     continue
+        # if task_id == 5:
+        #     breakpoint()
+        executable_for_all_the_task = ast.literal_eval(
+            df_executable_for_all_tasks[
+                df_executable_for_all_tasks["task_id"] == task_id
+            ]["executable_go_to_actions"].values[0]
         )
-        obs, _, done, infos = loads(text)
-        admissible_commands = infos["admissible_commands"][0]
-        obs = obs[0]
-        assert "Nothing happens." not in obs
-        text = b64decode(
-             eval(requests.post(env_url + "/step", json={"action": pick_action}).text)
+        id_pick_can_be_done_row = group[group["is_pick_can_be_done"] == True]
+        if id_pick_can_be_done_row.empty:
+            wrong_task_data.append([task_id, group["task_path"].values[0], group["task_desc"].values[0]], "No pick can be done")
+        place = id_pick_can_be_done_row["place"].values[0]
+        target_object = id_pick_can_be_done_row["target_object"].values[0]
+        posterior_action = id_pick_can_be_done_row["posterior_action"].values[0]
+        admissible_commands_env = ast.literal_eval(
+            id_pick_can_be_done_row["admissible_commands_env"].values[0]
         )
-        obs, _, done, infos = loads(text)
-        admissible_commands = infos["admissible_commands"][0]
-        obs = obs[0]
-        assert "Nothing happens." not in obs
-        is_go_to_put_place_done = False
-        tried_go_to_actions = deque()
-        # breakpoint()
-        while not is_go_to_put_place_done:
-            for action in task_executable_action:
-                if place in action:
-                    go_to_place = action
-                    if go_to_place not in tried_go_to_actions:
-                        tried_go_to_actions.append(go_to_place)
-                        break
-            # if task_id == 5:
-            #     breakpoint()            
-            text = b64decode(
-                eval(requests.post(env_url + "/step", json={"action": go_to_place}).text)
+        pick_action = get_take_action(admissible_commands_env, target_object)
+        task_desc = id_pick_can_be_done_row["task_desc"].values[0]
+        task_path = id_pick_can_be_done_row["task_path"].values[0]
+
+        requests.post(
+            env_url + "/reset",
+            json={"json_file": os.path.join(ALFWORLD_DATA, task_path)},
+        )
+
+        text = b64decode(
+            eval(
+                requests.post(env_url + "/step", json={"action": posterior_action}).text
             )
-            obs, _, done, infos = loads(text)
-            admissible_commands = infos["admissible_commands"][0]
-            obs = obs[0]
-            if "Nothing happens." not in obs:
-                is_go_to_put_place_done = True
-        
-        for admissible_command in admissible_commands:
+        )
+        obs, _, done, infos = loads(text)
+        admissible_commands_env = infos["admissible_commands"][0]
+        obs = obs[0]
+        assert "Nothing happens." not in obs
+
+        text = b64decode(
+            eval(requests.post(env_url + "/step", json={"action": pick_action}).text)
+        )
+
+        obs, _, done, infos = loads(text)
+        admissible_commands_env = infos["admissible_commands"][0]
+        obs = obs[0]
+        assert "Nothing happens." not in obs
+
+        # is_go_to_put_place_done = False
+        # tried_go_to_actions = deque()
+        # tried = 0
+        go_to_place = get_go_to_place_action(executable_for_all_the_task, place)
+        assert go_to_place is not None
+        text = b64decode(
+            eval(requests.post(env_url + "/step", json={"action": go_to_place}).text)
+        )
+        obs, _, done, infos = loads(text)
+        admissible_commands_env = infos["admissible_commands"][0]
+        obs = obs[0]
+        assert "Nothing happens." not in obs
+       
+        for admissible_command in admissible_commands_env:
             if "put" in admissible_command:
                 target_object_action = f"put {target_object}"
                 if target_object_action in admissible_command:
                     put_action = admissible_command
                     break
-        filtered_actions = [action for action in task_executable_action if action != go_to_place]
+        filtered_actions = [
+            action for action in executable_for_all_the_task if action != go_to_place
+        ]
         go_to_action = random.choice(filtered_actions)
-        
+
         admissible_commands = f"[{go_to_action}, {put_action}]"
-        
+
         _, _, image, _ = get_obj_infor(env_url)
         image_save_basic_folder = os.path.join(CURRENT_FOLDER, "put-ground-images")
-        image_task_save_foler = os.path.join(image_save_basic_folder, f"task-{task_id}")
-        if not os.path.exists(image_task_save_foler):
-            os.makedirs(image_task_save_foler)
-        image_save_path = os.path.join(image_task_save_foler, f"put-image.png")
+        image_task_save_folder = os.path.join(
+            image_save_basic_folder, f"task-{task_id}"
+        )
+        if not os.path.exists(image_task_save_folder):
+            os.makedirs(image_task_save_folder)
+        image_save_path = os.path.join(image_task_save_folder, f"put-image.png")
         image.save(image_save_path, "JPEG")
-        put_prompt = put_basic_prompt.format(admissible_commands=admissible_commands, task_desc=task_desc, task_related_object=target_object, place=place)
+        put_prompt = put_basic_prompt.format(
+            admissible_commands=admissible_commands,
+            task_desc=task_desc,
+            task_related_object=target_object,
+            place=place,
+        )
         messages = {"image": [image], "text": put_prompt}
-        response = actor_vlm_model.call_model(messages, decoding_args=action_vlm_decoding_args, return_list=False).strip()
+        response = actor_vlm_model.call_model(
+            messages, decoding_args=action_vlm_decoding_args, return_list=False
+        ).strip()
         thought, successor_action = map_reponse_from_vlm(response)
         if "put" in successor_action:
             is_vlm_response_pu = True
         else:
             is_vlm_response_pu = False
         text = b64decode(
-            eval(requests.post(env_url + "/step", json={"action": successor_action}).text)
+            eval(
+                requests.post(env_url + "/step", json={"action": successor_action}).text
+            )
         )
-        obs, _, _, _ = loads(text)
+        obs, _, done, infos = loads(text)
+        admissible_commands_env = infos["admissible_commands"][0]
         obs = obs[0]
         if "Nothing happens." in obs:
             action_succeed = False
         else:
             action_succeed = True
-        # data = ["task_id", "task_path", "task_desc", "image_save_path", "prompt", "posterior_action", "go_to_action" "successor_action", "thought", "is_vlm_response_pu", "action_succeed",  "target_object", "place", "admissible_commands_env"]
-        data.append([task_id, task_path, task_desc, image_save_path, put_prompt, posterior_action, go_to_place, successor_action, thought, is_vlm_response_pu, action_succeed, target_object, place, admissible_commands])
-        print(f"Task ID: {task_id}, Task Path: {task_path}, Task Desc: {task_desc}, Image Save Path: {image_save_path}, Prompt: {put_prompt}, Posterior Action: {posterior_action}, Go To Action: {go_to_place}, Successor Action: {successor_action}, Thought: {thought}, Is VLM Response Pu: {is_vlm_response_pu}, Action Succeed: {action_succeed}, Target Object: {target_object}, Place: {place}, Admissible Commands Env: {admissible_commands}")
-    csv_save_path = os.path.join(CURRENT_FOLDER, "grounded_put_planning.csv")
-    write_data_to_csv(csv_save_path, data)
-    print(f"Data saved to {csv_save_path}")
-        
-         
+
+        data.append(
+            {
+                "task_id": task_id,
+                "task_path": task_path,
+                "task_desc": task_desc,
+                "image_save_path": image_save_path,
+                "prompt": put_prompt,
+                "posterior_action": posterior_action,
+                "go_to_action": go_to_place,
+                "successor_action": successor_action,
+                "thought": thought,
+                "is_vlm_response_pu": is_vlm_response_pu,
+                "action_succeed": action_succeed,
+                "target_object": target_object,
+                "place": place,
+                "admissible_commands_env": admissible_commands_env,
+            }
+        )
+        print(
+            f"Task ID: {task_id}, Task Path: {task_path}, Task Desc: {task_desc}, Image Save Path: {image_save_path}, Prompt: {put_prompt}, Posterior Action: {posterior_action}, Go To Action: {go_to_place}, Successor Action: {successor_action}, Thought: {thought}, Is VLM Response Pu: {is_vlm_response_pu}, Action Succeed: {action_succeed}, Target Object: {target_object}, Place: {place}, Admissible Commands Env: {admissible_commands}"
+        )
+
+    result_df = pd.DataFrame(data, columns=columns)
+    result_csv_save_path = os.path.join(CURRENT_FOLDER, "grounded_put_planning.csv")
+    result_df.to_csv(result_csv_save_path, index=False)
+    print(f"Data saved to {result_csv_save_path}")
+
+
 def main(args):
     env_url = "http://127.0.0.1:" + str(args.env_url)
     set_dic = {"env_type": "visual", "batch_size": 1}

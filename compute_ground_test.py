@@ -9,7 +9,6 @@ def compute_pick_acc():
     csv_path = "/home/zhaoyang/projects/VLM-Reasoning/grounded_pick_planning.csv"
     df = pd.read_csv(csv_path)
     df['vlm_succeed'] = df['vlm_succeed'].astype(bool)
-    
     # Calculate overall accuracy
     vlm_succeed_accuracy = df['vlm_succeed'].mean()
     print(f"Overall vlm_succeed accuracy: {vlm_succeed_accuracy:.2f}")

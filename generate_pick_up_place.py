@@ -46,7 +46,7 @@ def main(args):
     # with open("ori_task_json.pkl", 'wb') as f:
     #     pickle.dump(json_file_list, f)
     # Ensure we only sample if we have enough files to meet the requested sample size
-    sample_size = min(30, len(json_file_list))
+    sample_size = min(50, len(json_file_list))
     random_selected_samples = sorted(random.sample(json_file_list, sample_size))
     print("Save Done")
     # Store the list in a file for access by other scripts
@@ -57,7 +57,6 @@ def main(args):
 
 
 if __name__ == "__main__":
-    print("Running alfworld_memory_cot_new.py")
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--alfread-json-path",

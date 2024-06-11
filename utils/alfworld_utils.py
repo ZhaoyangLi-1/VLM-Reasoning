@@ -440,12 +440,8 @@ def refine_action_gpt(response):
     return action
 
 def refine_action_llava(response):
-    try:
-        data = json.loads(response)
-        action = data.get("action", "No action")
-        return action
-    except json.JSONDecodeError:
-        return "Invalid JSON"
+    match = re.search(r"\(\d+\): ([^\.]+)", response)
+    return match.group(1).strip() if match else "No action"
 
 
 def delete_examine_action_for_receps(admissible_commands, recep_names):

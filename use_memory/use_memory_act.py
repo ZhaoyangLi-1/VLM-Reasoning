@@ -204,10 +204,10 @@ def test_tasks(args):
             response = actor_vlm_model.call_model(messages, decoding_args=action_vlm_decoding_args, return_list=False).strip()
             print(f"Response: {response}")
             end_time = time.time()
-            # if "llava" in args.vlm_model:
-            #     action = refine_action_llava(response)
-            # elif "gpt" in args.vlm_model:    
-            action = refine_action_gpt(response)
+            if "llava" in args.vlm_model:
+                action = refine_action_llava(response)
+            elif "gpt" in args.vlm_model:    
+                action = refine_action_gpt(response)
             print(f"Action: {action}")
             if "No action" in action:
                 continue
