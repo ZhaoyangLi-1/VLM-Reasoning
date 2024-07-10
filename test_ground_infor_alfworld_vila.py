@@ -38,18 +38,11 @@ class VILAChatBot:
         self.num_beams = num_beams
         self.max_new_tokens = max_new_tokens
         self.sep = sep
-        self.model_name = self.get_model_name_from_path(model_path)
+        self.model_name = get_model_name_from_path(model_path)
 
-        self.tokenizer, self.model, self.image_processor, self.context_len = self.load_pretrained_model(
+        self.tokenizer, self.model, self.image_processor, self.context_len = load_pretrained_model(
             self.model_path, self.model_name, self.model_base
         )
-
-    def get_model_name_from_path(self, model_path):
-        return model_path.split('/')[-1]
-
-    def load_pretrained_model(self, model_path, model_name, model_base):
-        # This function should return the tokenizer, model, image_processor, and context_len
-        pass
 
     def image_parser(self, image_file):
         return image_file.split(self.sep)
@@ -66,13 +59,6 @@ class VILAChatBot:
     def load_images(self, image_files):
         return [self.load_image(image_file) for image_file in image_files]
 
-    def process_images(self, images, image_processor, config):
-        # Implement this method to process images as required
-        pass
-
-    def tokenizer_image_token(self, prompt, tokenizer, image_token_index, return_tensors="pt"):
-        # Implement this method to tokenize the image token
-        pass
 
     def call_model(self, messages):
         
@@ -88,7 +74,6 @@ class VILAChatBot:
         #         assert osp.exists(video_file), "video file not found"
         #     from llava.mm_utils import opencv_extract_frames
         #     images = opencv_extract_frames(video_file, self.num_video_frames)
-        
         images = messages['images']
         query = messages['text']
         qs = query
@@ -130,8 +115,8 @@ class VILAChatBot:
         conv.append_message(conv.roles[1], None)
         prompt = conv.get_prompt()
 
-        images_tensor = self.process_images(images, self.image_processor, self.model.config).to(self.model.device, dtype=torch.float16)
-        input_ids = self.tokenizer_image_token(prompt, self.tokenizer, IMAGE_TOKEN_INDEX, return_tensors="pt").unsqueeze(0).cuda()
+        images_tensor = process_images(images, self.image_processor, self.model.config).to(self.model.device, dtype=torch.float16)
+        input_ids = tokenizer_image_token(prompt, self.tokenizer, IMAGE_TOKEN_INDEX, return_tensors="pt").unsqueeze(0).cuda()
 
         stop_str = conv.sep if conv.sep_style != SeparatorStyle.TWO else conv.sep2
         keywords = [stop_str]
@@ -754,6 +739,7 @@ def check_put_can_be_done(args, env_url):
 
 
 def main(args):
+    disable_torch_init()
     env_url = "http://127.0.0.1:" + str(args.env_url)
     set_dic = {"env_type": "visual", "batch_size": 1}
     requests.post(env_url + "/set_environment", json=set_dic).text
