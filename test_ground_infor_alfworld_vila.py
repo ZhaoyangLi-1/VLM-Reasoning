@@ -1,22 +1,163 @@
 import argparse
+import os.path as osp
+import re
+import requests
+from PIL import Image
+from io import BytesIO
+import torch
 import os
 import json
-import sys
 import requests
 from base64 import b64decode
 from pickle import loads
 from collections import deque
-import time
 from utils import *
-from utils.logger import Global_Logger, Task_Logger
 import ast
 import csv
-from agi.utils.chatbot_utils import DecodingArguments, ChatBot
 import re
 import pandas as pd
 import random
 import copy
 from collections import deque
+from llava.constants import (DEFAULT_IM_END_TOKEN, DEFAULT_IM_START_TOKEN,
+                             DEFAULT_IMAGE_TOKEN, IMAGE_PLACEHOLDER,
+                             IMAGE_TOKEN_INDEX)
+from llava.conversation import SeparatorStyle, conv_templates
+from llava.mm_utils import (KeywordsStoppingCriteria, get_model_name_from_path,
+                            process_images, tokenizer_image_token)
+from llava.model.builder import load_pretrained_model
+from llava.utils import disable_torch_init
+
+class VILAChatBot:
+    def __init__(self, model_path, model_base=None, conv_mode=None, temperature=0.7, top_p=None, num_beams=1, max_new_tokens=512, sep=","):
+        self.model_path = model_path
+        self.model_base = model_base
+        self.conv_mode = conv_mode
+        self.temperature = temperature
+        self.top_p = top_p
+        self.num_beams = num_beams
+        self.max_new_tokens = max_new_tokens
+        self.sep = sep
+        self.model_name = self.get_model_name_from_path(model_path)
+
+        self.tokenizer, self.model, self.image_processor, self.context_len = self.load_pretrained_model(
+            self.model_path, self.model_name, self.model_base
+        )
+
+    def get_model_name_from_path(self, model_path):
+        return model_path.split('/')[-1]
+
+    def load_pretrained_model(self, model_path, model_name, model_base):
+        # This function should return the tokenizer, model, image_processor, and context_len
+        pass
+
+    def image_parser(self, image_file):
+        return image_file.split(self.sep)
+
+    def load_image(self, image_file):
+        if image_file.startswith("http") or image_file.startswith("https"):
+            print("downloading image from url", image_file)
+            response = requests.get(image_file)
+            image = Image.open(BytesIO(response.content)).convert("RGB")
+        else:
+            image = Image.open(image_file).convert("RGB")
+        return image
+
+    def load_images(self, image_files):
+        return [self.load_image(image_file) for image_file in image_files]
+
+    def process_images(self, images, image_processor, config):
+        # Implement this method to process images as required
+        pass
+
+    def tokenizer_image_token(self, prompt, tokenizer, image_token_index, return_tensors="pt"):
+        # Implement this method to tokenize the image token
+        pass
+
+    def call_model(self, messages):
+        
+        # if video_file is None:
+        #     image_files = self.image_parser(image_file)
+        #     images = self.load_images(image_files)
+        # else:
+        #     if video_file.startswith("http") or video_file.startswith("https"):
+        #         print("downloading video from url", video_file)
+        #         response = requests.get(video_file)
+        #         video_file = BytesIO(response.content)
+        #     else:
+        #         assert osp.exists(video_file), "video file not found"
+        #     from llava.mm_utils import opencv_extract_frames
+        #     images = opencv_extract_frames(video_file, self.num_video_frames)
+        
+        images = messages['images']
+        query = messages['text']
+        qs = query
+        image_token_se = DEFAULT_IM_START_TOKEN + DEFAULT_IMAGE_TOKEN + DEFAULT_IM_END_TOKEN
+        if IMAGE_PLACEHOLDER in qs:
+            if self.model.config.mm_use_im_start_end:
+                qs = re.sub(IMAGE_PLACEHOLDER, image_token_se, qs)
+            else:
+                qs = re.sub(IMAGE_PLACEHOLDER, DEFAULT_IMAGE_TOKEN, qs)
+        else:
+            if DEFAULT_IMAGE_TOKEN not in qs:
+                print("no <image> tag found in input. Automatically append one at the beginning of text.")
+                if self.model.config.mm_use_im_start_end:
+                    qs = (image_token_se + "\n") * len(images) + qs
+                else:
+                    qs = (DEFAULT_IMAGE_TOKEN + "\n") * len(images) + qs
+        print("input: ", qs)
+
+        if "llama-2" in self.model_name.lower():
+            conv_mode = "llava_llama_2"
+        elif "v1" in self.model_name.lower():
+            conv_mode = "llava_v1"
+        elif "mpt" in self.model_name.lower():
+            conv_mode = "mpt"
+        else:
+            conv_mode = "llava_v0"
+
+        if self.conv_mode is not None and conv_mode != self.conv_mode:
+            print(
+                "[WARNING] the auto inferred conversation mode is {}, while `--conv-mode` is {}, using {}".format(
+                    conv_mode, self.conv_mode, self.conv_mode
+                )
+            )
+        else:
+            self.conv_mode = conv_mode
+
+        conv = conv_templates[self.conv_mode].copy()
+        conv.append_message(conv.roles[0], qs)
+        conv.append_message(conv.roles[1], None)
+        prompt = conv.get_prompt()
+
+        images_tensor = self.process_images(images, self.image_processor, self.model.config).to(self.model.device, dtype=torch.float16)
+        input_ids = self.tokenizer_image_token(prompt, self.tokenizer, IMAGE_TOKEN_INDEX, return_tensors="pt").unsqueeze(0).cuda()
+
+        stop_str = conv.sep if conv.sep_style != SeparatorStyle.TWO else conv.sep2
+        keywords = [stop_str]
+        stopping_criteria = KeywordsStoppingCriteria(keywords, self.tokenizer, input_ids)
+
+        print(images_tensor.shape)
+        with torch.inference_mode():
+            output_ids = self.model.generate(
+                input_ids,
+                images=[images_tensor],
+                do_sample=True if self.temperature > 0 else False,
+                temperature=self.temperature,
+                top_p=self.top_p,
+                num_beams=self.num_beams,
+                max_new_tokens=self.max_new_tokens,
+                use_cache=True,
+                stopping_criteria=[stopping_criteria],
+            )
+
+        outputs = self.tokenizer.batch_decode(output_ids, skip_special_tokens=True)[0]
+        outputs = outputs.strip()
+        if outputs.endswith(stop_str):
+            outputs = outputs[: -len(stop_str)]
+        outputs = outputs.strip()
+        print(outputs)
+        return outputs
 
 ALFWORLD_DATA = os.getenv("ALFWORLD_DATA")
 ALFWORLD_SAVE = os.getenv("ALFWORLD_SAVE")
@@ -190,13 +331,18 @@ def check_grounding_infor_in_pick(args, env_url):
     # breakpoint()
     action_basic_prompt = get_pick_action_prompts(args)
     object_basic_list_prompt = get_object_list_prompt()
-    action_vlm_decoding_args = DecodingArguments(
-        max_tokens=8192,
-        n=1,
-        temperature=0.7,
-        image_detail="auto",
+    
+    actor_vlm_model = VILAChatBot(
+        model_path=args.model_path,
+        model_base=args.model_base,
+        conv_mode=args.conv_mode,
+        temperature=args.temperature,
+        top_p=args.top_p,
+        num_beams=args.num_beams,
+        max_new_tokens=args.max_new_tokens,
+        sep=args.sep
     )
-    actor_vlm_model = ChatBot(args.vlm_model)
+    
     print(f"VLM Model: {args.vlm_model}")
 
     csv_save_path = os.path.join(CURRENT_FOLDER, args.csv_save_name + ".csv")
@@ -269,16 +415,10 @@ def check_grounding_infor_in_pick(args, env_url):
                 object_list = grounded_objects
                 if len(object_list) == 0:
                     messages = {"text": object_basic_list_prompt, "images": [image]}
-                    object_list = actor_vlm_model.call_model(
-                        messages,
-                        decoding_args=action_vlm_decoding_args,
-                        return_list=False,
-                    ).strip()
+                    object_list = actor_vlm_model.call_model(messages).strip()
             elif "2step-object-list" in args.method_type:
                 messages = {"text": object_basic_list_prompt, "images": [image]}
-                object_list = actor_vlm_model.call_model(
-                    messages, decoding_args=action_vlm_decoding_args, return_list=False
-                ).strip()
+                object_list = actor_vlm_model.call_model(messages).strip()
             else:
                 object_list = "We don't use 2-steped method."
 
@@ -310,9 +450,7 @@ def check_grounding_infor_in_pick(args, env_url):
                 )
             messages = {"text": prompt, "images": [image]}
 
-            response = actor_vlm_model.call_model(
-                messages, decoding_args=action_vlm_decoding_args, return_list=False
-            ).strip()
+            response = actor_vlm_model.call_model(messages).strip()
             print(f"Original Response: {response}")
             thought, successor_action = map_reponse_from_vlm(response)
 
@@ -394,13 +532,16 @@ def get_put_action_prompts(args):
 
 
 def check_put_can_be_done(args, env_url):
-    action_vlm_decoding_args = DecodingArguments(
-        max_tokens=8192,
-        n=1,
-        temperature=0.7,
-        image_detail="auto",
+    actor_vlm_model = VILAChatBot(
+        model_path=args.model_path,
+        model_base=args.model_base,
+        conv_mode=args.conv_mode,
+        temperature=args.temperature,
+        top_p=args.top_p,
+        num_beams=args.num_beams,
+        max_new_tokens=args.max_new_tokens,
+        sep=args.sep
     )
-    actor_vlm_model = ChatBot(args.vlm_model)
     print(f"VLM Model: {args.vlm_model}")
 
     put_basic_prompt = get_put_action_prompts(args)
@@ -530,16 +671,10 @@ def check_put_can_be_done(args, env_url):
                 ]
                 if len(object_list) == 0:
                     messages = {"text": object_basic_list_prompt, "images": [image]}
-                    object_list = actor_vlm_model.call_model(
-                        messages,
-                        decoding_args=action_vlm_decoding_args,
-                        return_list=False,
-                    ).strip()
+                    object_list = actor_vlm_model.call_model(messages,).strip()
         elif "2step-object-list" in args.method_type:
             messages = {"text": object_basic_list_prompt, "images": [image]}
-            object_list = actor_vlm_model.call_model(
-                messages, decoding_args=action_vlm_decoding_args, return_list=False
-            ).strip()
+            object_list = actor_vlm_model.call_model(messages).strip()
         else:
             object_list = "We don't use 2-steped method."
         
@@ -559,9 +694,7 @@ def check_put_can_be_done(args, env_url):
                 place=place,
             )
         messages = {"text": put_prompt, "images": [image]}
-        response = actor_vlm_model.call_model(
-            messages, decoding_args=action_vlm_decoding_args, return_list=False
-        ).strip()
+        response = actor_vlm_model.call_model(messages).strip()
         print(f"Original Response: {response}")
         thought, successor_action = map_reponse_from_vlm(response)
         if "put" in successor_action:
@@ -633,10 +766,20 @@ def main(args):
     requests.post(env_url + "/close", json={})
     print("Closed the environment")
     print("Done!")
-
-
+    
+    
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument("--model-path", type=str, default="Efficient-Large-Model/VILA-2.7b")
+    parser.add_argument("--model-base", type=str, default=None)
+    parser.add_argument("--num-video-frames", type=int, default=6)
+    parser.add_argument("--conv-mode", type=str, default=None)
+    parser.add_argument("--sep", type=str, default=",")
+    parser.add_argument("--temperature", type=float, default=0.7)
+    parser.add_argument("--top_p", type=float, default=None)
+    parser.add_argument("--num_beams", type=int, default=4)
+    parser.add_argument("--max_new_tokens", type=int, default=4196)
+    
     parser.add_argument("--vlm_model", type=str, default="gpt-4-turbo-2024-04-09")
     parser.add_argument(
         "--csv_save_name", default="executable-and-not-for-30-tasks", type=str
@@ -657,3 +800,4 @@ if __name__ == "__main__":
         args.method_type in allowed_method_type
     ), f"String '{args.method_type}' is not in the allowed values: {allowed_method_type}"
     main(args)
+    chatbot.eval_model(image_file=args.image_file, video_file=args.video_file, query=args.query)
