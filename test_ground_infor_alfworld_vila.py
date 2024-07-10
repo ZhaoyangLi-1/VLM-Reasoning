@@ -779,8 +779,6 @@ if __name__ == "__main__":
     parser.add_argument("--top_p", type=float, default=None)
     parser.add_argument("--num_beams", type=int, default=4)
     parser.add_argument("--max_new_tokens", type=int, default=4196)
-    
-    parser.add_argument("--vlm_model", type=str, default="gpt-4-turbo-2024-04-09")
     parser.add_argument(
         "--csv_save_name", default="executable-and-not-for-30-tasks", type=str
     )
