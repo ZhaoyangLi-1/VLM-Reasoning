@@ -808,6 +808,3 @@ if __name__ == "__main__":
         args.method_type in allowed_method_type
     ), f"String '{args.method_type}' is not in the allowed values: {allowed_method_type}"
     main(args)
-    chatbot.eval_model(
-        image_file=args.image_file, video_file=args.video_file, query=args.query
-    )
