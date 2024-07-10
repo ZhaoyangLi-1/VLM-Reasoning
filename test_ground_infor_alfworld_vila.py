@@ -19,17 +19,46 @@ import pandas as pd
 import random
 import copy
 from collections import deque
-from llava.constants import (DEFAULT_IM_END_TOKEN, DEFAULT_IM_START_TOKEN,
-                             DEFAULT_IMAGE_TOKEN, IMAGE_PLACEHOLDER,
-                             IMAGE_TOKEN_INDEX)
+from llava.constants import (
+    DEFAULT_IM_END_TOKEN,
+    DEFAULT_IM_START_TOKEN,
+    DEFAULT_IMAGE_TOKEN,
+    IMAGE_PLACEHOLDER,
+    IMAGE_TOKEN_INDEX,
+)
 from llava.conversation import SeparatorStyle, conv_templates
-from llava.mm_utils import (KeywordsStoppingCriteria, get_model_name_from_path,
-                            process_images, tokenizer_image_token)
+from llava.mm_utils import (
+    KeywordsStoppingCriteria,
+    get_model_name_from_path,
+    process_images,
+    tokenizer_image_token,
+)
 from llava.model.builder import load_pretrained_model
 from llava.utils import disable_torch_init
 
+def set_gpus(num_gpus=1, gpus=None):
+    if gpus is None:
+        gpus = ",".join([str(i) for i in range(num_gpus)])
+    gpus = str(gpus)
+    os.environ["CUDA_VISIBLE_DEVICES"] = gpus
+    import torch.cuda
+
+    torch.cuda.init()
+    print("We can find", torch.cuda.device_count(), "GPUs available!", torch.cuda.get_device_properties("cuda"))
+
+
 class VILAChatBot:
-    def __init__(self, model_path, model_base=None, conv_mode=None, temperature=0.7, top_p=None, num_beams=1, max_new_tokens=512, sep=","):
+    def __init__(
+        self,
+        model_path,
+        model_base=None,
+        conv_mode=None,
+        temperature=0.7,
+        top_p=None,
+        num_beams=1,
+        max_new_tokens=4196,
+        sep=",",
+    ):
         self.model_path = model_path
         self.model_base = model_base
         self.conv_mode = conv_mode
@@ -40,9 +69,17 @@ class VILAChatBot:
         self.sep = sep
         self.model_name = get_model_name_from_path(model_path)
 
-        self.tokenizer, self.model, self.image_processor, self.context_len = load_pretrained_model(
-            self.model_path, self.model_name, self.model_base
-        )
+        # Initialize the model components
+        self._initialize_model()
+
+    def _initialize_model(self):
+        try:
+            self.tokenizer, self.model, self.image_processor, self.context_len = (
+                load_pretrained_model(self.model_path, self.model_name, self.model_base)
+            )
+        except Exception as e:
+            print(f"Error loading pretrained model: {e}")
+            raise
 
     def image_parser(self, image_file):
         return image_file.split(self.sep)
@@ -59,25 +96,14 @@ class VILAChatBot:
     def load_images(self, image_files):
         return [self.load_image(image_file) for image_file in image_files]
 
-
     def call_model(self, messages):
-        
-        # if video_file is None:
-        #     image_files = self.image_parser(image_file)
-        #     images = self.load_images(image_files)
-        # else:
-        #     if video_file.startswith("http") or video_file.startswith("https"):
-        #         print("downloading video from url", video_file)
-        #         response = requests.get(video_file)
-        #         video_file = BytesIO(response.content)
-        #     else:
-        #         assert osp.exists(video_file), "video file not found"
-        #     from llava.mm_utils import opencv_extract_frames
-        #     images = opencv_extract_frames(video_file, self.num_video_frames)
-        images = messages['images']
-        query = messages['text']
+        images = messages["images"]
+        query = messages["text"]
         qs = query
-        image_token_se = DEFAULT_IM_START_TOKEN + DEFAULT_IMAGE_TOKEN + DEFAULT_IM_END_TOKEN
+        image_token_se = (
+            DEFAULT_IM_START_TOKEN + DEFAULT_IMAGE_TOKEN + DEFAULT_IM_END_TOKEN
+        )
+
         if IMAGE_PLACEHOLDER in qs:
             if self.model.config.mm_use_im_start_end:
                 qs = re.sub(IMAGE_PLACEHOLDER, image_token_se, qs)
@@ -85,7 +111,9 @@ class VILAChatBot:
                 qs = re.sub(IMAGE_PLACEHOLDER, DEFAULT_IMAGE_TOKEN, qs)
         else:
             if DEFAULT_IMAGE_TOKEN not in qs:
-                print("no <image> tag found in input. Automatically append one at the beginning of text.")
+                print(
+                    "no <image> tag found in input. Automatically append one at the beginning of text."
+                )
                 if self.model.config.mm_use_im_start_end:
                     qs = (image_token_se + "\n") * len(images) + qs
                 else:
@@ -115,14 +143,24 @@ class VILAChatBot:
         conv.append_message(conv.roles[1], None)
         prompt = conv.get_prompt()
 
-        images_tensor = process_images(images, self.image_processor, self.model.config).to(self.model.device, dtype=torch.float16)
-        input_ids = tokenizer_image_token(prompt, self.tokenizer, IMAGE_TOKEN_INDEX, return_tensors="pt").unsqueeze(0).cuda()
+        images_tensor = process_images(
+            images, self.image_processor, self.model.config
+        ).to(self.model.device, dtype=torch.float16)
+        input_ids = (
+            tokenizer_image_token(
+                prompt, self.tokenizer, IMAGE_TOKEN_INDEX, return_tensors="pt"
+            )
+            .unsqueeze(0)
+            .cuda()
+        )
 
         stop_str = conv.sep if conv.sep_style != SeparatorStyle.TWO else conv.sep2
         keywords = [stop_str]
-        stopping_criteria = KeywordsStoppingCriteria(keywords, self.tokenizer, input_ids)
+        stopping_criteria = KeywordsStoppingCriteria(
+            keywords, self.tokenizer, input_ids
+        )
 
-        print(images_tensor.shape)
+        # print(images_tensor.shape)
         with torch.inference_mode():
             output_ids = self.model.generate(
                 input_ids,
@@ -141,8 +179,9 @@ class VILAChatBot:
         if outputs.endswith(stop_str):
             outputs = outputs[: -len(stop_str)]
         outputs = outputs.strip()
-        print(outputs)
+        # print(outputs)
         return outputs
+
 
 ALFWORLD_DATA = os.getenv("ALFWORLD_DATA")
 ALFWORLD_SAVE = os.getenv("ALFWORLD_SAVE")
@@ -316,18 +355,9 @@ def check_grounding_infor_in_pick(args, env_url):
     # breakpoint()
     action_basic_prompt = get_pick_action_prompts(args)
     object_basic_list_prompt = get_object_list_prompt()
-    
-    actor_vlm_model = VILAChatBot(
-        model_path=args.model_path,
-        model_base=args.model_base,
-        conv_mode=args.conv_mode,
-        temperature=args.temperature,
-        top_p=args.top_p,
-        num_beams=args.num_beams,
-        max_new_tokens=args.max_new_tokens,
-        sep=args.sep
-    )
-    
+
+    actor_vlm_model = VILAChatBot(model_path=args.model_path)
+
     print(f"VLM Model: {args.vlm_model}")
 
     csv_save_path = os.path.join(CURRENT_FOLDER, args.csv_save_name + ".csv")
@@ -495,6 +525,7 @@ def get_go_to_place_action(admissible_commands, place):
         if go_to_place in admissible_command:
             return admissible_command
 
+
 def get_put_action_prompts(args):
     if args.method_type == "1step-object-list":
         peompt_name = "put_1step_action_prompt.txt"
@@ -517,22 +548,18 @@ def get_put_action_prompts(args):
 
 
 def check_put_can_be_done(args, env_url):
-    actor_vlm_model = VILAChatBot(
-        model_path=args.model_path,
-        model_base=args.model_base,
-        conv_mode=args.conv_mode,
-        temperature=args.temperature,
-        top_p=args.top_p,
-        num_beams=args.num_beams,
-        max_new_tokens=args.max_new_tokens,
-        sep=args.sep
-    )
+    actor_vlm_model = VILAChatBot(model_path=args.model_path)
     print(f"VLM Model: {args.vlm_model}")
 
     put_basic_prompt = get_put_action_prompts(args)
     object_basic_list_prompt = get_object_list_prompt()
 
-    csv_save_path_pick = os.path.join(BASIC_RESULT_PATH, args.vlm_model, args.method_type, "grounded_pick_planning.csv")
+    csv_save_path_pick = os.path.join(
+        BASIC_RESULT_PATH,
+        args.vlm_model,
+        args.method_type,
+        "grounded_pick_planning.csv",
+    )
     df_pick = pd.read_csv(csv_save_path_pick)
     df_task_group = df_pick.groupby("task_id")
 
@@ -648,21 +675,22 @@ def check_put_can_be_done(args, env_url):
             os.makedirs(image_task_save_folder)
         image_save_path = os.path.join(image_task_save_folder, f"put-image.jpg")
         image.save(image_save_path, "JPEG")
-        
-        
+
         if "truth-object-list" in args.method_type:
-                object_list = [
-                    object_name.lower() for object_name in list(count_dic.keys())
-                ]
-                if len(object_list) == 0:
-                    messages = {"text": object_basic_list_prompt, "images": [image]}
-                    object_list = actor_vlm_model.call_model(messages,).strip()
+            object_list = [
+                object_name.lower() for object_name in list(count_dic.keys())
+            ]
+            if len(object_list) == 0:
+                messages = {"text": object_basic_list_prompt, "images": [image]}
+                object_list = actor_vlm_model.call_model(
+                    messages,
+                ).strip()
         elif "2step-object-list" in args.method_type:
             messages = {"text": object_basic_list_prompt, "images": [image]}
             object_list = actor_vlm_model.call_model(messages).strip()
         else:
             object_list = "We don't use 2-steped method."
-        
+
         if "truth-object-list" or "2step-object-list" in args.method_type:
             put_prompt = put_basic_prompt.format(
                 object_list=object_list,
@@ -739,6 +767,7 @@ def check_put_can_be_done(args, env_url):
 
 
 def main(args):
+    set_gpus(num_gpus=2)
     disable_torch_init()
     env_url = "http://127.0.0.1:" + str(args.env_url)
     set_dic = {"env_type": "visual", "batch_size": 1}
@@ -752,19 +781,13 @@ def main(args):
     requests.post(env_url + "/close", json={})
     print("Closed the environment")
     print("Done!")
-    
-    
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model-path", type=str, default="Efficient-Large-Model/VILA-2.7b")
-    parser.add_argument("--model-base", type=str, default=None)
-    parser.add_argument("--num-video-frames", type=int, default=6)
-    parser.add_argument("--conv-mode", type=str, default=None)
-    parser.add_argument("--sep", type=str, default=",")
-    parser.add_argument("--temperature", type=float, default=0.7)
-    parser.add_argument("--top_p", type=float, default=None)
-    parser.add_argument("--num_beams", type=int, default=4)
-    parser.add_argument("--max_new_tokens", type=int, default=4196)
+    parser.add_argument(
+        "--model-path", type=str, default="Efficient-Large-Model/VILA-2.7b"
+    )
     parser.add_argument(
         "--csv_save_name", default="executable-and-not-for-30-tasks", type=str
     )
@@ -785,4 +808,6 @@ if __name__ == "__main__":
         args.method_type in allowed_method_type
     ), f"String '{args.method_type}' is not in the allowed values: {allowed_method_type}"
     main(args)
-    chatbot.eval_model(image_file=args.image_file, video_file=args.video_file, query=args.query)
+    chatbot.eval_model(
+        image_file=args.image_file, video_file=args.video_file, query=args.query
+    )
