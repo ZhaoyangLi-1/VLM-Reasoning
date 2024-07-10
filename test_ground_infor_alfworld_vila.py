@@ -782,6 +782,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--csv_save_name", default="executable-and-not-for-30-tasks", type=str
     )
+    parser.add_argument("--vlm_model", type=str, default="vila")
     parser.add_argument("--method_type", type=str, default="1step-object-list")
     parser.add_argument("--env_url", type=str, default=3000)
     parser.add_argument("--check_executable", action="store_true")
