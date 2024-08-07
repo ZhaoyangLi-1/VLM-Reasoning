@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Dataset</title>
+</head>
+<body>
+    <h1>Select Dataset to Visualize</h1>
+    <form action="{{ url_for('visualize') }}" method="post" target="_blank">
+        <select name="dataset">
+            {% for dataset_name in datasets %}
+                <option value="{{ dataset_name }}">{{ dataset_name }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Visualize">
+    </form>
+</body>
+</html>

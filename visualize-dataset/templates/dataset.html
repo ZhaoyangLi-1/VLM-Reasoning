@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dataset Visualization</title>
+    <style>
+        .sample-container {
+            margin-bottom: 20px;
+        }
+        .inline-content {
+            display: inline;
+        }
+        .inline-content img {
+            margin-left: 10px;
+            max-height: 100px;
+            vertical-align: middle;
+        }
+        .text-segment {
+            display: inline;
+        }
+        .text-image-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .text-image-row img {
+            margin-left: 10px;
+            max-width: 150px;
+            height: auto;
+        }
+        .text-content {
+            flex: 1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Visualization of {{ dataset }}</h1>
+    {% for sample in samples %}
+        <div class="sample-container">
+            <p><strong>Sample ID (idx):</strong> {{ sample.idx }}</p>
+
+            {% if dataset in ["coyo-700m", "mmc4-ff-core", "obelics"] %}
+                {% if sample.domain %}
+                    <p><strong>Domain:</strong> {{ sample.domain }}</p>
+                {% endif %}
+            {% endif %}
+
+            {% if sample.text_list %}
+                <p><strong>Text List:</strong></p>
+                <pre>{{ sample.text_list | safe }}</pre>
+            {% endif %}
+
+            {% if sample.similarity_matrix %}
+                <p><strong>Similarity Matrix:</strong></p>
+                <pre>{{ sample.similarity_matrix | safe }}</pre>
+            {% endif %}
+
+            {% if sample.question %}
+                <p><strong>Question:</strong> {{ sample.question }}</p>
+            {% endif %}
+            
+            {% if sample.answer %}
+                <p><strong>Answer:</strong> {{ sample.answer }}</p>
+            {% endif %}
+            
+            {% if sample.text %}
+                <p><strong>Text:</strong> {{ sample.text }}</p>
+            {% endif %}
+
+            {% if sample.metadata %}
+                <p><strong>Metadata:</strong></p>
+                <pre>{{ sample.metadata | safe }}</pre>
+            {% endif %}
+            
+            {% if sample.general_metadata %}
+                <p><strong>General Metadata:</strong></p>
+                <pre>{{ sample.general_metadata | safe }}</pre>
+            {% endif %}
+
+            {% if dataset == "obelics" %}
+                {% if sample.contents %}
+                    <div class="inline-content">
+                        {% for content in sample.contents %}
+                            {% if content.type == "text" %}
+                                <span class="text-segment">{{ content.content }}</span>
+                            {% elif content.type == "image" %}
+                                <img src="data:image/jpeg;base64,{{ content.content }}" alt="Image">
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% elif dataset == "mmc4-ff-core" %}
+                {% if sample.text_list and sample.images %}
+                    <p><strong>Images and Texts:</strong></p>
+                    {% for image_data in sample.images %}
+                        <div class="text-image-row">
+                            <img src="data:image/jpeg;base64,{{ image_data.img_str }}" alt="Image">
+                            <div class="text-content">
+                                <p><strong>Domain:</strong>{{ image_data.domain }}</p>
+                                <p><strong>Matched Text Index:</strong> {{ image_data.matched_text_index }}</p>
+                                <p><strong>Matched Text:</strong> {{ image_data.matched_text }}</p>
+                                <p><strong>Matched Sim:</strong> {{ image_data.matched_sim }}</p>
+                                <p><strong>Face Detections:</strong> {{ image_data.face_detections }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% elif dataset == "coyo-700m" %}
+                {% if sample.text and sample.images %}
+                    {% for image_data in sample.images %}
+                        <img src="data:image/jpeg;base64,{{ image_data.img_str }}" alt="Image" style="max-width: 100%; height: auto;">
+                    {% endfor %}
+                {% endif %}
+            {% else %}
+                {% if sample.video %}
+                    <p><strong>Video:</strong></p>
+                    <video controls style="max-width: 100%;">
+                        <source src="data:video/mp4;base64,{{ sample.video }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                {% elif sample.images %}
+                    <p><strong>Image:</strong></p>
+                    {% for img_data in sample.images %}
+                        <img src="data:image/jpeg;base64,{{ img_data.img_str }}" alt="Image" style="max-width: 100%; height: auto;">
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        </div>
+    {% endfor %}
+</body>
+</html>
