@@ -11,14 +11,13 @@ DATASET_FOLDER = "/data3/dataset/VLM/object365/"
 JSON_PATH = os.path.join(DATASET_FOLDER, "zhiyuan_objv2_train.json")
 
 
-def extract_elements_with_image_id(data_dict, image_id):
-    return {k: v for k, v in data_dict.items() if v.get("image_id") == image_id}
+def extract_elements_with_image_id(anns_list, image_id):
+    return [ann for ann in anns_list if ann.get("image_id") == image_id]
 
 
 def sample_images(num_samples):
     with open(JSON_PATH, "r") as f:
         image_anns = json.load(f)  # File will be automatically closed here
-
     images = image_anns["images"]
     selected_indices = random.sample(range(len(images)), num_samples)
     
@@ -43,40 +42,49 @@ def create_caption(model_name, selected_indices):
     )
     chatbot = ChatBot(model_name)
 
-    error_image_file = 0
+    error_image_file_path = 0
+    error_response = 0
     captions_image = {}
 
     progress_bar = tqdm(selected_indices, desc=f"Process Image Caption using {model_name}")
 
     for idx in progress_bar:
         image_info = images[idx]
-        image_file = os.path.join(
-            DATASET_FOLDER, image_info["file_name"].replace("images/v2/", "images/train/")
-        )
+        original_image_file = image_info["file_name"].replace("images/v2/", "images/train/")
+        image_file = os.path.join(DATASET_FOLDER, original_image_file)
         image_ann = extract_elements_with_image_id(anns, image_info["id"])
 
         if not os.path.exists(image_file):
-            error_image_file += 1
-            progress_bar.set_description(f"Errors: {error_image_file} | Processing {model_name}")
+            error_image_file_path += 1
+            progress_bar.set_description(f"Errors of Path: {error_image_file_path} | Errors of response {error_response} | Processing {model_name}")
             continue
-
+        
         with Image.open(image_file) as image:
             image = image.convert("RGB")
             messages = {"text": caption_prompt, "images": [image]}
-            response = chatbot.call_model(
-                messages, decoding_args=decoding_args, return_list=False
-            ).strip()
-
-        if response == "":
-            error_image_file += 1
-            progress_bar.set_description(f"Errors: {error_image_file} | Processing {model_name}")
+            for i in range(7):
+                decoding_args = DecodingArguments(
+                    max_tokens=2048,
+                    n=1,
+                    temperature=0.2 + 0.1 * i,
+                    image_detail="auto",
+                )
+                response = chatbot.call_model(
+                    messages, decoding_args=decoding_args, return_list=False
+                ).strip()
+                if response:
+                    break
+            
+        if not response:
+            error_response += 1
+            progress_bar.set_description(f"Errors of Path: {error_image_file_path} | Errors of response {error_response} | Processing {model_name}")
             continue
             
         image_info_without_id = {k: v for k, v in image_info.items() if k != "id"}
-        image_ann_without_image_id = {
-            k: {sub_k: sub_v for sub_k, sub_v in v.items() if sub_k != "image_id"}
-            for k, v in image_ann.items()
-        }
+        image_ann_without_image_id = [
+            {sub_k: sub_v for sub_k, sub_v in ann.items() if sub_k != "image_id"}
+            for ann in image_ann
+        ]
         
         captions_image[image_info["id"]] = {
             "image_info": image_info_without_id,
@@ -84,7 +92,7 @@ def create_caption(model_name, selected_indices):
             "caption": response,
         }
 
-        progress_bar.set_description(f"Errors: {error_image_file} | Processing {model_name}")
+        progress_bar.set_description(f"Errors of Path: {error_image_file_path} | Errors of response {error_response} | Processing {model_name}")
 
     if not os.path.exists("./captions"):
         os.makedirs("./captions")
@@ -97,8 +105,8 @@ def main():
     selected_indices = sample_images(200)
     print(f"Creating captions for {len(selected_indices)} images using llava-1.6-vicuna-7b")
     create_caption("llava-1.6-vicuna-7b", selected_indices)
-    print(f"Creating captions for {len(selected_indices)} images using phi-3-mini-4k-instruct")
-    create_caption("phi-3-mini-4k-instruct", selected_indices)
+    # print(f"Creating captions for {len(selected_indices)} images using phi-3-mini-4k-instruct")
+    # create_caption("phi-3-mini-4k-instruct", selected_indices)
 
 if __name__ == "__main__":
     main()
