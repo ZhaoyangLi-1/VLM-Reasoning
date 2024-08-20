@@ -108,10 +108,10 @@ def create_caption(model_name, selected_indices, model_type):
         response_list = []
         with Image.open(image_file) as image:
             image = image.convert("RGB")
-            response = ""
             if model_type == "llava":
                 messages = {"text": caption_prompt, "images": [image]}
                 for _ in range(10):
+                    response = ""
                     for i in range(7):
                         decoding_args = DecodingArguments(
                             max_tokens=2048,
@@ -128,6 +128,7 @@ def create_caption(model_name, selected_indices, model_type):
             elif model_type == "phi3":
                 inputs = processor(prompt, [image], return_tensors="pt").to(device)
                 for _ in range(10):
+                    response = ""
                     for i in range(7):
                         generation_args = {
                             "max_new_tokens": 500,
