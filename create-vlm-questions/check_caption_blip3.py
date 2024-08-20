@@ -1,10 +1,9 @@
-from agi.utils.chatbot_utils import DecodingArguments, ChatBot
 import os
 import json
 from tqdm import tqdm
 import random
 from PIL import Image
-from transformers import AutoModelForCausalLM, AutoProcessor, AutoModelForVision2Seq, AutoTokenizer, AutoImageProcessor, StoppingCriteria
+from transformers import AutoModelForVision2Seq, AutoTokenizer, AutoImageProcessor, StoppingCriteria
 import torch
 
 PROMPT_PATH = "prompts/caption.txt"
@@ -45,6 +44,8 @@ def apply_prompt_template(prompt):
         return s 
 
 def create_caption(model_name, selected_indices, model_type):
+    
+
     with open(JSON_PATH, "r") as f:
         image_anns = json.load(f)
 
@@ -62,30 +63,14 @@ def create_caption(model_name, selected_indices, model_type):
         selected_indices, desc=f"Process Image Caption using {model_name}"
     )
     # breakpoint()
-    if model_type == "llava":
-        decoding_args = DecodingArguments(
-            max_tokens=2048,
-            n=1,
-            temperature=0.2,
-            image_detail="auto",
-        )
-        chatbot = ChatBot(model_name)
-    elif model_type == "phi3":
-        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-        model = AutoModelForCausalLM.from_pretrained(
-            model_name,
-            device_map=device,
-            trust_remote_code=True,
-            torch_dtype="auto",
-            _attn_implementation="eager",
-        )
-        processor = AutoProcessor.from_pretrained(model_name, trust_remote_code=True)
-        messages = [
-            {"role": "user", "content": "<|image_1|>\n" + caption_prompt.replace("<image>\n", "")},
-        ]
-        prompt = processor.tokenizer.apply_chat_template(
-            messages, tokenize=False, add_generation_prompt=True
-        )
+  
+    model = AutoModelForVision2Seq.from_pretrained(model_name, trust_remote_code=True)
+    tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True, use_fast=False, legacy=False)
+    image_processor = AutoImageProcessor.from_pretrained(model_name, trust_remote_code=True)
+    tokenizer = model.update_special_tokens(tokenizer)
+    model = model.to('cuda')
+    model.eval()
+    tokenizer.padding_side = "left"
 
     for idx in progress_bar:
         image_info = images[idx]
@@ -108,57 +93,46 @@ def create_caption(model_name, selected_indices, model_type):
         response_list = []
         with Image.open(image_file) as image:
             image = image.convert("RGB")
-            response = ""
-            if model_type == "llava":
-                messages = {"text": caption_prompt, "images": [image]}
-                for _ in range(10):
-                    for i in range(7):
-                        decoding_args = DecodingArguments(
-                            max_tokens=2048,
-                            n=1,
-                            temperature=0.2 + 0.1 * i,
-                            image_detail="auto",
-                        )
-                        response = chatbot.call_model(
-                            messages, decoding_args=decoding_args, return_list=False
-                        ).strip()
-                        if response:
-                            break
-                    response_list.append(response)
-            elif model_type == "phi3":
-                inputs = processor(prompt, [image], return_tensors="pt").to(device)
-                for _ in range(10):
-                    for i in range(7):
-                        generation_args = {
-                            "max_new_tokens": 500,
-                            "temperature": 0.2 + 0.1 * i,
-                            "do_sample": False,
-                        }
-
-                        generate_ids = model.generate(
-                            **inputs,
-                            eos_token_id=processor.tokenizer.eos_token_id,
-                            **generation_args,
-                        )
-
-                        generate_ids = generate_ids[:, inputs["input_ids"].shape[1] :]
-                        response = processor.batch_decode(
-                            generate_ids,
-                            skip_special_tokens=True,
-                            clean_up_tokenization_spaces=False,
-                        )[0]
-
-                        if response:
-                            break
-                    response_list.append(response)
-                
-        if not response:
-            error_response += 1
-            progress_bar.set_description(
-                f"Errors of Path: {error_image_file_path} | Errors of response {error_response} | Processing {model_name} | Captions Collected: {len(response_list)} of Image {idx}"
-            )
-            continue
-
+            image_list = []
+            image_sizes = []
+            image_list.append(image_processor([image], image_aspect_ratio='anyres')["pixel_values"].cuda())
+            image_sizes.append(image.size)
+            inputs = {
+                "pixel_values": [image_list]
+            }
+            prompt = apply_prompt_template(caption_prompt.replace("<image>\n", ""))
+            language_inputs = tokenizer([prompt], return_tensors="pt")
+            inputs.update(language_inputs)
+            for name, value in inputs.items():
+                if isinstance(value, torch.Tensor):
+                    inputs[name] = value.cuda()
+            for _ in range(10):
+                response = ""
+                for i in range(7):
+                    temperature = 0.2 + 0.1 * i
+                    generated_text = model.generate(
+                        **inputs, 
+                        image_size=[image_sizes],
+                        pad_token_id=tokenizer.pad_token_id,
+                        temperature=temperature,
+                        do_sample=False, 
+                        max_new_tokens=2048, 
+                        top_p=None, 
+                        num_beams=1,
+                    )
+                    response = tokenizer.decode(generated_text[0], skip_special_tokens=True).split("")[0]
+                    
+                    if response:  # Stop if a non-empty response is obtained
+                        break
+                    
+            if not response:
+                error_response += 1
+                progress_bar.set_description(
+                    f"Errors of Path: {error_image_file_path} | Errors of response {error_response} | Processing {model_name} | Captions Collected: {len(response_list)} of Image {idx}"
+                )
+                continue
+            response_list.append(response)
+            
         image_info_without_id = {k: v for k, v in image_info.items() if k != "id"}
         image_ann_without_image_id = [
             {sub_k: sub_v for sub_k, sub_v in ann.items() if sub_k != "image_id"}
@@ -177,8 +151,7 @@ def create_caption(model_name, selected_indices, model_type):
 
     if not os.path.exists("./captions"):
         os.makedirs("./captions")
-    if "Phi-3" in model_name:
-        model_name = model_name.split("/")[-1]
+    model_name = model_name.split("/")[-1]
     output_file_path = os.path.join("./captions", f"{model_name}_caption.json")
     with open(output_file_path, "w") as output_file:
         json.dump(captions_image, output_file, indent=4)
@@ -192,13 +165,11 @@ def main():
     else:
         selected_indices = sample_images(200)
         print(f"Created new selection of {len(selected_indices)} images")
-
-    print(f"Creating captions for {len(selected_indices)} images using llava-1.6-vicuna-7b")
-    create_caption("llava-1.6-vicuna-7b", selected_indices, model_type="llava")
     print(
-        f"Creating captions for {len(selected_indices)} images using phi-3-mini-4k-instruct"
+        f"Creating captions for {len(selected_indices)} images using blip3"
     )
-    create_caption("microsoft/Phi-3-vision-128k-instruct", selected_indices, model_type="phi3")
+    create_caption("Salesforce/xgen-mm-phi3-mini-instruct-interleave-r-v1.5", selected_indices, model_type="xgen-mm")
+    
 
 
 if __name__ == "__main__":
