@@ -8,7 +8,7 @@ from transformers import AutoModelForCausalLM, AutoProcessor, AutoModelForVision
 import torch
 
 PROMPT_PATH = "prompts/caption.txt"
-DATASET_FOLDER = "/data3/dataset/VLM/object365/"
+DATASET_FOLDER = "/ariesdv0/zhanling/vlm-datasets/object365/"
 JSON_PATH = os.path.join(DATASET_FOLDER, "zhiyuan_objv2_train.json")
 INDICES_FILE = "selected_indices.json"
 
@@ -104,7 +104,6 @@ def create_caption(model_name, selected_indices, model_type):
                 f"Errors of Path: {error_image_file_path} | Errors of response {error_response} | Processing {model_name} | Captions Collected: {len(response_list)} of Image {idx}"
             )
             continue
-        
         response_list = []
         with Image.open(image_file) as image:
             image = image.convert("RGB")
@@ -194,8 +193,8 @@ def main():
         selected_indices = sample_images(200)
         print(f"Created new selection of {len(selected_indices)} images")
 
-    print(f"Creating captions for {len(selected_indices)} images using llava-1.6-vicuna-7b")
-    create_caption("llava-1.6-vicuna-7b", selected_indices, model_type="llava")
+    # print(f"Creating captions for {len(selected_indices)} images using llava-1.6-vicuna-7b")
+    # create_caption("llava-1.6-vicuna-7b", selected_indices, model_type="llava")
     print(
         f"Creating captions for {len(selected_indices)} images using phi-3-mini-4k-instruct"
     )
